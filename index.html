@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exp Host - Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: #121212;
             color: #ffffff;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Ubuntu', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
@@ -16,9 +17,10 @@
         }
         header {
             width: 100%;
-            background-color: #1a1a1a;
+            background-color: rgba(0, 0, 255, 0.2); /* Transparent blue background */
             padding: 10px 0;
             text-align: center;
+            font-weight: bold; /* Bold font */
         }
         header nav a {
             color: #ffffff;
@@ -37,31 +39,18 @@
             height: 80vh;
         }
         .logo-container {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: radial-gradient(circle, #00f, transparent);
-            animation: glow 1.5s infinite alternate;
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
         }
         .logo-container img {
-            width: 150px;
+            width: 100%;
             height: auto;
         }
         h1 {
             font-size: 4em;
             text-align: center;
             margin-top: 20px;
-        }
-        @keyframes glow {
-            from {
-                background: radial-gradient(circle, #00f, transparent);
-            }
-            to {
-                background: radial-gradient(circle, #00f, #0044ff);
-            }
         }
     </style>
 </head>
