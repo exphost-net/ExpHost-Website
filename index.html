@@ -20,7 +20,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 0 20px;
+            padding: 0;
         }
         header {
             width: 100%;
@@ -30,18 +30,29 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
         }
         header .nav-left {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: flex-start;
+            margin-left: 20px; /* Adjusted margin for better spacing */
         }
         header .nav-right {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: flex-end;
+            margin-right: 20px; /* Adjusted margin for better spacing */
+        }
+        header nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         header nav a {
             color: #ffffff;
@@ -56,7 +67,7 @@
         .hero {
             text-align: center;
             padding: 50px 20px;
-            background: url('/background.jpg') no-repeat center center fixed;
+            background: url('/image.png') no-repeat center top;
             background-size: cover;
             width: 100%;
             height: 100vh;
@@ -65,6 +76,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            margin-top: 80px; /* Adjusted margin for header overlap */
         }
         .hero::before {
             content: "";
@@ -171,16 +183,16 @@
         .slider-container input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 40px;
-            height: 40px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: url('logo.png') no-repeat center center;
             background-size: contain;
             cursor: pointer;
         }
         .slider-container input[type="range"]::-moz-range-thumb {
-            width: 40px;
-            height: 40px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: url('logo.png') no-repeat center center;
             background-size: contain;
@@ -195,9 +207,9 @@
             background: repeating-linear-gradient(
                 to right,
                 transparent,
-                transparent 5%,
-                #fff 5%,
-                #fff 10%
+                transparent calc(100% / 16 - 1px),
+                #fff calc(100% / 16 - 1px),
+                #fff calc(100% / 16)
             );
         }
         .footer {
@@ -220,6 +232,27 @@
         .footer p {
             margin: 20px 0 0;
             font-size: 1em;
+        }
+        .footer .links {
+            margin-bottom: 10px;
+        }
+        .socials {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px; /* Adjusted margin for spacing */
+        }
+        .socials a {
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+        .socials a img {
+            width: 20px;
+            margin-right: 5px;
         }
     </style>
 </head>
@@ -265,9 +298,11 @@
         </div>
         <div class="spec">
             <h2>Socials</h2>
-            <p><a href="https://discord.gg/KxXUyPbJgB" target="_blank"><img src="discord-icon.png" alt="Discord" style="width: 20px; vertical-align: middle;"> Discord</a></p>
-            <p><a href="https://x.com/ExpHost" target="_blank"><img src="twitter-icon.png" alt="Twitter" style="width: 20px; vertical-align: middle;"> Twitter</a></p>
-            <p><a href="https://astrofoxstudios.com" target="_blank"><img src="website-icon.png" alt="Astrofox Studios" style="width: 20px; vertical-align: middle;"> Astrofox Studios Website</a></p>
+            <div class="socials">
+                <a href="https://discord.gg/KxXUyPbJgB" target="_blank"><img src="discord-icon.png" alt="Discord"> Discord</a>
+                <a href="https://x.com/ExpHost" target="_blank"><img src="twitter-icon.png" alt="Twitter"> Twitter</a>
+                <a href="https://astrofoxstudios.com" target="_blank"><img src="website-icon.png" alt="Astrofox Studios"> Astrofox Studios Website</a>
+            </div>
         </div>
     </div>
     <div class="slider-container">
@@ -277,7 +312,7 @@
         <p>Price: $<span id="price-value">1.25</span> per month</p>
     </div>
     <div class="footer">
-        <nav>
+        <nav class="links">
             <a href="https://destinygames.org" target="_blank">Destiny Games</a>
             <a href="https://astrofoxstudios.com" target="_blank">Astrofox Studios</a>
             <a href="https://tropiclash.net" target="_blank">Tropiclash</a>
