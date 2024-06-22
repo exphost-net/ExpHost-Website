@@ -104,24 +104,35 @@
             justify-content: space-around;
             margin: 40px 0;
         }
-        .specs .spec {
+        .spec {
             background-color: #282828;
             border-radius: 8px;
             padding: 20px;
             margin: 10px;
             flex: 1 1 30%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
             transition: transform 0.3s;
         }
-        .specs .spec:hover {
+        .spec::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 5px;
+            background-color: #00bfff;
+            border-radius: 8px 0 0 8px;
+        }
+        .spec:hover {
             transform: translateY(-10px);
         }
-        .specs h2 {
+        .spec h2 {
             margin-top: 0;
             font-size: 2em;
             color: #00bfff;
         }
-        .specs p {
+        .spec p {
             font-size: 1.2em;
         }
         .slider-container {
@@ -151,24 +162,43 @@
             outline: none;
             opacity: 0.7;
             transition: opacity 0.2s;
+            position: relative;
+        }
+        .slider-container input[type="range"]::-webkit-slider-runnable-track {
+            height: 8px;
+            background: #00bfff;
         }
         .slider-container input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: url('logo.png') no-repeat center center;
             background-size: contain;
             cursor: pointer;
         }
         .slider-container input[type="range"]::-moz-range-thumb {
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background: url('logo.png') no-repeat center center;
             background-size: contain;
             cursor: pointer;
+        }
+        .slider-container input[type="range"]::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: repeating-linear-gradient(
+                to right,
+                transparent,
+                transparent 5%,
+                #fff 5%,
+                #fff 10%
+            );
         }
         .footer {
             width: 100%;
@@ -188,7 +218,7 @@
             text-decoration: underline;
         }
         .footer p {
-            margin: 0;
+            margin: 20px 0 0;
             font-size: 1em;
         }
     </style>
@@ -232,6 +262,12 @@
             <p>Reliable performance</p>
             <p>24/7 customer support</p>
             <p>No hidden fees</p>
+        </div>
+        <div class="spec">
+            <h2>Socials</h2>
+            <p><a href="https://discord.gg/KxXUyPbJgB" target="_blank"><img src="discord-icon.png" alt="Discord" style="width: 20px; vertical-align: middle;"> Discord</a></p>
+            <p><a href="https://x.com/ExpHost" target="_blank"><img src="twitter-icon.png" alt="Twitter" style="width: 20px; vertical-align: middle;"> Twitter</a></p>
+            <p><a href="https://astrofoxstudios.com" target="_blank"><img src="website-icon.png" alt="Astrofox Studios" style="width: 20px; vertical-align: middle;"> Astrofox Studios Website</a></p>
         </div>
     </div>
     <div class="slider-container">
