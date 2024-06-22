@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exp Host - Affordable and Powerful Minecraft Hosting</title>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -24,10 +25,10 @@
         }
         header {
             width: 100%;
-            background-color: rgba(0, 0, 255, 0.2);
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
             padding: 15px 0;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* Align links to the left */
             align-items: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             position: fixed;
@@ -36,22 +37,10 @@
             z-index: 1000;
         }
         header .nav-left {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            margin-left: 20px; /* Adjusted margin for better spacing */
-        }
-        header .nav-right {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            margin-right: 20px; /* Adjusted margin for better spacing */
+            margin-left: 20px; /* Added margin to move links a little to the left */
         }
         header nav {
             display: flex;
-            justify-content: center;
             align-items: center;
         }
         header nav a {
@@ -175,42 +164,35 @@
             opacity: 0.7;
             transition: opacity 0.2s;
             position: relative;
+            margin-bottom: 20px; /* Added margin to align with markers */
+            border-radius: 16px; /* Rounded slider */
         }
         .slider-container input[type="range"]::-webkit-slider-runnable-track {
             height: 8px;
             background: #00bfff;
+            border-radius: 16px; /* Rounded slider */
         }
         .slider-container input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 60px;
-            height: 60px;
+            width: 16px; /* Adjust size of thumb */
+            height: 16px; /* Adjust size of thumb */
             border-radius: 50%;
-            background: url('logo.png') no-repeat center center;
-            background-size: contain;
+            background-color: #ffffff; /* White dot */
             cursor: pointer;
+            position: relative;
+            z-index: 2;
+            margin-top: -4px; /* Adjusted to align with track */
         }
         .slider-container input[type="range"]::-moz-range-thumb {
-            width: 60px;
-            height: 60px;
+            width: 16px; /* Adjust size of thumb */
+            height: 16px; /* Adjust size of thumb */
             border-radius: 50%;
-            background: url('logo.png') no-repeat center center;
-            background-size: contain;
+            background-color: #ffffff; /* White dot */
             cursor: pointer;
-        }
-        .slider-container input[type="range"]::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            height: 100%;
-            background: repeating-linear-gradient(
-                to right,
-                transparent,
-                transparent calc(100% / 16 - 1px),
-                #fff calc(100% / 16 - 1px),
-                #fff calc(100% / 16)
-            );
+            position: relative;
+            z-index: 2;
+            margin-top: -4px; /* Adjusted to align with track */
         }
         .footer {
             width: 100%;
@@ -238,8 +220,8 @@
         }
         .socials {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: column; /* Changed to vertical */
+            align-items: flex-start; /* Changed to align left */
             margin-top: 20px; /* Adjusted margin for spacing */
         }
         .socials a {
@@ -247,8 +229,9 @@
             text-decoration: none;
             display: flex;
             align-items: center;
-            margin: 0 15px;
+            margin: 10px 0; /* Adjusted vertical margin */
             font-size: 1.2em;
+            justify-content: flex-start; /* Added to align left */
         }
         .socials a img {
             width: 20px;
@@ -261,12 +244,15 @@
         <div class="nav-left">
             <img src="logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">
         </div>
-        <div class="nav-right">
+        <div class="nav-center">
             <nav>
                 <a href="#">Home</a>
                 <a href="#">Legal</a>
-                <a href="#">Socials</a>
+                <a href="#">Panel</a>
             </nav>
+        </div>
+        <div class="nav-right">
+            <!-- Empty div to maintain alignment -->
         </div>
     </header>
     <div class="hero">
@@ -299,9 +285,9 @@
         <div class="spec">
             <h2>Socials</h2>
             <div class="socials">
-                <a href="https://discord.gg/KxXUyPbJgB" target="_blank"><img src="discord-icon.png" alt="Discord"> Discord</a>
-                <a href="https://x.com/ExpHost" target="_blank"><img src="twitter-icon.png" alt="Twitter"> Twitter</a>
-                <a href="https://astrofoxstudios.com" target="_blank"><img src="website-icon.png" alt="Astrofox Studios"> Astrofox Studios Website</a>
+                <a href="https://discord.gg/KxXUyPbJgB" target="_blank"><i class="fab fa-discord"></i> Discord</a>
+                <a href="https://x.com/ExpHost" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
+                <a href="https://astrofoxstudios.com" target="_blank"><i class="fas fa-building"></i> Astrofox Studios Website</a>
             </div>
         </div>
     </div>
