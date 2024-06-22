@@ -236,6 +236,72 @@
             width: 20px;
             margin-right: 5px;
         }
+        .continue-button {
+            background-color: #6be6ff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.2s;
+            margin-right: 10px;
+            font-family: 'Ubuntu', sans-serif; /* Added font-family */
+            font-weight: bold; /* Added font weight */
+        }
+        .continue-button:hover {
+            background-color: #55c0e0;
+            transform: scale(1.05);
+        }
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup {
+            background-color: #282828; /* Changed background color */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: #ffffff; /* Changed text color */
+            font-weight: bold; /* Added font weight */
+        }
+        .popup h2 {
+            margin-top: 0;
+            color: #00bfff;
+            font-size: 2em;
+        }
+        .popup p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+        .popup button {
+            background-color: #6be6ff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.2s;
+            margin: 10px;
+            font-family: 'Ubuntu', sans-serif; /* Added font-family */
+            font-weight: bold; /* Added font weight */
+        }
+        .popup button:hover {
+            background-color: #55c0e0;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
@@ -295,6 +361,15 @@
         <p>RAM: <span id="ram-value">1</span> GB</p>
         <input type="range" id="ram-slider" min="1" max="16" value="1" step="1">
         <p>Price: $<span id="price-value">1.25</span> per month</p>
+        <button class="continue-button" onclick="openPopup()">Continue Order</button>
+    </div>
+    <div class="popup-container" id="popup-container">
+        <div class="popup">
+            <h2>Continue Order</h2>
+            <p>How would you like to proceed?</p>
+            <button class="continue-button" onclick="openDiscord()">Discord Support</button>
+            <button class="continue-button" disabled>Coming Soon...</button>
+        </div>
     </div>
     <div class="footer">
         <nav class="links">
@@ -308,6 +383,7 @@
         const ramSlider = document.getElementById('ram-slider');
         const ramValue = document.getElementById('ram-value');
         const priceValue = document.getElementById('price-value');
+        const popupContainer = document.getElementById('popup-container');
 
         ramSlider.addEventListener('input', function() {
             const ram = this.value;
@@ -315,6 +391,14 @@
             ramValue.textContent = ram;
             priceValue.textContent = price;
         });
+
+        function openPopup() {
+            popupContainer.style.display = 'flex';
+        }
+
+        function openDiscord() {
+            window.open('https://discord.gg/KxXUyPbJgB', '_blank');
+        }
     </script>
 </body>
 </html>
