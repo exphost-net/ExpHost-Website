@@ -1,78 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp Host - Affordable and Powerful Minecraft Hosting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exp Host - Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            background-color: #121212;
-            color: #ffffff;
+            background-color: #1c1c1c;
+            color: #f0f0f0;
             font-family: 'Ubuntu', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding: 0 20px;
         }
         header {
             width: 100%;
-            background-color: rgba(0, 0, 255, 0.2); /* Transparent blue background */
-            padding: 10px 0;
-            text-align: center;
-            font-weight: bold; /* Bold font */
+            background-color: rgba(0, 0, 255, 0.2);
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        header .nav-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        header .nav-right {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
         }
         header nav a {
             color: #ffffff;
             text-decoration: none;
             margin: 0 15px;
             font-size: 1.2em;
+            font-weight: bold;
         }
         header nav a:hover {
             text-decoration: underline;
         }
-        .container {
+        .hero {
+            text-align: center;
+            padding: 50px 20px;
+            background: url('/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 80vh;
+            position: relative;
         }
-        .logo-container {
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero-content img {
             width: 150px;
             height: auto;
             margin-bottom: 20px;
         }
-        .logo-container img {
-            width: 100%;
-            height: auto;
-        }
-        h1 {
+        .hero-content h1 {
             font-size: 4em;
+            margin: 0;
+        }
+        .hero-content p {
+            font-size: 1.5em;
+            margin: 10px 0 0;
+        }
+        .specs {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 40px 0;
+        }
+        .specs .spec {
+            background-color: #282828;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            flex: 1 1 30%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .specs .spec:hover {
+            transform: translateY(-10px);
+        }
+        .specs h2 {
+            margin-top: 0;
+            font-size: 2em;
+            color: #00bfff;
+        }
+        .specs p {
+            font-size: 1.2em;
+        }
+        .slider-container {
+            width: 100%;
+            max-width: 600px;
             text-align: center;
-            margin-top: 20px;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #282828;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .slider-container h3 {
+            margin-top: 0;
+            font-size: 2em;
+            color: #00bfff;
+        }
+        .slider-container p {
+            font-size: 1.5em;
+            margin: 20px 0;
+        }
+        .slider-container input[type="range"] {
+            width: 100%;
+        }
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            background-color: #282828;
+            border-top: 1px solid #333;
+            margin-top: auto;
+        }
+        .footer nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+        .footer nav a:hover {
+            text-decoration: underline;
+        }
+        .footer p {
+            margin: 0;
+            font-size: 1em;
         }
     </style>
 </head>
 <body>
     <header>
+        <div class="nav-left">
+            <img src="logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">
+        </div>
+        <div class="nav-right">
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Legal</a>
+                <a href="#">Socials</a>
+            </nav>
+        </div>
+    </header>
+    <div class="hero">
+        <div class="hero-content">
+            <img src="logo.png" alt="Exp Host Logo">
+            <h1>EXP Host</h1>
+            <p>The most affordable host...</p>
+        </div>
+    </div>
+    <div class="specs">
+        <div class="spec">
+            <h2>Node 1 (NA)</h2>
+            <p><strong>CPU:</strong> AMD RYZEN 7 5700G</p>
+            <p><strong>RAM:</strong> DDR4 Memory - $1.25 per GB</p>
+            <p><strong>Storage:</strong> Unmetered</p>
+            <p><strong>DDoS Protection:</strong> Included!</p>
+        </div>
+        <div class="spec">
+            <h2>Our Pricing</h2>
+            <p>We offer the most competitive pricing in the market.</p>
+            <p>Get the best performance without breaking the bank!</p>
+        </div>
+        <div class="spec">
+            <h2>Why Choose Us?</h2>
+            <p>Top-notch hardware</p>
+            <p>Reliable performance</p>
+            <p>24/7 customer support</p>
+            <p>No hidden fees</p>
+        </div>
+    </div>
+    <div class="slider-container">
+        <h3>Customize Your Plan</h3>
+        <p>RAM: <span id="ram-value">1</span> GB</p>
+        <input type="range" id="ram-slider" min="1" max="16" value="1" step="1">
+        <p>Price: $<span id="price-value">1.25</span> per month</p>
+    </div>
+    <div class="footer">
         <nav>
             <a href="https://destinygames.org" target="_blank">Destiny Games</a>
             <a href="https://astrofoxstudios.com" target="_blank">Astrofox Studios</a>
             <a href="https://tropiclash.net" target="_blank">Tropiclash</a>
         </nav>
-    </header>
-    <div class="container">
-        <div class="logo-container">
-            <img src="logo.png" alt="Exp Host Logo">
-        </div>
-        <h1>Coming Soon</h1>
+        <p>&copy; 2024 Exp Host. All rights reserved.</p>
     </div>
+    <script>
+        const ramSlider = document.getElementById('ram-slider');
+        const ramValue = document.getElementById('ram-value');
+        const priceValue = document.getElementById('price-value');
+
+        ramSlider.addEventListener('input', function() {
+            const ram = this.value;
+            const price = (ram * 1.25).toFixed(2);
+            ramValue.textContent = ram;
+            priceValue.textContent = price;
+        });
+    </script>
 </body>
 </html>
