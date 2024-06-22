@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal - Exp Host</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <style>
+        body {
+            background-color: #1c1c1c;
+            color: #f0f0f0;
+            font-family: 'Ubuntu', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
+        header {
+            width: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+            padding: 15px 0;
+            display: flex;
+            justify-content: flex-start; /* Align links to the left */
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        header .nav-left {
+            margin-left: 20px; /* Added margin to move links a little to the left */
+        }
+        header nav {
+            display: flex;
+            align-items: center;
+        }
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        header nav a:hover {
+            text-decoration: underline;
+        }
+        .hero {
+            text-align: center;
+            padding: 50px 0px;
+            background: url('/image.png') no-repeat center top;
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin-top: 0px; /* Adjusted margin for header overlap */
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .hero-content img {
+            width: 150px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        .hero-content h1 {
+            font-size: 4em;
+            margin: 0;
+        }
+        .hero-content p {
+            font-size: 1.5em;
+            margin: 10px 0 0;
+        }
+        .section {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 40px 0;
+        }
+        .box {
+            background-color: #282828;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            flex: 1 1 45%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 5px;
+            background-color: #00bfff;
+            border-radius: 8px 0 0 8px;
+        }
+        .box:hover {
+            transform: translateY(-10px);
+        }
+        .box h2 {
+            margin-top: 0;
+            font-size: 2em;
+            color: #00bfff;
+        }
+        .box p {
+            font-size: 1.2em;
+        }
+        .button {
+            background-color: #6be6ff;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s, transform 0.2s;
+            margin-right: 10px;
+            font-family: 'Ubuntu', sans-serif; /* Added font-family */
+            font-weight: bold; /* Added font weight */
+        }
+        .button:hover {
+            background-color: #55c0e0;
+            transform: scale(1.05);
+        }
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            background-color: #282828;
+            border-top: 1px solid #333;
+            margin-top: auto;
+        }
+        .footer nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.2em;
+        }
+        .footer nav a:hover {
+            text-decoration: underline;
+        }
+        .footer p {
+            margin: 20px 0 0;
+            font-size: 1em;
+        }
+        .footer .links {
+            margin-bottom: 10px;
+        }
+        .socials {
+            display: flex;
+            flex-direction: column; /* Changed to vertical */
+            align-items: flex-start; /* Changed to align left */
+            margin-top: 20px; /* Adjusted margin for spacing */
+        }
+        .socials a {
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            margin: 10px 0; /* Adjusted vertical margin */
+            font-size: 1.2em;
+            justify-content: flex-start; /* Added to align left */
+        }
+        .socials a img {
+            width: 20px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-left">
+            <img src="logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">
+        </div>
+        <div class="nav-center">
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Legal</a>
+                <a href="#">Panel</a>
+            </nav>
+        </div>
+        <div class="nav-right">
+            <!-- Empty div to maintain alignment -->
+        </div>
+    </header>
+    <div class="hero">
+        <div class="hero-content">
+            <img src="logo.png" alt="Exp Host Logo">
+            <h1>EXP Host</h1>
+            <p>The most affordable host...</p>
+        </div>
+    </div>
+    <div class="section">
+        <div class="box">
+            <h2>Terms of Service</h2>
+            <p>Read our Terms of Service to understand the rules and guidelines when using our services.</p>
+            <button class="button">Learn More</button>
+        </div>
+        <div class="box">
+            <h2>Privacy Policy</h2>
+            <p>Learn how we collect, use, and protect your personal information by reading our Privacy Policy.</p>
+            <button class="button">Learn More</button>
+        </div>
+    </div>
+    <div class="footer">
+        <nav class="links">
+            <a href="https://destinygames.org" target="_blank">Destiny Games</a>
+            <a href="https://astrofoxstudios.com" target="_blank">Astrofox Studios</a>
+            <a href="https://tropiclash.net" target="_blank">Tropiclash</a>
+        </nav>
+        <p>&copy; 2024 Exp Host. All rights reserved.</p>
+    </div>
+</body>
+</html>
