@@ -23,7 +23,7 @@
             align-items: center;
             padding: 0;
         }
-                header {
+        header {
             width: 100%;
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
             padding: 15px 0;
@@ -35,7 +35,6 @@
             left: 0;
             z-index: 1000;
         }
-
         header nav {
             display: flex;
             align-items: center;
@@ -43,13 +42,11 @@
             margin: 0;
             padding: 0;
         }
-
         header nav li {
             list-style: none; /* Ensures no list dots are shown */
             margin: 0;
             padding: 0;
         }
-
         header nav a {
             color: #ffffff;
             text-decoration: none;
@@ -57,7 +54,6 @@
             font-size: 1.2em;
             font-weight: bold;
         }
-
         header nav a:hover {
             text-decoration: underline;
         }
@@ -217,6 +213,32 @@
             border-top: 1px solid #333;
             margin-top: auto;
         }
+        .faq {
+            width: 100%;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #282828;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .faq h3 {
+            font-size: 1.5em;
+            color: #ffffff;
+            background-color: #333333;
+            padding: 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        .faq p {
+            font-size: 1.2em;
+            display: none;
+            padding: 10px;
+            margin-top: 0;
+            background-color: #1c1c1c;
+            border-radius: 8px;
+        }
         .footer nav a {
             color: #ffffff;
             text-decoration: none;
@@ -333,6 +355,26 @@
         .close-button:hover {
             color: #f44336;
         }
+        .faq {
+            width: 100%;
+            max-width: 600px;
+            text-align: left;
+            margin: 40px 0;
+            padding: 20px;
+            background-color: #282828;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .faq h3 {
+            font-size: 2em;
+            color: #00bfff;
+            margin-top: 0;
+            cursor: pointer;
+        }
+        .faq p {
+            font-size: 1.5em;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -403,6 +445,19 @@
             <button class="continue-button" disabled>Coming Soon...</button>
         </div>
     </div>
+    <div class="faq">
+        <h2 style="color: #ffffff; text-align: center; font-size: 2em; margin-bottom: 20px; font-weight: bold;">Frequently Asked Questions</h2>
+        <h3 onclick="toggleAnswer('q1')">Can I get a free server?</h3>
+        <p id="q1" style="display: none;">No</p>
+        <h3 onclick="toggleAnswer('q2')">How can I get a Partnership?</h3>
+        <p id="q2" style="display: none;">Partnerships are really exclusive right now since we are in development!</p>
+        <h3 onclick="toggleAnswer('q3')">What game panel do you run?</h3>
+        <p id="q3" style="display: none;">We run a modified version of Pterodactyl that also has our own custom theme!</p>
+        <h3 onclick="toggleAnswer('q4')">How can I contact support?</h3>
+        <p id="q4" style="display: none;">Join our Discord or make a ticket on the billing panel (coming soon)</p>
+        <h3 onclick="toggleAnswer('q5')">Should we fire EXP?</h3>
+        <p id="q5" style="display: none;">Maybe? idk</p>
+    </div>
     <div class="footer">
         <nav class="links">
             <a href="https://destinygames.org" target="_blank">Destiny Games</a>
@@ -434,6 +489,15 @@
 
         function openDiscord() {
             window.open('https://discord.gg/KxXUyPbJgB', '_blank');
+        }
+
+        function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            if (answer.style.display === 'none') {
+                answer.style.display = 'block';
+            } else {
+                answer.style.display = 'none';
+            }
         }
     </script>
 </body>
