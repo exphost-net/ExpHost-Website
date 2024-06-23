@@ -13,17 +13,8 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <style>
-        body {
-            background-color: #1c1c1c;
-            color: #f0f0f0;
-            font-family: 'Ubuntu', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0;
         }
-        header {
+                header {
             width: 100%;
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
             padding: 15px 0;
@@ -35,13 +26,21 @@
             left: 0;
             z-index: 1000;
         }
-        header .nav-left {
-            margin-left: 20px; /* Added margin to move links a little to the left */
-        }
+
         header nav {
             display: flex;
             align-items: center;
+            list-style: none; /* Ensures no list dots are shown */
+            margin: 0;
+            padding: 0;
         }
+
+        header nav li {
+            list-style: none; /* Ensures no list dots are shown */
+            margin: 0;
+            padding: 0;
+        }
+
         header nav a {
             color: #ffffff;
             text-decoration: none;
@@ -49,8 +48,16 @@
             font-size: 1.2em;
             font-weight: bold;
         }
+
         header nav a:hover {
             text-decoration: underline;
+        }
+        header .nav-left {
+            margin-left: 20px; /* Added margin to move links a little to the left */
+        }
+        header nav {
+            display: flex;
+            align-items: center;
         }
         .hero {
             text-align: center;
@@ -221,18 +228,23 @@
             <p>The most affordable host...</p>
         </div>
     </div>
-    <div class="section">
-        <div class="box">
-            <h2>Terms of Service</h2>
-            <p>Read our Terms of Service to understand the rules and guidelines when using our services.</p>
-            <button class="button">Learn More</button>
+        <div class="section">
+            <div class="box">
+                <h2>Terms of Service</h2>
+                <p>Read our Terms of Service to understand the rules and guidelines when using our services.</p>
+                <button class="button">Learn More</button>
+            </div>
+            <div class="box">
+                <h2>Privacy Policy</h2>
+                <p>Learn how we collect, use, and protect your personal information by reading our Privacy Policy.</p>
+                <button class="button">Learn More</button>
+            </div>
+            <div class="box">
+                <h2>SLA</h2>
+                <p>Our Service Level Agreement outlines our commitments to service availability and performance.</p>
+                <button class="button">Learn More</button>
+            </div>
         </div>
-        <div class="box">
-            <h2>Privacy Policy</h2>
-            <p>Learn how we collect, use, and protect your personal information by reading our Privacy Policy.</p>
-            <button class="button">Learn More</button>
-        </div>
-    </div>
     <div class="footer">
         <nav class="links">
             <a href="https://destinygames.org" target="_blank">Destiny Games</a>
