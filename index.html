@@ -23,7 +23,7 @@
             align-items: center;
             padding: 0;
         }
-        header {
+                header {
             width: 100%;
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
             padding: 15px 0;
@@ -35,13 +35,21 @@
             left: 0;
             z-index: 1000;
         }
-        header .nav-left {
-            margin-left: 20px; /* Added margin to move links a little to the left */
-        }
+
         header nav {
             display: flex;
             align-items: center;
+            list-style: none; /* Ensures no list dots are shown */
+            margin: 0;
+            padding: 0;
         }
+
+        header nav li {
+            list-style: none; /* Ensures no list dots are shown */
+            margin: 0;
+            padding: 0;
+        }
+
         header nav a {
             color: #ffffff;
             text-decoration: none;
@@ -49,8 +57,16 @@
             font-size: 1.2em;
             font-weight: bold;
         }
+
         header nav a:hover {
             text-decoration: underline;
+        }
+        header .nav-left {
+            margin-left: 20px; /* Added margin to move links a little to the left */
+        }
+        header nav {
+            display: flex;
+            align-items: center;
         }
         .hero {
             text-align: center;
