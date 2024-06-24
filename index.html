@@ -520,6 +520,10 @@
     </style>
 </head>
 <body>
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
     <header>
         <div class="nav-left">
             <img src="/images/logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">
@@ -593,15 +597,15 @@
             <p>Discover the powerful features of our custom game panel.</p>
         </div>
         <div class="panel-images">
-            <div class="panel-image">
+            <div class="panel-image" onclick="openModal('/images/panel1.png')">
                 <img src="/images/panel1.png" alt="Game Panel Screenshot 1">
                 <div class="panel-image-overlay"></div>
             </div>
-            <div class="panel-image">
+            <div class="panel-image" onclick="openModal('/images/panel2.png')">
                 <img src="/images/panel2.png" alt="Game Panel Screenshot 2">
                 <div class="panel-image-overlay"></div>
             </div>
-            <div class="panel-image">
+            <div class="panel-image" onclick="openModal('/images/panel3.png')">
                 <img src="/images/panel3.png" alt="Game Panel Screenshot 3">
                 <div class="panel-image-overlay"></div>
             </div>
@@ -627,10 +631,6 @@
             <a href="https://tropiclash.net" target="_blank">Tropiclash</a>
         </nav>
         <p>&copy; 2024 Exp Host. All rights reserved.</p>
-    </div>
-    <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImg">
     </div>
     <script>
         const ramSlider = document.getElementById('ram-slider');
@@ -666,6 +666,7 @@
             }
         }
 
+        // Function to open modal and display image
         function openModal(imgSrc) {
             var modal = document.getElementById('myModal');
             var modalImg = document.getElementById('modalImg');
