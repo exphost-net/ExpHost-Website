@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exp Host - Affordable and Powerful Minecraft Hosting</title>
+    <title>Exp Host | Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -402,6 +402,78 @@
             font-size: 1.5em;
             display: none;
         }
+
+        .game-panel {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #282828;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .panel-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .panel-header h3 {
+            color: #ffffff;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .panel-header p {
+            color: #cccccc;
+            font-size: 1.2em;
+        }
+
+        .panel-images {
+            display: flex;
+            justify-content: space-between;
+        }
+            .panel-image {
+            position: relative;
+            width: 30%;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease-out;
+        }
+
+        .panel-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease-out;
+        }
+
+        .panel-image:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            background-color: rgba(0, 191, 255, 0.3); /* Adjusted opacity */
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+            z-index: -1;
+        }
+
+        .panel-image:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+        }
+
+        .panel-image:hover img {
+            transform: scale(1.05); /* Scale up image on hover */
+        }
+
+        .panel-image:hover:before {
+            opacity: 1; /* Show blue overlay on hover */
+        }
+
     </style>
 </head>
 <body>
@@ -472,18 +544,38 @@
             <button class="continue-button" disabled>Coming Soon...</button>
         </div>
     </div>
+    <section class="game-panel">
+        <div class="panel-header">
+            <h3>Explore Our Game Panel</h3>
+            <p>Discover the powerful features of our custom game panel.</p>
+        </div>
+        <div class="panel-images">
+            <div class="panel-image">
+                <img src="/images/panel1.png" alt="Game Panel Screenshot 1">
+                <div class="panel-image-overlay"></div>
+            </div>
+            <div class="panel-image">
+                <img src="/images/panel2.png" alt="Game Panel Screenshot 2">
+                <div class="panel-image-overlay"></div>
+            </div>
+            <div class="panel-image">
+                <img src="/images/panel3.png" alt="Game Panel Screenshot 3">
+                <div class="panel-image-overlay"></div>
+            </div>
+        </div>
+    </section>
     <div class="faq">
         <h2 style="color: #ffffff; text-align: center; font-size: 2em; margin-bottom: 20px; font-weight: bold;">Frequently Asked Questions</h2>
-        <h3 onclick="toggleAnswer('q1')">Can I get a free server?</h3>
-        <p id="q1" style="display: none;">No</p>
+        <h3 onclick="toggleAnswer('q1')">What is your refund policy?</h3>
+        <p id="q1" style="display: none;">In most cases we will give out free test servers to start with, but if that doesn't meet your standards we have a 48hr refund policy!</p>
         <h3 onclick="toggleAnswer('q2')">How can I get a Partnership?</h3>
         <p id="q2" style="display: none;">Partnerships are really exclusive right now since we are in development!</p>
         <h3 onclick="toggleAnswer('q3')">What game panel do you run?</h3>
         <p id="q3" style="display: none;">We run a modified version of Pterodactyl that also has our own custom theme!</p>
         <h3 onclick="toggleAnswer('q4')">How can I contact support?</h3>
         <p id="q4" style="display: none;">Join our Discord or make a ticket on the billing panel (coming soon)</p>
-        <h3 onclick="toggleAnswer('q5')">Should we fire EXP?</h3>
-        <p id="q5" style="display: none;">Maybe? idk</p>
+        <h3 onclick="toggleAnswer('q5')">What payment methods do you accept?</h3>
+        <p id="q5" style="display: none;">We accept all major credit cards, PayPal, and work through stripe!.</p>
     </div>
     <div class="footer">
         <nav class="links">
