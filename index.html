@@ -475,54 +475,40 @@
         }
 
         .modal {
-            display: none; /* Hidden by default */
-            position: fixed;
-            z-index: 1000;
+            display: none; /* Hide the modal by default */
+            position: fixed; /* Fixed position to overlay on top of the page */
+            z-index: 1; /* Ensure modal is on top of other elements */
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            overflow: auto;
-            background-color: rgba(0,0,0,0.9);
+            background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
+            overflow: auto; /* Enable scrolling if needed */
+            text-align: center; /* Center align contents */
+            padding-top: 50px; /* Space for modal content */
         }
+
         .modal-content {
             margin: auto;
             display: block;
-            width: 80%;
-            max-width: 700px;
-            max-height: 80vh;
+            max-width: 80%; /* Adjust maximum width of modal content */
         }
+
         .modal-content img {
-            width: 100%;
-            height: auto;
-            display: block;
-            margin: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%; /* Make the image fill the modal content area */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 8px; /* Optional: Rounded corners */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Optional: Add shadow for depth */
         }
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            z-index: 1001;
-        }
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
+
 
     </style>
 </head>
 <body>
-    <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImg">
+    <div id="myModal" class="modal" onclick="closeModal()">
+        <div class="modal-content">
+            <img id="modalImg">
+        </div>
     </div>
     <header>
         <div class="nav-left">
