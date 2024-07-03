@@ -43,50 +43,60 @@
             align-items: center;
             padding: 0;
         }
-                header {
-            width: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-            padding: 15px 0;
-            display: flex;
-            justify-content: flex-start; /* Align links to the left */
-            align-items: center;
+        header {
+            background-color: rgba(15, 15, 26, 0.8);
+            backdrop-filter: blur(10px);
             position: fixed;
-            top: 0;
-            left: 0;
+            width: 100%;
             z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 10px 0; /* Adjusted for better alignment */
         }
 
-        header nav {
+        nav {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            list-style: none; /* Ensures no list dots are shown */
-            margin: 0;
-            padding: 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        header nav li {
-            list-style: none; /* Ensures no list dots are shown */
-            margin: 0;
-            padding: 0;
+        .logo {
+            display: flex;
+            align-items: center; /* Aligns the logo and text vertically */
+            gap: 10px; /* Adds space between the logo and text */
         }
 
-        header nav a {
-            color: #ffffff;
+        .logo img {
+            width: 50px; /* Set the desired width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2em;
-            font-weight: bold;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
 
-        header nav a:hover {
-            text-decoration: underline;
-        }
-        header .nav-left {
-            margin-left: 20px; /* Added margin to move links a little to the left */
-        }
-        header nav {
-            display: flex;
-            align-items: center;
+        .nav-links a:hover {
+            color: var(--primary-color);
         }
         .hero {
             text-align: center;
