@@ -14,7 +14,7 @@
     <meta name="theme-color" content="#ffffff">
     <style>
         /* Custom scrollbar styles */
-                ::-webkit-scrollbar {
+        ::-webkit-scrollbar {
             width: 12px; /* Width of the scrollbar */
             background-color: #1c1c1c; /* Background color of the scrollbar track */
         }
@@ -34,7 +34,7 @@
             scrollbar-width: thin; /* Width of the scrollbar for Firefox */
         }
         body {
-            background-color: #1c1c1c;
+            background-color: #0f0f1a;
             color: #f0f0f0;
             font-family: 'Ubuntu', sans-serif;
             margin: 0;
@@ -143,46 +143,32 @@
             margin: 10px 0 0;
         }
         .section {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin: 40px 0;
+            padding-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
         }
         .box {
-            background-color: #282828;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px;
-            flex: 1 1 45%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            position: relative;
-            transition: transform 0.3s;
-        }
-        .box::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 5px;
-            background-color: #00bfff;
-            border-radius: 8px 0 0 8px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
         }
         .box:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.1);
         }
         .box h2 {
             margin-top: 0;
             font-size: 2em;
-            color: #00bfff;
+            color: #5753d9;
         }
         .box p {
             font-size: 1.2em;
         }
         .button {
-            background-color: #6be6ff;
+            background-color: #5753d9;
             color: #ffffff;
             border: none;
             padding: 10px 20px;
@@ -192,11 +178,12 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             transition: background-color 0.3s, transform 0.2s;
             margin-right: 10px;
+            text-decoration: none;
             font-family: 'Ubuntu', sans-serif; /* Added font-family */
             font-weight: bold; /* Added font weight */
         }
         .button:hover {
-            background-color: #55c0e0;
+            background-color: #5753d9;
             transform: scale(1.05);
         }
         .footer {
@@ -242,6 +229,132 @@
             width: 20px;
             margin-right: 5px;
         }
+        footer {
+            padding-top: 50px;
+            background-color: rgba(15, 15, 26, 0.8);
+            text-align: center;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        footer .social-icons {
+            margin-top: 60px;
+        }
+
+        footer .social-icons a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(15, 15, 26, 0.95);
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+                cursor: pointer;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-container {
+                flex-direction: column;
+            }
+
+            .pricing-card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .screenshots img {
+                max-width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+                .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 10px 0;
+            }
+
+            nav {
+                justify-content: space-between;
+                padding: 0 15px;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo img {
+                width: 40px;
+            }
+            
+        }
     </style>
 </head>
 <body>
@@ -273,26 +386,95 @@
             <div class="box">
                 <h2>Terms of Service</h2>
                 <p>Read our Terms of Service to understand the rules and guidelines when using our services.</p>
-                <button class="button">Learn More</button>
+                <a class="button" href="tos.html">Learn More</a>
             </div>
             <div class="box">
                 <h2>Privacy Policy</h2>
                 <p>Learn how we collect, use, and protect your personal information by reading our Privacy Policy.</p>
-                <button class="button">Learn More</button>
+                <a class="button" href="pp.html">Learn More</a>
             </div>
             <div class="box">
                 <h2>SLA</h2>
                 <p>Our Service Level Agreement outlines our commitments to service availability and performance.</p>
-                <button class="button"><a href="sla.html">Learn More</button>
+                <a class="button" href="sla.html">Learn More</a>
             </div>
         </div>
-    <div class="footer">
-        <nav class="links">
-            <a href="https://destinygames.org" target="_blank">Destiny Games</a>
-            <a href="https://astrofoxstudios.com" target="_blank">Astrofox Studios</a>
-            <a href="https://tropiclash.net" target="_blank">Tropiclash</a>
-        </nav>
-        <p>&copy; 2024 Exp Host. All rights reserved.</p>
-    </div>
+    </section>
+    <footer>
+        <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-sm u-container-layout-2">
+            <a href="https://astrofoxstudios.com" class="u-image u-logo u-image-1" data-image-width="2047" data-image-height="629" title="Home">
+                <img src="https://astrofoxstudios.com/images/image.png" class="u-logo-image u-logo-image-1" style="width: auto; height: 100px;">
+            </a>
+        </div>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+            <p>&copy; 2024 Exp Host. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const popup = document.getElementById('orderPopup');
+            const closeBtn = document.querySelector('.close-btn');
+            const popupTitle = document.getElementById('popupTitle');
+            const popupSubtitle = document.getElementById('popupSubtitle');
+            const configureButton = document.getElementById('configureButton');
+            
+            document.querySelectorAll('.customize-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const title = button.getAttribute('data-title');
+                    const price = button.getAttribute('data-price');
+                    const specs = button.getAttribute('data-specs');
+                    
+                    popupTitle.innerText = title;
+                    popupSubtitle.innerHTML = `${price}<br>${specs}`;
+                    popup.style.display = 'flex';
+                });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+
+            configureButton.addEventListener('click', () => {
+                popup.style.display = 'none';
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === popup) {
+                    popup.style.display = 'none';
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const logo = document.querySelector('.logo');
+            const navLinks = document.querySelector('.nav-links');
+
+            logo.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default link behavior if the logo is an anchor
+                navLinks.classList.toggle('active');
+            });
+
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-links li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!logo.contains(e.target) && !navLinks.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+</script>
 </body>
 </html>
