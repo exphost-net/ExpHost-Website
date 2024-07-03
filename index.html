@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exp Host | Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -470,6 +471,85 @@
         #currency-toggle:hover {
             background-color: #45a049;
         }
+        /* Add these styles to your existing CSS */
+
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(15, 15, 26, 0.95);
+                padding: 20px 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block;
+                cursor: pointer;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-container {
+                flex-direction: column;
+            }
+
+            .pricing-card {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+
+            .screenshots img {
+                max-width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-color);
+            margin: 3px 0;
+            transition: 0.4s;
+        }
+
+        .hamburger.active .line1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active .line2 {
+            opacity: 0;
+        }
+
+        .hamburger.active .line3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
     </style>
 </head>
 <body>
@@ -479,6 +559,11 @@
                 <div class="logo">
                     <img src="/images/logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">
                     <span>Exp Host</span>
+                </div>
+                <div class="hamburger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
                 </div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
@@ -490,7 +575,7 @@
                 <button id="currency-toggle" class="btn">Switch to GBP</button>
             </nav>
         </div>
-    </header>
+    </header>    
 
     <section id="home" class="hero">
         <div class="hero-content">
@@ -533,13 +618,12 @@
     </section>
 
     <section id="pricing" class="pricing">
-        <div class="container">
+        <section class="pricing container">
             <h2>Choose Your Minecraft Hosting Plan</h2>
-            <button id="currency-toggle" class="btn">Switch to GBP (£)</button>
             <div class="pricing-container">
-                <div class="pricing-card" data-price-usd="3.75" data-price-gbp="2.85">
+                <div class="pricing-card">
                     <h3>Starter</h3>
-                    <div class="price">$3.75/mo</div>
+                    <div class="price" data-usd-price="3.75">$3.75/mo</div>
                     <ul>
                         <li>4GB RAM</li>
                         <li>1 CPU Core</li>
@@ -548,9 +632,9 @@
                     </ul>
                     <a href="#" class="btn customize-btn" data-title="Starter" data-price="$3.75/mo" data-specs="4GB RAM, 1 CPU Core, 50GB Storage, Unlimited Bandwidth">Customize</a>
                 </div>
-                <div class="pricing-card" data-price-usd="8.50" data-price-gbp="6.45">
+                <div class="pricing-card">
                     <h3>Pro</h3>
-                    <div class="price">$8.50/mo</div>
+                    <div class="price" data-usd-price="8.50">$8.50/mo</div>
                     <ul>
                         <li>6GB RAM</li>
                         <li>1 CPU Core</li>
@@ -559,9 +643,9 @@
                     </ul>
                     <a href="#" class="btn customize-btn" data-title="Pro" data-price="$8.50/mo" data-specs="6GB RAM, 1 CPU Core, 100GB Storage, Unlimited Bandwidth">Customize</a>
                 </div>
-                <div class="pricing-card" data-price-usd="14.50" data-price-gbp="10.95">
+                <div class="pricing-card">
                     <h3>Ultimate</h3>
-                    <div class="price">$14.50/mo</div>
+                    <div class="price" data-usd-price="14.50">$14.50/mo</div>
                     <ul>
                         <li>6GB RAM</li>
                         <li>2 CPU Cores</li>
@@ -570,8 +654,8 @@
                     </ul>
                     <a href="#" class="btn customize-btn" data-title="Ultimate" data-price="$14.50/mo" data-specs="6GB RAM, 2 CPU Cores, 150GB Storage, Unlimited Bandwidth">Customize</a>
                 </div>
-            </div>
-        </div>
+            </div>    
+
         <div id="configurator">
             <h3>Custom Plan</h3>
             <div class="slider-container">
@@ -581,6 +665,8 @@
             <div class="slider-container">
                 <label for="storage-slider" class="custom-label">Storage: <span id="storage-value">50</span>GB</label>
                 <input type="range" id="storage-slider" class="slider" min="50" max="300" step="50" value="50">
+                
+                
             </div>
             <label for="storage-slider" class="custom-label">CPU Cores</label>
             <div class="cpu-buttons">
@@ -590,8 +676,8 @@
             </div>
             <div id="total-price">$1.25/month</div>
             <a href="#" class="btn">Choose Plan</a>
-        </div>
-    </section>
+            </div>
+        </section>
 
     <section class="screenshots">
         <div class="container">
@@ -646,25 +732,12 @@
             const cpuButtons = document.querySelectorAll('.cpu-button');
             const totalPrice = document.getElementById('total-price');
             const currencyToggle = document.getElementById('currency-toggle');
+            const pricingCards = document.querySelectorAll('.pricing-card .price');
 
             let selectedCPU = 1;
             let currentCurrency = 'USD';  // Default to USD
 
             const exchangeRate = 0.80;  // Example conversion rate from USD to GBP
-
-            // Get user location and set the default currency
-            fetch('https://ipinfo.io/json?token=YOUR_IPINFO_API_KEY')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.country === 'GB') {
-                        currentCurrency = 'GBP';
-                        updateCurrency('GBP');
-                    } else {
-                        currentCurrency = 'USD';
-                        updateCurrency('USD');
-                    }
-                })
-                .catch(error => console.error('Error fetching location:', error));
 
             const calculatePrice = () => {
                 const ram = parseInt(ramSlider.value);
@@ -678,6 +751,22 @@
                 }
 
                 totalPrice.textContent = `${currentCurrency === 'USD' ? '$' : '£'}${price.toFixed(2)}/month`;
+            };
+
+            const updateCurrency = (currency) => {
+                if (currency === 'GBP') {
+                    currencyToggle.textContent = 'Switch to USD';
+                } else {
+                    currencyToggle.textContent = 'Switch to GBP';
+                }
+
+                pricingCards.forEach(card => {
+                    const usdPrice = parseFloat(card.getAttribute('data-usd-price'));
+                    const newPrice = (currency === 'USD') ? usdPrice : (usdPrice * exchangeRate).toFixed(2);
+                    card.textContent = `${currency === 'USD' ? '$' : '£'}${newPrice}/mo`;
+                });
+
+                calculatePrice();
             };
 
             ramSlider.addEventListener('input', () => {
@@ -704,88 +793,9 @@
                 updateCurrency(currentCurrency);
             });
 
-            const updateCurrency = (currency) => {
-                if (currency === 'GBP') {
-                    currencyToggle.textContent = 'Switch to USD';
-                } else {
-                    currencyToggle.textContent = 'Switch to GBP';
-                }
-                calculatePrice();
-            };
-
+            updateCurrency(currentCurrency);
             calculatePrice();
         });
-      
-      document.addEventListener('DOMContentLoaded', () => {
-        const currencyToggle = document.getElementById('currency-toggle');
-        const pricingCards = document.querySelectorAll('.pricing-card');
-        let isUSD = true;  // Default to USD
-
-        // Function to update prices based on currency
-        const updatePrices = () => {
-            pricingCards.forEach(card => {
-                const priceUSD = card.getAttribute('data-price-usd');
-                const priceGBP = card.getAttribute('data-price-gbp');
-                const priceElement = card.querySelector('.price');
-                const customizeBtn = card.querySelector('.customize-btn');
-
-                if (isUSD) {
-                    priceElement.textContent = `$${priceUSD}/mo`;
-                    customizeBtn.setAttribute('data-price', `$${priceUSD}/mo`);
-                    customizeBtn.textContent = `Customize for $${priceUSD}/mo`;
-                    currencyToggle.textContent = 'Switch to GBP (£)';
-                } else {
-                    priceElement.textContent = `£${(priceGBP).toFixed(2)}/mo`;
-                    customizeBtn.setAttribute('data-price', `£${(priceGBP).toFixed(2)}/mo`);
-                    customizeBtn.textContent = `Customize for £${(priceGBP).toFixed(2)}/mo`;
-                    currencyToggle.textContent = 'Switch to USD ($)';
-                }
-            });
-        };
-
-        // Initial price update
-        updatePrices();
-
-        // Toggle currency on button click
-        currencyToggle.addEventListener('click', () => {
-            isUSD = !isUSD;
-            updatePrices();
-        });
-
-        // Configure button and popup logic
-        const popup = document.getElementById('orderPopup');
-        const closeBtn = document.querySelector('.close-btn');
-        const popupTitle = document.getElementById('popupTitle');
-        const popupSubtitle = document.getElementById('popupSubtitle');
-        const configureButton = document.getElementById('configureButton');
-
-        document.querySelectorAll('.customize-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const title = button.getAttribute('data-title');
-                const price = button.getAttribute('data-price');
-                const specs = button.getAttribute('data-specs');
-
-                popupTitle.innerText = title;
-                popupSubtitle.innerHTML = `${price}<br>${specs}`;
-                popup.style.display = 'flex';
-            });
-        });
-
-        closeBtn.addEventListener('click', () => {
-            popup.style.display = 'none';
-        });
-
-        configureButton.addEventListener('click', () => {
-            popup.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === popup) {
-                popup.style.display = 'none';
-            }
-        });
-    });
       
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -820,6 +830,22 @@
             if (e.target === popup) {
                 popup.style.display = 'none';
             }
+        });
+    });
+    // Add this to your existing JavaScript
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.nav-links li').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
         });
     });
 </script>
