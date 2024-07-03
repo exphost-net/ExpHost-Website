@@ -56,16 +56,30 @@
             width: 100%;
             z-index: 1000;
             transition: all 0.3s ease;
+            padding: 10px 0; /* Adjusted for better alignment */
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         .logo {
+            display: flex;
+            align-items: center; /* Aligns the logo and text vertically */
+            gap: 10px; /* Adds space between the logo and text */
+        }
+
+        .logo img {
+            width: 50px; /* Set the desired width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .logo span {
             font-size: 1.5rem;
             font-weight: 700;
             color: var(--primary-color);
@@ -449,12 +463,13 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <img src="/images/logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">Exp Host
+                    <img src="/images/logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">
+                    <span>Exp Host</span>
                 </div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#features">Pricing</a></li>
+                    <li><a href="billing.exphost.net">Billing</a></li>
                     <li><a href="legal.html">Legal</a></li>
                     <li><a href="panel.exphost.net">Panel</a></li>
                 </ul>
@@ -577,6 +592,11 @@
     </section>
 
     <footer>
+        <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-sm u-container-layout-2">
+            <a href="https://astrofoxstudios.com" class="u-image u-logo u-image-1" data-image-width="2047" data-image-height="629" title="Home">
+                <img src="https://astrofoxstudios.com/images/image.png" class="u-logo-image u-logo-image-1" style="width: auto; height: 100px;">
+            </a>
+        </div>
         <div class="container">
             <div class="social-links">
                 <a href="#"><i class="fab fa-youtube"></i></a>
@@ -597,9 +617,9 @@
                 Plan Specs
             </div>
             <div class="popup-buttons">
-                <a href="#" class="popup-btn">Discord Support</a>
-                <a href="#" class="popup-btn">Billing Panel</a>
-                <a href="#configurator" class="popup-btn">Customize</a>
+                <a href="https://discord.gg/KxXUyPbJgB" class="popup-btn">Discord Support</a>
+                <a href="billing.exphost.net" class="popup-btn">Billing Panel</a>
+                <a href="#configurator" class="popup-btn" id="configureButton">Customize</a>
             </div>
         </div>
     </div>
@@ -652,6 +672,7 @@
         const closeBtn = document.querySelector('.close-btn');
         const popupTitle = document.getElementById('popupTitle');
         const popupSubtitle = document.getElementById('popupSubtitle');
+        const configureButton = document.getElementById('configureButton');
         
         document.querySelectorAll('.customize-btn').forEach(button => {
             button.addEventListener('click', (e) => {
@@ -667,6 +688,10 @@
         });
 
         closeBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        configureButton.addEventListener('click', () => {
             popup.style.display = 'none';
         });
 
