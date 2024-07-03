@@ -310,7 +310,7 @@
         }
 
         .cpu-button {
-            width: 60px;
+            width: 150px;
             height: 60px;
             display: flex;
             align-items: center;
@@ -525,7 +525,7 @@
             }
         }
 
-        .hamburger {
+                .hamburger {
             display: none;
             flex-direction: column;
             cursor: pointer;
@@ -539,16 +539,23 @@
             transition: 0.4s;
         }
 
-        .hamburger.active .line1 {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 10px 0;
+            }
 
-        .hamburger.active .line2 {
-            opacity: 0;
-        }
+            nav {
+                justify-content: space-between;
+                padding: 0 15px;
+            }
 
-        .hamburger.active .line3 {
-            transform: rotate(45deg) translate(-5px, -6px);
+            .logo {
+                font-size: 1.2rem;
+            }
+
+            .logo img {
+                width: 40px;
+            }
         }
     </style>
 </head>
@@ -560,19 +567,14 @@
                     <img src="/images/logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">
                     <span>Exp Host</span>
                 </div>
-                <div class="hamburger">
-                    <div class="line1"></div>
-                    <div class="line2"></div>
-                    <div class="line3"></div>
-                </div>
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#features">Pricing</a></li>
                     <li><a href="https://billing.exphost.net">Billing</a></li>
                     <li><a href="legal.html">Legal</a></li>
                     <li><a href="https://panel.exphost.net">Panel</a></li>
+                    <li><button id="currency-toggle" class="btn">Switch to GBP</button></li>
                 </ul>
-                <button id="currency-toggle" class="btn">Switch to GBP</button>
             </nav>
         </div>
     </header>    
@@ -668,11 +670,10 @@
                 
                 
             </div>
-            <label for="storage-slider" class="custom-label">CPU Cores</label>
+            <label for="storage-slider" class="custom-label">CPU Threads</label>
             <div class="cpu-buttons">
-                <button class="cpu-button active" data-cpu="1">1</button>
-                <button class="cpu-button" data-cpu="2">2</button>
-                <button class="cpu-button" data-cpu="3">3</button>
+                <button class="cpu-button active" data-cpu="1">Shared</button>
+                <button class="cpu-button" data-cpu="2">Dedicated</button>
             </div>
             <div id="total-price">$1.25/month</div>
             <a href="#" class="btn">Choose Plan</a>
@@ -832,22 +833,29 @@
             }
         });
     });
-    // Add this to your existing JavaScript
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+    document.addEventListener('DOMContentLoaded', function() {
+            const logo = document.querySelector('.logo');
+            const navLinks = document.querySelector('.nav-links');
 
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
-    });
+            logo.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default link behavior if the logo is an anchor
+                navLinks.classList.toggle('active');
+            });
 
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav-links li').forEach(link => {
-        link.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
+            // Close menu when a link is clicked
+            document.querySelectorAll('.nav-links li a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!logo.contains(e.target) && !navLinks.contains(e.target)) {
+                    navLinks.classList.remove('active');
+                }
+            });
         });
-    });
 </script>
 </body>
 </html>
