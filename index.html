@@ -471,6 +471,65 @@
         #currency-toggle:hover {
             background-color: #45a049;
         }
+        .faq {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 60px 20px;
+        }
+
+        .faq h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 30px;
+            color: var(--text-color);
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            width: 100%;
+            grid-template-columns: 1fr; /* Ensure single column layout on all screens */
+        }
+
+        .faq-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item h3 {
+            padding: 15px;
+            margin: 0;
+            cursor: pointer;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.05);
+            transition: background-color 0.3s ease;
+        }
+
+        .faq-item h3:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-answer {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+        }
+
+        .faq-answer.active {
+            max-height: 300px;
+            padding: 15px;
+        }
         /* Add these styles to your existing CSS */
 
         @media screen and (max-width: 768px) {
@@ -556,7 +615,9 @@
             .logo img {
                 width: 40px;
             }
+            
         }
+
     </style>
 </head>
 <body>
@@ -687,6 +748,34 @@
                 <img src="/images/panel1.png" alt="Screenshot 1">
                 <img src="/images/panel2.png" alt="Screenshot 2">
                 <img src="/images/panel3.png" alt="Screenshot 3">
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 onclick="toggleAnswer('q1')">What is your refund policy?</h3>
+                    <p id="q1" class="faq-answer">In most cases we will give out free test servers to start with, but if that doesn't meet your standards we have a 48hr refund policy!</p>
+                </div>
+                <div class="faq-item">
+                    <h3 onclick="toggleAnswer('q2')">How can I get a Partnership?</h3>
+                    <p id="q2" class="faq-answer">Partnerships are really exclusive right now since we are in development!</p>
+                </div>
+                <div class="faq-item">
+                    <h3 onclick="toggleAnswer('q3')">What game panel do you run?</h3>
+                    <p id="q3" class="faq-answer">We run a modified version of Pterodactyl that also has our own custom theme!</p>
+                </div>
+                <div class="faq-item">
+                    <h3 onclick="toggleAnswer('q4')">How can I contact support?</h3>
+                    <p id="q4" class="faq-answer">Join our Discord or make a ticket on the billing panel! (coming soon)</p>
+                </div>
+                <div class="faq-item">
+                    <h3 onclick="toggleAnswer('q5')">What payment methods do you accept?</h3>
+                    <p id="q5" class="faq-answer">We accept all major credit cards, PayPal, and work through stripe!</p>
+                </div>
             </div>
         </div>
     </section>
@@ -856,6 +945,21 @@
                 }
             });
         });
+    
+        function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            
+            // Close all other answers
+            allAnswers.forEach(item => {
+                if (item.id !== id && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle the clicked answer
+            answer.classList.toggle('active');
+        }
 </script>
 </body>
 </html>
