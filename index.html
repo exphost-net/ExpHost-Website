@@ -3,17 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exp Host | Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <title>Exp Host | Minecraft Server Hosting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Custom scrollbar styles */
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #4CAF50;
+            --background-color: #0F0F1A;
+            --text-color: #FFFFFF;
+            --accent-color: #FF6B6B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+              /* Custom scrollbar styles */
         ::-webkit-scrollbar {
             width: 12px; /* Width of the scrollbar */
             background-color: #1c1c1c; /* Background color of the scrollbar track */
@@ -30,649 +37,646 @@
         }
 
         body {
-            scrollbar-color: #00bfff #1c1c1c; /* Color of the scrollbar for Firefox */
-            scrollbar-width: thin; /* Width of the scrollbar for Firefox */
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
 
-        body {
-            background-color: #1c1c1c;
-            color: #f0f0f0;
-            font-family: 'Ubuntu', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
+
         header {
-            width: 100%;
-            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-            padding: 15px 0;
-            display: flex;
-            justify-content: flex-start; /* Align links to the left */
-            align-items: center;
+            background-color: rgba(15, 15, 26, 0.8);
+            backdrop-filter: blur(10px);
             position: fixed;
-            top: 0;
-            left: 0;
+            width: 100%;
             z-index: 1000;
+            transition: all 0.3s ease;
         }
-        header nav {
+
+        nav {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            list-style: none; /* Ensures no list dots are shown */
-            margin: 0;
-            padding: 0;
+            padding: 20px 0;
         }
-        header nav li {
-            list-style: none; /* Ensures no list dots are shown */
-            margin: 0;
-            padding: 0;
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
         }
-        header nav a {
-            color: #ffffff;
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2em;
-            font-weight: bold;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
-        header nav a:hover {
-            text-decoration: underline;
+
+        .nav-links a:hover {
+            color: var(--primary-color);
         }
-        header .nav-left {
-            margin-left: 20px; /* Added margin to move links a little to the left */
-        }
-        header nav {
-            display: flex;
-            align-items: center;
-        }
+
         .hero {
-            text-align: center;
-            padding: 50px 0px;
-            background: url('/images/image.png') no-repeat center top;
-            background-size: cover;
-            width: 100%;
-            height: 100vh;
+            height: 800px;
             display: flex;
-            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            align-items: center;
-            position: relative;
-            margin-top: 0px; /* Adjusted margin for header overlap */
+            text-align: center;
+            background: url('/images/image.png') no-repeat center top;
         }
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            z-index: 1;
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
         }
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s;
+            animation-fill-mode: both;
         }
-        .hero-content img {
-            width: 150px;
-            height: auto;
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .btn:hover {
+            background-color: #5753d9;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(108, 99, 255, 0.2);
+        }
+
+        .features {
+            padding: 100px 0;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.1);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
             margin-bottom: 20px;
         }
-        .hero-content h1 {
-            font-size: 4em;
-            margin: 0;
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
         }
-        .hero-content p {
-            font-size: 1.5em;
-            margin: 10px 0 0;
+
+        .pricing {
+            padding: 00px 0;
+            padding-top: 50px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.02);
         }
-        .specs {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin: 40px 0;
-        }
-        .spec {
-            background-color: #282828;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 10px;
-            flex: 1 1 30%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            position: relative;
-            transition: transform 0.3s;
-        }
-        .spec::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            bottom: 0;
-            width: 5px;
-            background-color: #00bfff;
-            border-radius: 8px 0 0 8px;
-        }
-        .spec:hover {
-            transform: translateY(-10px);
-        }
-        .spec h2 {
-            margin-top: 0;
-            font-size: 2em;
-            color: #00bfff;
-        }
-        .spec p {
-            font-size: 1.2em;
-        }
-        .slider-container {
-            width: 100%;
-            max-width: 600px;
+
+        .pricing h2 {
             text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            background-color: #282828;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            font-size: 2.5rem;
+            margin-bottom: 50px;
         }
-        .slider-container h3 {
-            margin-top: 0;
-            font-size: 2em;
-            color: #00bfff;
+
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 30px;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        .slider-container p {
-            font-size: 1.5em;
-            margin: 20px 0;
+
+        .pricing-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
-        .slider-container input[type="range"] {
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.1);
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+
+        .pricing-card ul li {
+            margin-bottom: 10px;
+        }
+
+        #configurator {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        #configurator h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .slider-container {
+            margin-bottom: 30px;
+        }
+
+        .slider {
             -webkit-appearance: none;
             width: 100%;
-            height: 8px;
-            background: #00bfff;
+            height: 10px;
+            border-radius: 5px;
+            background: #2c2c2c;
             outline: none;
             opacity: 0.7;
             transition: opacity 0.2s;
-            position: relative;
-            margin-bottom: 20px; /* Added margin to align with markers */
-            border-radius: 16px; /* Rounded slider */
-        }
-        .slider-container input[type="range"]::-webkit-slider-runnable-track {
-            height: 8px;
-            background: #00bfff;
-            border-radius: 16px; /* Rounded slider */
-        }
-        .slider-container input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 16px; /* Adjust size of thumb */
-            height: 16px; /* Adjust size of thumb */
-            border-radius: 50%;
-            background-color: #ffffff; /* White dot */
-            cursor: pointer;
-            position: relative;
-            z-index: 2;
-            margin-top: -4px; /* Adjusted to align with track */
-        }
-        .slider-container input[type="range"]::-moz-range-thumb {
-            width: 16px; /* Adjust size of thumb */
-            height: 16px; /* Adjust size of thumb */
-            border-radius: 50%;
-            background-color: #ffffff; /* White dot */
-            cursor: pointer;
-            position: relative;
-            z-index: 2;
-            margin-top: -4px; /* Adjusted to align with track */
-        }
-        .footer {
-            width: 100%;
-            text-align: center;
-            padding: 20px 0;
-            background-color: #282828;
-            border-top: 1px solid #333;
-            margin-top: auto;
-        }
-        .faq {
-            width: 100%;
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #282828;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .faq h3 {
-            font-size: 1.5em;
-            color: #ffffff;
-            background-color: #333333;
-            padding: 10px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin: 10px 0;
-            transition: background-color 0.3s, transform 0.3s;
         }
 
-        .faq h3:hover {
-            background-color: #555555;
-            transform: scale(1.05);
+        .slider:hover {
+            opacity: 1;
         }
-        .faq p {
-            font-size: 1.2em;
-            display: none;
-            padding: 10px;
-            margin-top: 0;
-            background-color: #1c1c1c;
-            border-radius: 8px;
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
         }
-        .footer nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2em;
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
         }
-        .footer nav a:hover {
-            text-decoration: underline;
+
+        #total-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 20px;
         }
-        .footer p {
-            margin: 20px 0 0;
-            font-size: 1em;
-        }
-        .footer .links {
-            margin-bottom: 10px;
-        }
-        .socials {
+
+        .cpu-buttons {
             display: flex;
-            flex-direction: column; /* Changed to vertical */
-            align-items: flex-start; /* Changed to align left */
-            margin-top: 20px; /* Adjusted margin for spacing */
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
-        .socials a {
-            color: #ffffff;
-            text-decoration: none;
+
+        .cpu-button {
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
-            margin: 10px 0; /* Adjusted vertical margin */
-            font-size: 1.2em;
-            justify-content: flex-start; /* Added to align left */
-        }
-        .socials a img {
-            width: 20px;
-            margin-right: 5px;
-        }
-        .continue-button {
-            background-color: #6be6ff;
-            color: #ffffff;
+            justify-content: center;
+            background-color: var(--primary-color);
+            color: var(--text-color);
             border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 1.2em;
+            border-radius: 10px;
+            font-size: 1.2rem;
             cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s, transform 0.2s;
-            margin-right: 10px;
-            font-family: 'Ubuntu', sans-serif; /* Added font-family */
-            font-weight: bold; /* Added font weight */
+            transition: all 0.3s ease;
         }
-        .continue-button:hover {
-            background-color: #55c0e0;
+
+        .cpu-button:hover, .cpu-button.active {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+      
+        .screenshots {
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .screenshots img {
+            width: 100%;
+            max-width: 350px;
+            margin: 0 10px;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshots img:hover {
             transform: scale(1.05);
         }
-        .popup-container {
+
+        footer {
+            padding-top: 50px;
+            background-color: rgba(15, 15, 26, 0.8);
+            text-align: center;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        footer .social-icons {
+            margin-top: 60px;
+        }
+
+        footer .social-icons a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .popup {
             display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            z-index: 2000;
+            background-color: rgba(0, 0, 0, 0.5);
             justify-content: center;
             align-items: center;
         }
-        .popup {
-            background-color: #282828; /* Changed background color */
+
+        .popup-content {
+            background-color: var(--background-color);
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            width: 300px;
             text-align: center;
-            color: #ffffff; /* Changed text color */
-            font-weight: bold; /* Added font weight */
             position: relative;
         }
-        .popup h2 {
-            margin-top: 0;
-            color: #00bfff;
-            font-size: 2em;
-        }
-        .popup p {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
-        .popup button {
-            background-color: #6be6ff;
-            color: #ffffff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 1.2em;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s, transform 0.2s;
-            margin: 10px;
-            font-family: 'Ubuntu', sans-serif; /* Added font-family */
-            font-weight: bold; /* Added font weight */
-        }
-        .popup button:hover {
-            background-color: #55c0e0;
-            transform: scale(1.05);
-        }
-        .close-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: #ffffff;
-            cursor: pointer;
-            font-size: 1.5em;
-            background: none;
-            border: none;
-            outline: none;
-        }
-        .close-button:hover {
-            color: #f44336;
-        }
-        .faq {
-            width: 100%;
-            max-width: 600px;
-            text-align: left;
-            margin: 40px 0;
-            padding: 20px;
-            background-color: #282828;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .faq h3 {
-            font-size: 2em;
-            color: #00bfff;
-            margin-top: 0;
-            cursor: pointer;
-        }
-        .faq p {
-            font-size: 1.5em;
-            display: none;
-        }
 
-        .game-panel {
-            width: 100%;
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: #282828;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 150, 255, 0.5); /* Light blue glow */
-        }
-
-        .panel-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .panel-header h3 {
-            color: #ffffff;
-            font-size: 2em;
+        .popup-content h2 {
+            font-size: 1.8rem;
             margin-bottom: 10px;
         }
 
-        .panel-header p {
-            color: #cccccc;
-            font-size: 1.2em;
+        .popup-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
         }
 
-        .panel-images {
+        .popup-buttons {
+            margin-top: 20px;
             display: flex;
-            justify-content: space-between;
-        }
-            .panel-image {
-            position: relative;
-            width: 30%;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(143, 82, 255, 0.61);
-            transition: box-shadow 0.3s ease-out;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .panel-image img {
-            width: 100%;
-            height: 100%;
-            transition: transform 0.3s ease-out;
+        .popup-btn {
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 600;
         }
 
-        .panel-image:before {
-            content: "";
+        .popup-btn:hover {
+            background-color: #5753d9;
+        }
+
+        .close-btn {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border-radius: 10px;
-            background-color: rgba(0, 191, 255, 0.3); /* Adjusted opacity */
-            opacity: 0;
-            transition: opacity 0.3s ease-out;
-            z-index: -1;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
         }
-
-        .panel-image:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
-        }
-
-        .panel-image:hover img {
-            transform: scale(1.05); /* Scale up image on hover */
-        }
-
-        .panel-image:hover:before {
-            opacity: 1; /* Show blue overlay on hover */
-        }
-
-        .modal {
-            display: none; /* Hide the modal by default */
-            position: fixed; /* Fixed position to overlay on top of the page */
-            z-index: 1; /* Ensure modal is on top of other elements */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9); /* Semi-transparent black background */
-            overflow: auto; /* Enable scrolling if needed */
-            text-align: center; /* Center align contents */
-            padding-top: 50px; /* Space for modal content */
-        }
-
-        .modal-content {
-            margin: auto;
-            display: block;
-            max-width: 80%; /* Adjust maximum width of modal content */
-        }
-
-        .modal-content img {
-            width: 100%; /* Make the image fill the modal content area */
-            height: auto; /* Maintain aspect ratio */
-            border-radius: 8px; /* Optional: Rounded corners */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Optional: Add shadow for depth */
-        }
-
-
     </style>
 </head>
 <body>
-    <div id="myModal" class="modal" onclick="closeModal()">
-        <div class="modal-content">
-            <img id="modalImg">
-        </div>
-    </div>
     <header>
-        <div class="nav-left">
-            <img src="/images/logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">
-        </div>
-        <div class="nav-center">
+        <div class="container">
             <nav>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="legal.html">Legal</a></li>
-                <li><a href="https://panel.astrofoxstudios.com">Panel</a></li>
+                <div class="logo">
+                    <img src="/images/logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">
+                    Exp Host
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="legal.html">Legal</a></li>
+                    <li><a href="panel.exphost.net">Panel</a></li>
+                </ul>
             </nav>
         </div>
-        <div class="nav-right">
-            <!-- Empty div to maintain alignment -->
-        </div>
     </header>
-    <div class="hero">
+
+    <section id="home" class="hero">
         <div class="hero-content">
-            <img src="/images/logo.png" alt="Exp Host Logo">
-            <h1>EXP Host</h1>
-            <p>Powered by Astrofox Studios!</p>
+            <img src="/images/logo.png" alt="Exp Host Logo" style="width: 200px; height: 200px;">
+            <h1>Exp Host</h1>
+            <p>Budget Prices for Premium Performance</p>
+            <a href="#pricing" class="btn">Choose Your Plan</a>
         </div>
-    </div>
-    <div class="specs">
-        <div class="spec">
-            <h2>Node 1 (NA)</h2>
-            <p><strong>CPU:</strong> AMD RYZEN 7 5700G</p>
-            <p><strong>RAM:</strong> DDR4 Memory - $1.25 per GB</p>
-            <p><strong>Storage:</strong> Unmetered</p>
-            <p><strong>DDoS Protection:</strong> Included!</p>
-        </div>
-        <div class="spec">
-            <h2>Our Pricing</h2>
-            <p>We offer the most competitive pricing in the market.</p>
-            <p>Get the best performance without breaking the bank!</p>
-        </div>
-        <div class="spec">
-            <h2>Why Choose Us?</h2>
-            <p>Top-notch hardware</p>
-            <p>Reliable performance</p>
-            <p>24/7 customer support</p>
-            <p>No hidden fees</p>
-        </div>
-        <div class="spec">
-            <h2>Socials</h2>
-            <div class="socials">
-                <a href="https://discord.gg/KxXUyPbJgB" target="_blank"><i class="fab fa-discord"></i> Discord</a>
-                <a href="https://x.com/ExpHost" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-                <a href="https://astrofoxstudios.com" target="_blank"><i class="fas fa-building"></i> Astrofox Studios Website</a>
-            </div>
-        </div>
-    </div>
-    <div class="slider-container">
-        <h3>Customize Your Plan</h3>
-        <p>RAM: <span id="ram-value">1</span> GB</p>
-        <input type="range" id="ram-slider" min="1" max="16" value="1" step="1">
-        <p>Price: $<span id="price-value">1.25</span> per month</p>
-        <button class="continue-button" onclick="openPopup()">Continue Order</button>
-    </div>
-    <div class="popup-container" id="popup-container">
-        <div class="popup">
-            <button class="close-button" onclick="closePopup()">&times;</button>
-            <h2>Continue Order</h2>
-            <p>How would you like to proceed?</p>
-            <button class="continue-button" onclick="openDiscord()">Discord Support</button>
-            <button class="continue-button" disabled>Coming Soon...</button>
-        </div>
-    </div>
-    <section class="game-panel">
-        <div class="panel-header">
-            <h3>Explore Our Game Panel</h3>
-            <p>Discover the powerful features of our custom game panel.</p>
-        </div>
-        <div class="panel-images">
-            <div class="panel-image" onclick="openModal('/images/panel1.png')">
-                <img src="/images/panel1.png" alt="Game Panel Screenshot 1">
-                <div class="panel-image-overlay"></div>
-            </div>
-            <div class="panel-image" onclick="openModal('/images/panel2.png')">
-                <img src="/images/panel2.png" alt="Game Panel Screenshot 2">
-                <div class="panel-image-overlay"></div>
-            </div>
-            <div class="panel-image" onclick="openModal('/images/panel3.png')">
-                <img src="/images/panel3.png" alt="Game Panel Screenshot 3">
-                <div class="panel-image-overlay"></div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why Choose ExP Host for Minecraft?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <i class="fas fa-server"></i>
+                    <h3>High-Performance Servers</h3>
+                    <p>Powered by the latest AMD RYZEN processors</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>DDoS Protection</h3>
+                    <p>Keep your Minecraft world running smoothly with our robust protection</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>24/7 Support</h3>
+                    <p>Our expert team is always ready to assist you</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Premium Specs</h3>
+                    <p>Ryzen 7 5700G</p>
+                    </p>DDR4 RAM - $1.25 per GB</p>
+                    </p>50GB Storage FREE</p>
+                    </p>FREE DDoS Protection</p>
+                </div>
             </div>
         </div>
     </section>
-    <div class="faq">
-        <h2 style="color: #ffffff; text-align: center; font-size: 2em; margin-bottom: 20px; font-weight: bold;">Frequently Asked Questions</h2>
-        <h3 onclick="toggleAnswer('q1')">What is your refund policy?</h3>
-        <p id="q1" style="display: none;">In most cases we will give out free test servers to start with, but if that doesn't meet your standards we have a 48hr refund policy!</p>
-        <h3 onclick="toggleAnswer('q2')">How can I get a Partnership?</h3>
-        <p id="q2" style="display: none;">Partnerships are really exclusive right now since we are in development!</p>
-        <h3 onclick="toggleAnswer('q3')">What game panel do you run?</h3>
-        <p id="q3" style="display: none;">We run a modified version of Pterodactyl that also has our own custom theme!</p>
-        <h3 onclick="toggleAnswer('q4')">How can I contact support?</h3>
-        <p id="q4" style="display: none;">Join our Discord or make a ticket on the billing panel! (coming soon)</p>
-        <h3 onclick="toggleAnswer('q5')">What payment methods do you accept?</h3>
-        <p id="q5" style="display: none;">We accept all major credit cards, PayPal, and work through stripe!</p>
-    </div>
-    <div class="footer">
-        <nav class="links">
-            <a href="https://destinygames.org" target="_blank">Destiny Games</a>
-            <a href="https://astrofoxstudios.com" target="_blank">Astrofox Studios</a>
-            <a href="https://tropiclash.net" target="_blank">Tropiclash</a>
-        </nav>
-        <p>&copy; 2024 Exp Host. All rights reserved.</p>
-    </div>
-    <script>
-        const ramSlider = document.getElementById('ram-slider');
-        const ramValue = document.getElementById('ram-value');
-        const priceValue = document.getElementById('price-value');
-        const popupContainer = document.getElementById('popup-container');
 
-        ramSlider.addEventListener('input', function() {
-            const ram = this.value;
-            const price = (ram * 1.25).toFixed(2);
-            ramValue.textContent = ram;
-            priceValue.textContent = price;
+    <section id="pricing" class="pricing">
+        <section class="pricing container">
+            <h2>Choose Your Minecraft Hosting Plan</h2>
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$4.99/mo</div>
+                    <ul>
+                        <li>4GB RAM</li>
+                        <li>1 CPU Core</li>
+                        <li>50GB Storage</li>
+                        <li>Unlimited Bandwidth</li>
+                    </ul>
+                    <a href="#" class="btn customize-btn" data-title="Starter" data-price="$4.99/mo" data-specs="4GB RAM, 1 CPU Core, 50GB Storage, Unlimited Bandwidth">Customize</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Pro</h3>
+                    <div class="price">$8.50/mo</div>
+                    <ul>
+                        <li>6GB RAM</li>
+                        <li>1 CPU Core</li>
+                        <li>100GB Storage</li>
+                        <li>Unlimited Bandwidth</li>
+                    </ul>
+                    <a href="#" class="btn customize-btn" data-title="Pro" data-price="$8.50/mo" data-specs="6GB RAM, 1 CPU Core, 100GB Storage, Unlimited Bandwidth">Customize</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Ultimate</h3>
+                    <div class="price">$13.99/mo</div>
+                    <ul>
+                        <li>6GB RAM</li>
+                        <li>2 CPU Cores</li>
+                        <li>150GB Storage</li>
+                        <li>Unlimited Bandwidth</li>
+                    </ul>
+                    <a href="#" class="btn customize-btn" data-title="Ultimate" data-price="$13.99/mo" data-specs="6GB RAM, 2 CPU Cores, 150GB Storage, Unlimited Bandwidth">Customize</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="configurator">
+            <h3>Custom Plan</h3>
+            <div class="slider-container">
+                <label for="ram-slider" class="custom-label">RAM: <span id="ram-value">1</span>GB</label>
+                <input type="range" id="ram-slider" class="slider" min="1" max="16" step="1" value="1">
+            </div>
+            <div class="slider-container">
+                <label for="storage-slider" class="custom-label">Storage: <span id="storage-value">50</span>GB</label>
+                <input type="range" id="storage-slider" class="slider" min="50" max="300" step="50" value="50">
+                
+                
+            </div>
+            <label for="storage-slider" class="custom-label">CPU Cores</label>
+            <div class="cpu-buttons">
+                <button class="cpu-button active" data-cpu="1">1</button>
+                <button class="cpu-button" data-cpu="2">2</button>
+                <button class="cpu-button" data-cpu="3">3</button>
+            </div>
+            <div id="total-price">$1.25/month</div>
+            <a href="#" class="btn">Choose Plan</a>
+            </div>
+        </section>
+
+    <section class="screenshots">
+        <div class="container">
+            <h2>Game Panel Screenshots</h2>
+            <div>
+                <img src="/images/panel1.png" alt="Screenshot 1">
+                <img src="/images/panel2.png" alt="Screenshot 2">
+                <img src="/images/panel3.png" alt="Screenshot 3">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+            <p>&copy; 2024 Exp Host. All rights reserved.</p>
+        </div>
+    </footer>
+    <!-- Add this inside the body tag, after your existing content -->
+    <div id="orderPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h2>Continue Order</h2>
+            <h3 id="popupTitle">Plan Title</h3>
+            <div id="popupSubtitle" class="popup-subtitle">
+                Plan Price<br>
+                Plan Specs
+            </div>
+            <div class="popup-buttons">
+                <a href="#" class="popup-btn">Discord Support</a>
+                <a href="#" class="popup-btn">Billing Panel</a>
+                <a href="#configurator" class="popup-btn">Customize</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ramSlider = document.getElementById('ram-slider');
+            const storageSlider = document.getElementById('storage-slider');
+            const ramValue = document.getElementById('ram-value');
+            const storageValue = document.getElementById('storage-value');
+            const cpuButtons = document.querySelectorAll('.cpu-button');
+            const totalPrice = document.getElementById('total-price');
+
+            let selectedCPU = 1;
+
+            const calculatePrice = () => {
+                const ram = parseInt(ramSlider.value);
+                const storage = parseInt(storageSlider.value);
+                const cpu = selectedCPU;
+
+                const price = ram * 1.25 + (storage - 50)/ 50 + (cpu - 1)* 5;
+                totalPrice.textContent = `$${price.toFixed(2)}/month`;
+            };
+
+            ramSlider.addEventListener('input', () => {
+                ramValue.textContent = ramSlider.value;
+                calculatePrice();
+            });
+
+            storageSlider.addEventListener('input', () => {
+                storageValue.textContent = storageSlider.value;
+                calculatePrice();
+            });
+
+            cpuButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    cpuButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    selectedCPU = parseInt(button.getAttribute('data-cpu'));
+                    calculatePrice();
+                });
+            });
+
+            calculatePrice();
+        });
+      
+
+        document.addEventListener('DOMContentLoaded', () => {
+        const popup = document.getElementById('orderPopup');
+        const closeBtn = document.querySelector('.close-btn');
+        const popupTitle = document.getElementById('popupTitle');
+        const popupSubtitle = document.getElementById('popupSubtitle');
+        
+        document.querySelectorAll('.customize-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                const title = button.getAttribute('data-title');
+                const price = button.getAttribute('data-price');
+                const specs = button.getAttribute('data-specs');
+                
+                popupTitle.innerText = title;
+                popupSubtitle.innerHTML = `${price}<br>${specs}`;
+                popup.style.display = 'flex';
+            });
         });
 
-        function openPopup() {
-            popupContainer.style.display = 'flex';
-        }
+        closeBtn.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
 
-        function closePopup() {
-            popupContainer.style.display = 'none';
-        }
-
-        function openDiscord() {
-            window.open('https://discord.gg/KxXUyPbJgB', '_blank');
-        }
-
-        function toggleAnswer(id) {
-            const answer = document.getElementById(id);
-            if (answer.style.display === 'none') {
-                answer.style.display = 'block';
-            } else {
-                answer.style.display = 'none';
+        window.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.style.display = 'none';
             }
-        }
-
-        // Function to open modal and display image
-        function openModal(imgSrc) {
-            var modal = document.getElementById('myModal');
-            var modalImg = document.getElementById('modalImg');
-            modal.style.display = "block";
-            modalImg.src = imgSrc;
-        }
-
-        // Function to close modal
-        function closeModal() {
-            var modal = document.getElementById('myModal');
-            modal.style.display = "none";
-        }
-
-        // Close modal if user clicks outside the image
-        window.onclick = function(event) {
-            var modal = document.getElementById('myModal');
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
+        });
+    });
+</script>
 </body>
 </html>
