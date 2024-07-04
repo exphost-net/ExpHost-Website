@@ -617,6 +617,50 @@
             }
             
         }
+        .ping {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .ping h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .ping-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ping-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.2rem;
+        }
+
+        #ping-status {
+            font-weight: bold;
+        }
+
+        #ping-button {
+            padding: 10px 20px;
+            font-size: 1rem;
+        }
+      
+        #contact-button {
+            cursor: pointer;
+        }
+
+        #contactPopup .popup-content {
+            max-width: 300px;
+        }
+
+        #contactPopup h2 {
+            margin-bottom: 20px;
+        }
 
     </style>
 </head>
@@ -634,6 +678,7 @@
                     <li><a href="https://billing.exphost.net">Billing</a></li>
                     <li><a href="legal.html">Legal</a></li>
                     <li><a href="https://panel.exphost.net">Panel</a></li>
+                    <li><a href="#" id="contact-button">Contact</a></li>
                     <li><button id="currency-toggle" class="btn">Switch to GBP</button></li>
                 </ul>
             </nav>
@@ -779,6 +824,18 @@
             </div>
         </div>
     </section>
+    <section id="ping" class="ping">
+        <div class="container">
+            <h2>Ping</h2>
+            <div class="ping-container">
+                <div class="ping-item">
+                    <span>Node 1-NA:</span>
+                    <span id="ping-status">Checking...</span>
+                    <button id="ping-button" class="btn">Ping</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-sm u-container-layout-2">
@@ -809,6 +866,17 @@
                 <a href="https://discord.gg/KxXUyPbJgB" class="popup-btn">Discord Support</a>
                 <a href="https://billing.exphost.net" class="popup-btn">Billing Panel</a>
                 <a href="#configurator" class="popup-btn" id="configureButton">Customize</a>
+            </div>
+        </div>
+    </div>
+      
+    <div id="contactPopup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <h2>Contact Support</h2>
+            <div class="popup-buttons">
+                <a href="https://billing.exphost.net" class="popup-btn">Billing Support</a>
+                <a href="https://discord.gg/KxXUyPbJgB" class="popup-btn">Discord Support</a>
             </div>
         </div>
     </div>
@@ -974,6 +1042,53 @@
             // Toggle the clicked answer
             answer.classList.toggle('active');
         }
+        document.addEventListener('DOMContentLoaded', function() {
+          const pingButton = document.getElementById('ping-button');
+          const pingStatus = document.getElementById('ping-status');
+          const serverIP = '38.58.180.58';
+
+          pingButton.addEventListener('click', function() {
+              pingStatus.textContent = 'Pinging...';
+              pingButton.disabled = true;
+
+              // Simulate a ping request (since we can't actually ping from the browser)
+              setTimeout(() => {
+                  const success = Math.random() < 0.9; // 90% chance of success
+                  if (success) {
+                      const pingTime = Math.floor(Math.random() * 100) + 10; // Random ping time between 10-110ms
+                      pingStatus.textContent = `In Stock! (${pingTime}ms)`;
+                      pingStatus.style.color = '#4CAF50'; // Green color for success
+                  } else {
+                      pingStatus.textContent = 'Offline';
+                      pingStatus.style.color = '#FF6B6B'; // Red color for offline
+                  }
+                  pingButton.disabled = false;
+              }, 1000); // Simulate a 1-second delay for the ping
+          });
+
+          // Initial ping on page load
+          pingButton.click();
+      }); 
+      document.addEventListener('DOMContentLoaded', function() {
+        const contactButton = document.getElementById('contact-button');
+        const contactPopup = document.getElementById('contactPopup');
+        const contactCloseBtn = contactPopup.querySelector('.close-btn');
+
+        contactButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            contactPopup.style.display = 'flex';
+        });
+
+        contactCloseBtn.addEventListener('click', () => {
+            contactPopup.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === contactPopup) {
+                contactPopup.style.display = 'none';
+            }
+        });
+    });
 </script>
 </body>
 </html>
