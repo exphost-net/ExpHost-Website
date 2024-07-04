@@ -819,9 +819,9 @@
             </div>
             <label for="storage-slider" class="custom-label">CPU Percentage</label>
             <div class="cpu-buttons">
-                <button class="cpu-button active" data-cpu="1">150%</button>
-                <button class="cpu-button" data-cpu="2">250%</button>
-                <button class="cpu-button" data-cpu="3">Unmetered</button>
+                <button class="cpu-button active" data-cpu=1>150%</button>
+                <button class="cpu-button" data-cpu=2>250%</button>
+                <button class="cpu-button" data-cpu=3>500%</button>
             </div>
             <div id="total-price">$1.25/month</div>
             <a href="#" class="btn">Choose Plan</a>
@@ -1103,7 +1103,7 @@
                 button.addEventListener('click', () => {
                     cpuButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-                    selectedCPU = parseInt(button.getAttribute('data.cpu'));
+                    selectedCPU = parseInt(button.getAttribute('data-cpu')); // Corrected the attribute
                     calculatePrice();
                 });
             });
