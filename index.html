@@ -319,7 +319,8 @@
             color: var(--text-color);
             border: none;
             border-radius: 10px;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -522,7 +523,7 @@
             padding: 0 15px;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+            transition: max-height 0.3s ease, 0.3s ease;
             font-size: clamp(0.9rem, 2.5vw, 1rem);
         }
 
@@ -530,7 +531,6 @@
             max-height: 300px;
             padding: 15px;
         }
-        /* Add these styles to your existing CSS */
 
         @media screen and (max-width: 768px) {
             .nav-links {
@@ -648,6 +648,7 @@
         #ping-button {
             padding: 10px 20px;
             font-size: 1rem;
+            border: 2px solid var(--secondary-color)
         }
       
         #contact-button {
@@ -734,33 +735,33 @@
                     <div class="price" data-usd-price="3.75">$3.75/mo</div>
                     <ul>
                         <li>3GB RAM</li>
-                        <li>Shared CPU</li>
+                        <li>150% CPU</li>
                         <li>50GB Storage</li>
                         <li>Unmetered Bandwidth</li>
                     </ul>
-                    <a href="#" class="btn customize-btn" data-title="Starter" data-price="$3.75/mo" data-specs="3GB RAM, Shared CPU, 50GB Storage, Unmetered Bandwidth">Customize</a>
+                    <a href="#" class="btn customize-btn" data-title="Starter" data-price="$3.75/mo" data-specs="3GB RAM, 150% CPU, 50GB Storage, Unmetered Bandwidth">Customize</a>
                 </div>
                 <div class="pricing-card">
                     <h3>Pro</h3>
                     <div class="price" data-usd-price="8.50">$8.50/mo</div>
                     <ul>
                         <li>6GB RAM</li>
-                        <li>Shared CPU</li>
+                        <li>150% CPU</li>
                         <li>100GB Storage</li>
                         <li>Unmetered Bandwidth</li>
                     </ul>
-                    <a href="#" class="btn customize-btn" data-title="Pro" data-price="$8.50/mo" data-specs="6GB RAM, Shared CPU, 100GB Storage, Unmetered Bandwidth">Customize</a>
+                    <a href="#" class="btn customize-btn" data-title="Pro" data-price="$8.50/mo" data-specs="6GB RAM, 150% CPU, 100GB Storage, Unmetered Bandwidth">Customize</a>
                 </div>
                 <div class="pricing-card">
                     <h3>Ultimate</h3>
                     <div class="price" data-usd-price="14.50">$14.50/mo</div>
                     <ul>
                         <li>6GB RAM</li>
-                        <li>Dedicated CPU</li>
+                        <li>250% CPU</li>
                         <li>150GB Storage</li>
                         <li>Unmetered Bandwidth</li>
                     </ul>
-                    <a href="#" class="btn customize-btn" data-title="Ultimate" data-price="$14.50/mo" data-specs="6GB RAM, Dedicated CPU, 150GB Storage, Unmetered Bandwidth">Customize</a>
+                    <a href="#" class="btn customize-btn" data-title="Ultimate" data-price="$14.50/mo" data-specs="6GB RAM, 250% CPU, 150GB Storage, Unmetered Bandwidth">Customize</a>
                 </div>
             </div>    
 
@@ -780,6 +781,7 @@
             <div class="cpu-buttons">
                 <button class="cpu-button active" data-cpu="1">150%</button>
                 <button class="cpu-button" data-cpu="2">250%</button>
+                <button class="cpu-button" data-cpu="3">Unmetered</button>
             </div>
             <div id="total-price">$1.25/month</div>
             <a href="#" class="btn">Choose Plan</a>
@@ -815,7 +817,7 @@
                 </div>
                 <div class="faq-item">
                     <h3 onclick="toggleAnswer('q4')">How can I contact support?</h3>
-                    <p id="q4" class="faq-answer">Join our Discord or make a ticket on the billing panel! (coming soon)</p>
+                    <p id="q4" class="faq-answer">Join our Discord or make a ticket on the billing panel!</p>
                 </div>
                 <div class="faq-item">
                     <h3 onclick="toggleAnswer('q5')">What payment methods do you accept?</h3>
@@ -882,6 +884,7 @@
     </div>
 
     <script>
+      
     document.addEventListener('DOMContentLoaded', function () {
         const ramSlider = document.getElementById('ram-slider');
         const storageSlider = document.getElementById('storage-slider');
@@ -1063,20 +1066,6 @@
             }
         });
 
-        // FAQ functionality
-        function toggleAnswer(id) {
-            const answer = document.getElementById(id);
-            const allAnswers = document.querySelectorAll('.faq-answer');
-
-            allAnswers.forEach(item => {
-                if (item.id !== id && item.classList.contains('active')) {
-                    item.classList.remove('active');
-                }
-            });
-
-            answer.classList.toggle('active');
-        }
-
         // Ping functionality
         const pingButton = document.getElementById('ping-button');
         const pingStatus = document.getElementById('ping-status');
@@ -1103,6 +1092,20 @@
         // Initial ping on page load
         pingButton.click();
     });
+          function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            
+            // Close all other answers
+            allAnswers.forEach(item => {
+                if (item.id !== id && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle the clicked answer
+            answer.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
