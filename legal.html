@@ -13,6 +13,19 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <style>
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #ce42f5;
+            --background-color: #0F0F1A;
+            --text-color: #FFFFFF;
+            --accent-color: #FF6B6B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         /* Custom scrollbar styles */
         ::-webkit-scrollbar {
             width: 12px; /* Width of the scrollbar */
@@ -20,13 +33,13 @@
         }
 
         ::-webkit-scrollbar-thumb {
-            background-color: #00bfff; /* Color of the scrollbar thumb */
+            background-color: var(--primary-color); /* Color of the scrollbar thumb */
             border-radius: 10px; /* Rounded corners for the scrollbar thumb */
             border: 2px solid #1c1c1c; /* Border around the scrollbar thumb */
         }
 
         ::-webkit-scrollbar-thumb:hover {
-            background-color: #007acc; /* Color of the scrollbar thumb on hover */
+            background-color: var(--secondary-color); /* Color of the scrollbar thumb on hover */
         }
 
         body {
