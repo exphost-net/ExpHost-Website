@@ -666,7 +666,9 @@
           
         }
         #contact-button:hover {
-            background-color: #c231eb;
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px var(--primary-color);
         }
 
         #contactPopup .popup-content {
@@ -903,33 +905,15 @@
         <h2>Custom Order</h2>
         <h3>How would you like to continue?</h3>
         <div class="popup-buttons">
-            <a href="https://discord.gg/KxXUyPbJgB" class="popup-btn">Discord Ticket</a>
+            <a href="#" class="popup-btn" id="discordTicketBtn">Discord Ticket</a>
             <a href="https://billing.exphost.net" class="popup-btn">Billing Ticket</a>
         </div>
     </div>
 
 
-    <script>
-      // Custom Order Popup functionality
-        const customOrderPopup = document.getElementById('customOrderPopup');
-        const customOrderCloseBtn = customOrderPopup.querySelector('.close-btn');
-        const choosePlanBtn = document.querySelector('#configurator .btn');
-
-        choosePlanBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            customOrderPopup.style.display = 'flex';
-        });
-
-        customOrderCloseBtn.addEventListener('click', () => {
-            customOrderPopup.style.display = 'none';
-        });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === customOrderPopup) {
-                customOrderPopup.style.display = 'none';
-            }
-        });
+<script>
     document.addEventListener('DOMContentLoaded', function () {
+        // DOM elements
         const ramSlider = document.getElementById('ram-slider');
         const storageSlider = document.getElementById('storage-slider');
         const ramValue = document.getElementById('ram-value');
@@ -938,16 +922,51 @@
         const totalPrice = document.getElementById('total-price');
         const currencyToggle = document.getElementById('currency-toggle');
         const pricingCards = document.querySelectorAll('.pricing-card .price');
+        const popup = document.getElementById('orderPopup');
+        const closeBtn = document.querySelector('.close-btn');
+        const popupTitle = document.getElementById('popupTitle');
+        const popupSubtitle = document.getElementById('popupSubtitle');
+        const configureButton = document.getElementById('configureButton');
+        const contactButton = document.getElementById('contact-button');
+        const contactPopup = document.getElementById('contactPopup');
+        const contactCloseBtn = contactPopup.querySelector('.close-btn');
+        const logo = document.querySelector('.logo');
+        const navLinks = document.querySelector('.nav-links');
+        const pingButton = document.getElementById('ping-button');
+        const pingStatus = document.getElementById('ping-status');
+        const customOrderPopup = document.getElementById('customOrderPopup');
+        const customOrderCloseBtn = customOrderPopup.querySelector('.close-btn');
+        const choosePlanBtn = document.querySelector('#configurator .btn');
+        const discordTicketBtn = document.getElementById('discordTicketBtn');
 
+        // Variables
         let selectedCPU = 1;
         let currentCurrency = 'USD';
         const currencies = ['USD', 'GBP', 'JPY', 'EUR'];
-        let exchangeRates = {
-            USD: 1,
-            GBP: 1,
-            JPY: 1,
-            EUR: 1
-        };
+        let exchangeRates = { USD: 1, GBP: 1, JPY: 1, EUR: 1 };
+        let orderNumber = 1000; // Starting order number
+
+        // Functions
+        function checkOrderLimit() {
+            const today = new Date().toDateString();
+            let orderCount = parseInt(localStorage.getItem('orderCount')) || 0;
+            let lastOrderDate = localStorage.getItem('lastOrderDate');
+
+            if (lastOrderDate !== today) {
+                orderCount = 0;
+                lastOrderDate = today;
+            }
+
+            if (orderCount >= 3) {
+                return false; // Limit reached
+            }
+
+            orderCount++;
+            localStorage.setItem('orderCount', orderCount);
+            localStorage.setItem('lastOrderDate', today);
+
+            return true; // Order allowed
+        }
 
         const fetchExchangeRates = async () => {
             try {
@@ -961,17 +980,9 @@
                 };
             } catch (error) {
                 console.error('Error fetching exchange rates:', error);
-                // Fallback rates if API fails
-                exchangeRates = {
-                    USD: 1,
-                    GBP: 0.80,
-                    JPY: 110,
-                    EUR: 0.85
-                };
+                exchangeRates = { USD: 1, GBP: 0.80, JPY: 110, EUR: 0.85 };
             }
         };
-
-        fetchExchangeRates(); // Fetch rates when the page loads
 
         const calculatePrice = () => {
             const ram = parseInt(ramSlider.value);
@@ -1006,10 +1017,26 @@
             calculatePrice();
         };
 
+        function toggleAnswer(id) {
+            const answer = document.getElementById(id);
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            
+            allAnswers.forEach(item => {
+                if (item.id !== id && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            answer.classList.toggle('active');
+        }
+
+        // Event Listeners
+        fetchExchangeRates();
+
         currencyToggle.addEventListener('click', async () => {
             const currentIndex = currencies.indexOf(currentCurrency);
             currentCurrency = currencies[(currentIndex + 1) % currencies.length];
-            await fetchExchangeRates(); // Fetch the latest rates when currency is toggled
+            await fetchExchangeRates();
             updateCurrency(currentCurrency);
         });
 
@@ -1032,16 +1059,6 @@
             });
         });
 
-        updateCurrency(currentCurrency);
-        calculatePrice();
-
-        // Order Popup functionality
-        const popup = document.getElementById('orderPopup');
-        const closeBtn = document.querySelector('.close-btn');
-        const popupTitle = document.getElementById('popupTitle');
-        const popupSubtitle = document.getElementById('popupSubtitle');
-        const configureButton = document.getElementById('configureButton');
-
         document.querySelectorAll('.customize-btn').forEach(button => {
             button.addEventListener('click', (e) => {
                 e.preventDefault();
@@ -1063,17 +1080,6 @@
             popup.style.display = 'none';
         });
 
-        window.addEventListener('click', (e) => {
-            if (e.target === popup) {
-                popup.style.display = 'none';
-            }
-        });
-
-        // Contact Popup functionality
-        const contactButton = document.getElementById('contact-button');
-        const contactPopup = document.getElementById('contactPopup');
-        const contactCloseBtn = contactPopup.querySelector('.close-btn');
-
         contactButton.addEventListener('click', (e) => {
             e.preventDefault();
             contactPopup.style.display = 'flex';
@@ -1082,16 +1088,6 @@
         contactCloseBtn.addEventListener('click', () => {
             contactPopup.style.display = 'none';
         });
-
-        window.addEventListener('click', (e) => {
-            if (e.target === contactPopup) {
-                contactPopup.style.display = 'none';
-            }
-        });
-
-        // Mobile menu functionality
-        const logo = document.querySelector('.logo');
-        const navLinks = document.querySelector('.nav-links');
 
         logo.addEventListener('click', (e) => {
             e.preventDefault();
@@ -1103,17 +1099,6 @@
                 navLinks.classList.remove('active');
             });
         });
-
-        document.addEventListener('click', (e) => {
-            if (!logo.contains(e.target) && !navLinks.contains(e.target)) {
-                navLinks.classList.remove('active');
-            }
-        });
-
-        // Ping functionality
-        const pingButton = document.getElementById('ping-button');
-        const pingStatus = document.getElementById('ping-status');
-        const serverIP = '38.58.180.58';
 
         pingButton.addEventListener('click', function() {
             pingStatus.textContent = 'Pinging...';
@@ -1133,23 +1118,86 @@
             }, 1000);
         });
 
-        // Initial ping on page load
+        choosePlanBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            customOrderPopup.style.display = 'flex';
+        });
+
+        customOrderCloseBtn.addEventListener('click', () => {
+            customOrderPopup.style.display = 'none';
+        });
+
+        discordTicketBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+
+            if (!checkOrderLimit()) {
+                alert('You have reached the maximum number of orders (3) for today. Please try again tomorrow.');
+                return;
+            }
+
+            orderNumber++;
+            const ram = ramValue.textContent;
+            const storage = storageValue.textContent;
+            const cpu = document.querySelector('.cpu-button.active').textContent;
+            const price = totalPrice.textContent;
+
+            const message = {
+                content: `New order created #${orderNumber}`,
+                embeds: [{
+                    title: `Order #${orderNumber}`,
+                    fields: [
+                        { name: 'RAM', value: `${ram}GB`, inline: true },
+                        { name: 'Storage', value: `${storage}GB`, inline: true },
+                        { name: 'CPU', value: cpu, inline: true },
+                        { name: 'Price', value: price }
+                    ]
+                }]
+            };
+
+            const webhookURL = 'https://discord.com/api/webhooks/1258438054973018132/wp-ANKYT1A6hPGAifzKs7-uhHEmkAhWstdg0bzmrKew-kKAja5ffpAr4Iv6P9X8EKEuQ';
+            try {
+                const response = await fetch(webhookURL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(message),
+                });
+
+                if (response.ok) {
+                    alert(`Order #${orderNumber} has been created and sent to Discord!\n\nPlease remember or write down your order number: \n\n**${orderNumber}**\n\nYou will be redirected to our Discord server in a few seconds.`);
+                    customOrderPopup.style.display = 'none';
+
+                    // Open Discord server link in a new tab after a short delay
+                    setTimeout(() => {
+                        window.open('https://discord.gg/KxXUyPbJgB', '_blank');
+                    }, 2000); // 3 seconds delay
+                } else {
+                    throw new Error('Failed to send order to Discord');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to create order. Please try again.');
+            }
+        });
+
+        // General click events
+        window.addEventListener('click', (e) => {
+            if (e.target === popup || e.target === contactPopup || e.target === customOrderPopup) {
+                popup.style.display = 'none';
+                contactPopup.style.display = 'none';
+                customOrderPopup.style.display = 'none';
+            }
+            if (!logo.contains(e.target) && !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Initial setup
+        updateCurrency(currentCurrency);
+        calculatePrice();
         pingButton.click();
     });
-          function toggleAnswer(id) {
-            const answer = document.getElementById(id);
-            const allAnswers = document.querySelectorAll('.faq-answer');
-            
-            // Close all other answers
-            allAnswers.forEach(item => {
-                if (item.id !== id && item.classList.contains('active')) {
-                    item.classList.remove('active');
-                }
-            });
-            
-            // Toggle the clicked answer
-            answer.classList.toggle('active');
-        }
-    </script>
+</script>
 </body>
 </html>
