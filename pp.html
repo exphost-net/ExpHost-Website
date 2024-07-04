@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exp Host | Legal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <style>
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #ce42f5;
+            --background-color: #0F0F1A;
+            --text-color: #FFFFFF;
+            --accent-color: #FF6B6B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Custom scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 12px; /* Width of the scrollbar */
+            background-color: #1c1c1c; /* Background color of the scrollbar track */
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color); /* Color of the scrollbar thumb */
+            border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+            border: 2px solid #1c1c1c; /* Border around the scrollbar thumb */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--secondary-color); /* Color of the scrollbar thumb on hover */
+        }
+
+        body {
+            scrollbar-color: #00bfff #0F0F1A;
+            scrollbar-width: thin;
+            background-color: #0F0F1A;
+            color: #f0f0f0;
+            font-family: 'Ubuntu', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0;
+        }
+
+        header {
+            background-color: rgba(15, 15, 26, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 10px 0; /* Adjusted for better alignment */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center; /* Aligns the logo and text vertically */
+            gap: 10px; /* Adds space between the logo and text */
+        }
+
+        .logo img {
+            width: 50px; /* Set the desired width */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+        .logo span {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .content {
+            width: 100%;
+            max-width: 1200px;
+            padding: 80px 20px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-box {
+            width: 80%;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: url('/images/image.png') no-repeat center center;
+            background-size: cover;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .title-box h1 {
+            font-size: 2.5em;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .text {
+            width: 80%;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .sub-text {
+            width: 80%;
+            font-size: 1em;
+            text-align: center;
+            color: #cccccc;
+        }
+
+        .section-title {
+            width: 80%;
+            font-size: 2em;
+            margin: 20px 0 10px;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            width: 80%;
+            font-size: 1.5em;
+            margin: 10px 0;
+            text-align: center;
+            color: #aaaaaa;
+        }
+
+        .section-text {
+            width: 80%;
+            font-size: 1em;
+            text-align: justify;
+            color: #dddddd;
+            margin: 10px 0;
+        }
+
+        footer {
+            padding-top: 50px;
+            background-color: rgba(15, 15, 26, 0.8);
+            text-align: center;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        footer .social-icons {
+            margin-top: 60px;
+        }
+
+        footer .social-icons a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        footer .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="/images/logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">
+                    <span>Exp Host</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#features">Pricing</a></li>
+                    <li><a href="https://billing.exphost.net">Billing</a></li>
+                    <li><a href="legal.html">Legal</a></li>
+                    <li><a href="https://panel.exphost.net">Panel</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="title-box">
+            <h1>Privacy Policy</h1>
+        </div>
+        <div class="section-text">
+            <h3>1. Introduction</h3>
+            <p>ExpHost ("we", "us", "our") is committed to protecting your privacy. This policy explains how we collect, use, and share your personal information when you use our services.</p>
+        </div>
+        <div class="section-text">
+            <h3>2. Data Collection</h3>
+            <p>
+                <strong>Personal Information:</strong> We collect personal information such as your name, email address, and payment details when you create an account or purchase our services.<br>
+                <strong>Usage Data:</strong> We collect data on how you interact with our services, including IP addresses, browser type, and access times.
+            </p>
+        </div>
+        <div class="section-text">
+            <h3>3. Use of Data</h3>
+            <p>
+                <strong>Service Provision:</strong> We use your data to provide, maintain, and improve our services.<br>
+                <strong>Communication:</strong> We may use your email address to send service updates, billing information, and promotional materials (you can opt out at any time).<br>
+                <strong>Security:</strong> We use data to monitor and enhance the security of our services.
+            </p>
+        </div>
+        <div class="section-text">
+            <h3>4. Data Sharing</h3>
+            <p>
+                <strong>Third-Party Services:</strong> We may share your information with third-party service providers who assist us in operating our business (e.g., payment processors, hosting providers).<br>
+                <strong>Legal Requirements:</strong> We may disclose your data if required by law or to protect our rights.
+            </p>
+        </div>
+        <div class="section-text">
+            <h3>5. Cookies and Tracking</h3>
+            <p>
+                <strong>Cookies:</strong> We use cookies to enhance your experience, track usage, and manage sessions.<br>
+                <strong>Opt-Out:</strong> You can control cookie settings through your browser preferences.
+            </p>
+        </div>
+        <div class="section-text">
+            <h3>6. Data Security</h3>
+            <p>We implement robust security measures to protect your data. However, we cannot guarantee absolute security. You are responsible for maintaining the confidentiality of your account information.</p>
+        </div>
+        <div class="section-text">
+            <h3>7. Data Retention</h3>
+            <p>We retain your personal information for as long as necessary to provide our services and comply with legal obligations.</p>
+        </div>
+        <div class="section-text">
+            <h3>8. User Rights</h3>
+            <p>
+                <strong>Access:</strong> You can request a copy of your personal data.<br>
+                <strong>Correction:</strong> You can request corrections to inaccurate or incomplete data.<br>
+                <strong>Deletion:</strong> You can request the deletion of your personal data, subject to certain legal restrictions.
+            </p>
+        </div>
+        <div class="section-text">
+            <h3>9. Changes to the Privacy Policy</h3>
+            <p>We may update this policy periodically. We will notify you of any significant changes and your continued use of our services constitutes acceptance of the updated policy.</p>
+        </div>
+        <div class="section-text">
+            <h3>10. Contact Information</h3>
+            <p>For any questions or concerns about this privacy policy, please contact us at <a href="mailto:support@exphost.net">support@exphost.net</a>.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-sm u-container-layout-2">
+            <a href="https://astrofoxstudios.com" class="u-image u-logo u-image-1" data-image-width="2047" data-image-height="629" title="Home">
+                <img src="https://astrofoxstudios.com/images/image.png" class="u-logo-image u-logo-image-1" style="width: auto; height: 100px;">
+            </a>
+        </div>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.youtube.com/channel/UCamVCCPTcTfXqHCOJp5i0Fw"><i class="fab fa-youtube"></i></a>
+                <a href="https://twitter.com/AstroFoxStudios"><i class="fab fa-twitter"></i></a>
+                <a href="https://discord.gg/bxcfsjyVYZ"><i class="fab fa-discord"></i></a>
+            </div>
+            <p>&copy; 2024 Exp Host. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
