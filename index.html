@@ -850,9 +850,9 @@
         </div>
         <div class="container">
             <div class="social-links">
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-discord"></i></a>
+                <a href="https://www.youtube.com/channel/UCamVCCPTcTfXqHCOJp5i0Fw"><i class="fab fa-youtube"></i></a>
+                <a href="https://twitter.com/AstroFoxStudios"><i class="fab fa-twitter"></i></a>
+                <a href="https://discord.gg/bxcfsjyVYZ"><i class="fab fa-discord"></i></a>
             </div>
             <p>&copy; 2024 Exp Host. All rights reserved.</p>
         </div>
@@ -885,9 +885,39 @@
             </div>
         </div>
     </div>
+      
+      <div id="customOrderPopup" class="popup">
+    <div class="popup-content">
+        <span class="close-btn">&times;</span>
+        <h2>Custom Order</h2>
+        <h3>How would you like to continue?</h3>
+        <div class="popup-buttons">
+            <a href="https://discord.gg/KxXUyPbJgB" class="popup-btn">Discord Ticket</a>
+            <a href="https://billing.exphost.net" class="popup-btn">Billing Ticket</a>
+        </div>
+    </div>
+
 
     <script>
-      
+      // Custom Order Popup functionality
+        const customOrderPopup = document.getElementById('customOrderPopup');
+        const customOrderCloseBtn = customOrderPopup.querySelector('.close-btn');
+        const choosePlanBtn = document.querySelector('#configurator .btn');
+
+        choosePlanBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            customOrderPopup.style.display = 'flex';
+        });
+
+        customOrderCloseBtn.addEventListener('click', () => {
+            customOrderPopup.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === customOrderPopup) {
+                customOrderPopup.style.display = 'none';
+            }
+        });
     document.addEventListener('DOMContentLoaded', function () {
         const ramSlider = document.getElementById('ram-slider');
         const storageSlider = document.getElementById('storage-slider');
