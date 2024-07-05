@@ -779,29 +779,29 @@
                         <li>50GB Storage</li>
                         <li>Unmetered Bandwidth</li>
                     </ul>
-                    <a href="#" class="btn customize-btn" data-title="Starter" data-price="$3.75/mo" data-specs="3GB RAM, 150% CPU, 50GB Storage, Unmetered Bandwidth">Customize</a>
+                    <a href="#" class="btn customize-btn" data-title="Starter" data-price="$3.75/mo" data-ram="3" data-cpu="150" data-storage="50">Customize</a>
                 </div>
                 <div class="pricing-card">
                     <h3>Pro</h3>
-                    <div class="price" data-usd-price="8.50">$8.50/mo</div>
+                    <div class="price" data-usd-price="7.50">$7.50/mo</div>
                     <ul>
                         <li>6GB RAM</li>
                         <li>150% CPU</li>
-                        <li>100GB Storage</li>
+                        <li>50GB Storage</li>
                         <li>Unmetered Bandwidth</li>
                     </ul>
-                    <a href="#" class="btn customize-btn" data-title="Pro" data-price="$8.50/mo" data-specs="6GB RAM, 150% CPU, 100GB Storage, Unmetered Bandwidth">Customize</a>
+                    <a href="#" class="btn customize-btn" data-title="Pro" data-price="$7.50/mo" data-ram="6" data-cpu="150" data-storage="50">Customize</a>
                 </div>
                 <div class="pricing-card">
                     <h3>Ultimate</h3>
-                    <div class="price" data-usd-price="14.50">$14.50/mo</div>
+                    <div class="price" data-usd-price="15.00">$15.00/mo</div>
                     <ul>
-                        <li>6GB RAM</li>
+                        <li>8GB RAM</li>
                         <li>250% CPU</li>
-                        <li>150GB Storage</li>
+                        <li>50GB Storage</li>
                         <li>Unmetered Bandwidth</li>
                     </ul>
-                    <a href="#" class="btn customize-btn" data-title="Ultimate" data-price="$14.50/mo" data-specs="6GB RAM, 250% CPU, 150GB Storage, Unmetered Bandwidth">Customize</a>
+                    <a href="#" class="btn customize-btn" data-title="Ultimate" data-price="$15.00/mo" data-ram="8" data-cpu="250" data-storage="50">Customize</a>
                 </div>
             </div>    
 
@@ -844,24 +844,24 @@
             <h2>Frequently Asked Questions</h2>
             <div class="faq-grid">
                 <div class="faq-item">
-                    <h3 onclick="toggleAnswer('q1')">What is your refund policy?</h3>
-                    <p id="q1" class="faq-answer">In most cases we will give out free test servers to start with, but if that doesn't meet your standards we have a 48hr refund policy!</p>
+                    <h3>What is your refund policy?</h3>
+                    <p class="faq-answer">In most cases we will give out free test servers to start with, but if that doesn't meet your standards we have a 48hr refund policy!</p>
                 </div>
                 <div class="faq-item">
-                    <h3 onclick="toggleAnswer('q2')">How can I get a Partnership?</h3>
-                    <p id="q2" class="faq-answer">Partnerships are really exclusive right now since we are in development!</p>
+                    <h3>How can I get a Partnership?</h3>
+                    <p class="faq-answer">Partnerships are really exclusive right now since we are in development!</p>
                 </div>
                 <div class="faq-item">
-                    <h3 onclick="toggleAnswer('q3')">What game panel do you run?</h3>
-                    <p id="q3" class="faq-answer">We run a modified version of Pterodactyl that also has our own custom theme!</p>
+                    <h3>What game panel do you run?</h3>
+                    <p class="faq-answer">We run a modified version of Pterodactyl that also has our own custom theme!</p>
                 </div>
                 <div class="faq-item">
-                    <h3 onclick="toggleAnswer('q4')">How can I contact support?</h3>
-                    <p id="q4" class="faq-answer">Join our Discord or make a ticket on the billing panel!</p>
+                    <h3>How can I contact support?</h3>
+                    <p class="faq-answer">Join our Discord or make a ticket on the billing panel!</p>
                 </div>
                 <div class="faq-item">
-                    <h3 onclick="toggleAnswer('q5')">What payment methods do you accept?</h3>
-                    <p id="q5" class="faq-answer">We accept all major credit cards, PayPal, and work through stripe!</p>
+                    <h3>What payment methods do you accept?</h3>
+                    <p class="faq-answer">We accept all major credit cards, PayPal, and work through stripe!</p>
                 </div>
             </div>
         </div>
@@ -953,10 +953,6 @@
     
         document.addEventListener('DOMContentLoaded', function () {
             // DOM elements
-            function openContactDetails() {
-                userDetailsPopup.style.display = 'flex';
-                document.getElementById('userEmail').focus();
-            }
             const ramSlider = document.getElementById('ram-slider');
             const storageSlider = document.getElementById('storage-slider');
             const ramValue = document.getElementById('ram-value');
@@ -966,7 +962,7 @@
             const currencyToggle = document.getElementById('currency-toggle');
             const pricingCards = document.querySelectorAll('.pricing-card .price');
             const popup = document.getElementById('orderPopup');
-            const closeBtn = document.querySelector('.close-btn');
+            const closeBtn = document.querySelector('#orderPopup .close-btn');
             const popupTitle = document.getElementById('popupTitle');
             const popupSubtitle = document.getElementById('popupSubtitle');
             const configureButton = document.getElementById('configureButton');
@@ -989,6 +985,8 @@
             let currentCurrency = 'USD';
             const currencies = ['USD', 'GBP', 'JPY', 'EUR'];
             let exchangeRates = { USD: 1, GBP: 1, JPY: 1, EUR: 1 };
+            let isCustomPlan = false;
+            let selectedPlanDetails = {};
     
             // Functions
             function checkOrderLimit() {
@@ -1037,7 +1035,6 @@
                 if (cpu === 2) cpuCharge = 5;
                 if (cpu === 3) cpuCharge = 10;
     
-                // Calculate price with RAM, storage, and CPU charge
                 let price = ram * 1.25 + (storage - 50) / 50 + cpuCharge;
                 price *= exchangeRates[currentCurrency];
     
@@ -1071,12 +1068,17 @@
                 const allAnswers = document.querySelectorAll('.faq-answer');
     
                 allAnswers.forEach(item => {
-                    if (item.id !== id && item.classList.contains('active')) {
+                    if (item !== answer && item.classList.contains('active')) {
                         item.classList.remove('active');
                     }
                 });
     
                 answer.classList.toggle('active');
+            }
+    
+            function openContactDetails() {
+                userDetailsPopup.style.display = 'flex';
+                document.getElementById('userEmail').focus();
             }
     
             // Event Listeners
@@ -1103,21 +1105,63 @@
                 button.addEventListener('click', () => {
                     cpuButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-                    selectedCPU = parseInt(button.getAttribute('data-cpu')); // Corrected the attribute
+                    selectedCPU = parseInt(button.getAttribute('data-cpu'));
                     calculatePrice();
                 });
             });
     
+            // FAQ functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('h3');
+                question.addEventListener('click', () => {
+                    item.querySelector('.faq-answer').classList.toggle('active');
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.querySelector('.faq-answer').classList.remove('active');
+                        }
+                    });
+                });
+            });
+    
+            // Modify the event listener for customize buttons
             document.querySelectorAll('.customize-btn').forEach(button => {
                 button.addEventListener('click', (e) => {
                     e.preventDefault();
+                    isCustomPlan = false;
                     const title = button.getAttribute('data-title');
                     const price = button.getAttribute('data-price');
-                    const specs = button.getAttribute('data-specs');
+                    const ram = button.getAttribute('data-ram');
+                    const cpu = button.getAttribute('data-cpu');
+                    const storage = button.getAttribute('data-storage');
+    
+                    selectedPlanDetails = { title, price, ram, cpu, storage };
     
                     popupTitle.innerText = title;
-                    popupSubtitle.innerHTML = `${price}<br>${specs}`;
+                    popupSubtitle.innerHTML = `${price}<br>${ram}GB RAM, ${cpu}% CPU, ${storage}GB Storage`;
                     popup.style.display = 'flex';
+    
+                    // Add a new button for Discord support
+                    const discordSupportBtn = document.createElement('a');
+                    discordSupportBtn.href = '#';
+                    discordSupportBtn.className = 'popup-btn';
+                    discordSupportBtn.textContent = 'Discord Support';
+                    discordSupportBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        popup.style.display = 'none';
+                        openContactDetails();
+                    });
+    
+                    // Replace the existing buttons with new ones
+                    const popupButtons = popup.querySelector('.popup-buttons');
+                    popupButtons.innerHTML = '';
+                    popupButtons.appendChild(discordSupportBtn);
+    
+                    const billingBtn = document.createElement('a');
+                    billingBtn.href = 'https://billing.exphost.net';
+                    billingBtn.className = 'popup-btn';
+                    billingBtn.textContent = 'Billing Panel';
+                    popupButtons.appendChild(billingBtn);
                 });
             });
     
@@ -1170,6 +1214,14 @@
             choosePlanBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 if (checkOrderLimit()) {
+                    isCustomPlan = true;
+                    selectedPlanDetails = {
+                        title: 'Custom Plan',
+                        price: totalPrice.textContent,
+                        ram: ramValue.textContent,
+                        cpu: document.querySelector('.cpu-button.active').textContent,
+                        storage: storageValue.textContent
+                    };
                     customOrderPopup.style.display = 'flex';
                 } else {
                     alert('You have reached the maximum number of orders (3) for today. Please try again tomorrow.');
@@ -1183,8 +1235,7 @@
             discordTicketBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 customOrderPopup.style.display = 'none';
-                userDetailsPopup.style.display = 'flex';
-                document.getElementById('userEmail').focus();
+                openContactDetails();
             });
     
             userDetailsCloseBtn.addEventListener('click', () => {
@@ -1202,11 +1253,6 @@
                 globalOrderNumber++;
                 localStorage.setItem('globalOrderNumber', globalOrderNumber);
     
-                const ram = ramValue.textContent;
-                const storage = storageValue.textContent;
-                const cpu = document.querySelector('.cpu-button.active').textContent;
-                const price = totalPrice.textContent;
-    
                 const userEmail = document.getElementById('userEmail').value;
                 const userDiscord = document.getElementById('userDiscord').value;
                 const orderName = document.getElementById('orderName').value;
@@ -1216,10 +1262,11 @@
                     embeds: [{
                         title: `Order #${globalOrderNumber}: ${orderName}`,
                         fields: [
-                            { name: 'RAM', value: `${ram}GB`, inline: true },
-                            { name: 'Storage', value: `${storage}GB`, inline: true },
-                            { name: 'CPU', value: cpu, inline: true },
-                            { name: 'Price', value: price },
+                            { name: 'Plan', value: selectedPlanDetails.title, inline: true },
+                            { name: 'RAM', value: `${selectedPlanDetails.ram}GB`, inline: true },
+                            { name: 'CPU', value: `${selectedPlanDetails.cpu}%`, inline: true },
+                            { name: 'Storage', value: `${selectedPlanDetails.storage}GB`, inline: true },
+                            { name: 'Price', value: selectedPlanDetails.price },
                             { name: 'Email', value: userEmail },
                             { name: 'Discord Username', value: userDiscord }
                         ]
@@ -1258,6 +1305,6 @@
             calculatePrice();
             pingButton.click();
         });
-    </script>    
+    </script>
 </body>
 </html>
