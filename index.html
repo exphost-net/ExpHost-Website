@@ -1217,7 +1217,7 @@
                 // socket timeout
                 let timeout = setTimeout(() => {
                   socket.onerror(undefined);
-                }, 10000);
+                }, 1000);
             
                 socket.onmessage = (_) => {
                   averageTimeList.push(performance.now() - sendTime - .5);
