@@ -1197,28 +1197,53 @@
               pingStatus.textContent = 'Pinging...';
               pingStatus.style.color = '#fcef5b';
               pingButton.disabled = true;
-
+            
+              function pingWebsocket(url, element) {
+                const socket = new WebSocket(url);
+            
+                let sendTime;
+                let averageTimeList = [];
+                let averageTime = 0;
+                let interval;
+                socket.onopen = () => {
+                  interval = setInterval(() => {
+                    socket.send("ping");
+                    sendTime = performance.now();
+                  }, 500);
+            
+                  clearTimeout(timeout);
+                };
+            
+                // socket timeout
+                let timeout = setTimeout(() => {
+                  socket.onerror(undefined);
+                }, 10000);
+            
+                socket.onmessage = (_) => {
+                  averageTimeList.push(performance.now() - sendTime - .5);
+                  if (averageTimeList.length > 5) {
+                    averageTimeList.shift();
+                    averageTime = Math.round(averageTimeList.reduce((p, c) => p + c) / 5);
+                    element.innerHTML = `${averageTime}ms`;
+                    element.style.color = '#4CAF50';
+                  }
+                };
+            
+                socket.onclose = socket.onerror = () => {
+                  clearInterval(interval);
+                  element.classList.remove("accented");
+                  element.classList.add("accented-two");
+                  element.innerHTML = "Failed to ping.";
+                  element.style.color = '#FF6B6B';
+                };
+              }
+            
+              // Ping the desired WebSocket server
+              pingWebsocket("38.58.180.58", pingStatus);
+            
+              // Enable the button after a short delay
               setTimeout(() => {
-                // Measure ping time to the specified IP address
-                const startTime = new Date().getTime();
-                fetch(`38.58.180.58`, { method: 'HEAD' })
-                  .then(response => {
-                    const endTime = new Date().getTime();
-                    const pingTime = endTime - startTime;
-                    pingStatus.style.color = '#4CAF50';
-                    pingStatus.textContent = `Ping: ${pingTime}ms`;
-                  })
-                  .catch(error => {
-                    console.error('Error:', error);
-                    pingStatus.textContent = 'Failed to measure Ping';
-                    pingStatus.style.color = '#FF6B6B';
-                  });
-
-                // Enable the button after the measurement is done
-                setTimeout(() => {
-                  pingButton.disabled=false;
-                }, 100);
-
+                pingButton.disabled = false;
               }, 100);
             });
    
