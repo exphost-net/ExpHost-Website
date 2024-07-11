@@ -1231,8 +1231,6 @@
             
                 socket.onclose = socket.onerror = () => {
                   clearInterval(interval);
-                  element.classList.remove("accented");
-                  element.classList.add("accented-two");
                   element.innerHTML = "Failed to ping.";
                   element.style.color = '#FF6B6B';
                 };
@@ -1244,7 +1242,7 @@
               // Enable the button after a short delay
               setTimeout(() => {
                 pingButton.disabled = false;
-              }, 100);
+              }, 10000);
             });
    
             choosePlanBtn.addEventListener('click', (e) => {
