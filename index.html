@@ -745,7 +745,6 @@
         #userDetailsForm button:hover {
             background-color: var(--secondary-color);
         }
-
     </style>
 </head>
 <body>
@@ -810,7 +809,9 @@
     </section>
 
     <section id="pricing" class="pricing">
+        <h2>Choose your Minecraft Hosting Plan!</h2>
         <div class="pricing-container">
+            
             <div class="pricing-card">
               <h3>Basic</h3>
               <div class="price" data-usd-price="2.50">$2.50/mo</div>
@@ -972,20 +973,20 @@
     <!-- Add this inside the body tag, after your existing content -->
     <div id="orderPopup" class="popup">
         <div class="popup-content">
-            <span class="close-btn">&times;</span>
-            <h2>Continue Order</h2>
-            <h3 id="popupTitle">Plan Title</h3>
-            <div id="popupSubtitle" class="popup-subtitle">
-                Plan Price<br>
-                Plan Specs
-            </div>
-            <div class="popup-buttons">
-                <a href="https://discord.gg/KxXUyPbJgB" class="popup-btn">Discord Support</a>
-                <a href="https://billing.exphost.net" class="popup-btn">Billing Panel</a>
-                <a href="#configurator" class="popup-btn" id="configureButton">Customize</a>
-            </div>
+          <span class="close-btn">×</span>
+          <h2>Continue Order</h2>
+          <h3 id="popupTitle">Plan Title</h3>
+          <div id="popupSubtitle" class="popup-subtitle">
+            Plan Price<br>
+            Plan Specs
+          </div>
+          <div class="popup-buttons">
+            <a href="https://discord.gg/KxXUyPbJgB" class="popup-btn">Discord Support</a>
+            <a href="#" id="checkoutButton" class="popup-btn">Checkout</a>
+            <a href="#configurator" id="configureButton" class="popup-btn">Customize</a>
+          </div>
         </div>
-    </div>
+      </div>
 
     <div id="contactPopup" class="popup">
         <div class="popup-content">
@@ -1005,7 +1006,7 @@
             <h3>How would you like to continue?</h3>
             <div class="popup-buttons">
                 <a href="#" class="popup-btn" id="discordTicketBtn">Discord Ticket</a>
-                <a href="https://billing.exphost.net" class="popup-btn">Billing Ticket</a>
+                <a href="https://billing.exphost.net" class="popup-btn">Checkout</a>
             </div>
         </div>
     </div>
@@ -1209,36 +1210,52 @@
                     const ram = button.getAttribute('data-ram');
                     const cpu = button.getAttribute('data-cpu');
                     const storage = button.getAttribute('data-storage');
-   
+
                     selectedPlanDetails = { title, price, ram, cpu, storage };
-   
+
                     popupTitle.innerText = title;
                     popupSubtitle.innerHTML = `${price}<br>${ram}GB RAM, ${cpu}% CPU, ${storage}GB Storage`;
                     popup.style.display = 'flex';
-   
+
                     // Add a new button for Discord support
                     const discordSupportBtn = document.createElement('a');
-                    discordSupportBtn.href = '#';
+                    discordSupportBtn.href = 'https://discord.gg/KxXUyPbJgB';
                     discordSupportBtn.className = 'popup-btn';
                     discordSupportBtn.textContent = 'Discord Support';
-                    discordSupportBtn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        popup.style.display = 'none';
-                        openContactDetails();
-                    });
-   
+                    discordSupportBtn.target = '_blank';
+
+                    // Create the billing panel button with a dynamic link
+                    const billingBtn = document.createElement('a');
+                    billingBtn.href = getBillingPanelLink(title);
+                    billingBtn.className = 'popup-btn';
+                    billingBtn.textContent = 'Checkout';
+                    billingBtn.target = '_blank';
+
                     // Replace the existing buttons with new ones
                     const popupButtons = popup.querySelector('.popup-buttons');
                     popupButtons.innerHTML = '';
                     popupButtons.appendChild(discordSupportBtn);
-   
-                    const billingBtn = document.createElement('a');
-                    billingBtn.href = 'https://billing.exphost.net';
-                    billingBtn.className = 'popup-btn';
-                    billingBtn.textContent = 'Billing Panel';
                     popupButtons.appendChild(billingBtn);
                 });
             });
+
+            // Function to get the appropriate billing panel link based on the plan
+            function getBillingPanelLink(planTitle) {
+                switch(planTitle) {
+                    case 'Basic':
+                        return 'https://billing.exphost.net/checkout/config/2';
+                    case 'Standard':
+                        return 'https://billing.exphost.net/checkout/config/6';
+                    case 'Advanced':
+                        return 'https://billing.exphost.net/checkout/config/7';
+                    case 'Premium':
+                        return 'https://billing.exphost.net/checkout/config/8';
+                    case 'Ultimate':
+                        return 'https://billing.exphost.net/checkout/config/10';
+                    default:
+                        return 'https://billing.exphost.net';
+                }
+            }
    
             closeBtn.addEventListener('click', () => {
                 popup.style.display = 'none';
