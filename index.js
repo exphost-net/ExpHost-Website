@@ -21,8 +21,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const contactCloseBtn = contactPopup.querySelector('.close-btn');
     const logo = document.querySelector('.logo');
     const navLinks = document.querySelector('.nav-links');
+    //
     const pingButtonUSC1 = document.getElementById('ping-button-usc1');
     const pingStatusUSC1 = document.getElementById('ping-status-usc1');
+    const pingButtonTBD = document.getElementById('ping-button-tbd');
+    const pingStatusTBD = document.getElementById('ping-status-tbd');
+    //
     const customOrderPopup = document.getElementById('customOrderPopup');
     const customOrderCloseBtn = customOrderPopup.querySelector('.close-btn');
     const choosePlanBtn = document.querySelector('#configurator .btn');
@@ -260,39 +264,45 @@ document.addEventListener('DOMContentLoaded', function () {
             navLinks.classList.remove('active');
         });
     });
+    
+    function pingHTTP(url, element) {
+        function sendPing() {
+            const startTime = performance.now();
+            fetch(url, { method: 'HEAD', mode: 'no-cors' })
+                .then(() => {
+                    const endTime = performance.now();
+                    const pingTime = endTime - startTime;
+                    element.innerHTML = `${pingTime}ms`;
+                    element.style.color = '#4CAF50';
+                })
+                .catch(() => {
+                    element.innerHTML = "Failed to ping.";
+                    element.style.color = '#FF6B6B';
+                });
+        }
+        // Send the initial ping immediately
+        sendPing();
+        // Send additional pings at intervals
+        const interval = setInterval(sendPing, 1000);
+        // Stop sending pings after a certain period of time
+        setTimeout(() => {
+            clearInterval(interval);
+            pingButtonUSC1.disabled = false;
+        }, 1000 * 10);
+    }
 
     pingButtonUSC1.addEventListener('click', function () {
         pingStatusUSC1.textContent = 'Pinging...';
         pingStatusUSC1.style.color = '#fcef5b';
         pingButtonUSC1.disabled = true;
-        function pingHTTP(url, element) {
-            function sendPing() {
-                const startTime = performance.now();
-                fetch(url, { method: 'HEAD', mode: 'no-cors' })
-                    .then(() => {
-                        const endTime = performance.now();
-                        const pingTime = endTime - startTime;
-                        element.innerHTML = `${pingTime}ms`;
-                        element.style.color = '#4CAF50';
-                    })
-                    .catch(() => {
-                        element.innerHTML = "Failed to ping.";
-                        element.style.color = '#FF6B6B';
-                    });
-            }
-            // Send the initial ping immediately
-            sendPing();
-            // Send additional pings at intervals
-            const interval = setInterval(sendPing, 1000);
-            // Stop sending pings after a certain period of time
-            setTimeout(() => {
-                clearInterval(interval);
-                pingButtonUSC1.disabled = false;
-            }, 1000 * 10);
-        }
-        globalThis.doPing = (u) => pingHTTP(u, pingStatusUSC1);
-        // Ping the desired HTTP server
         pingHTTP("node.exphost.net", pingStatusUSC1);
+    });
+
+    pingButtonTBD.addEventListener('click', function () {
+        pingStatusTBD.textContent = 'Pinging...';
+        pingStatusTBD.style.color = '#fcef5b';
+        pingButtonTBD.disabled = true;
+        pingHTTP("cloud.cryogena.net", pingStatusTBD);
     });
 
     choosePlanBtn.addEventListener('click', (e) => {
@@ -388,4 +398,5 @@ document.addEventListener('DOMContentLoaded', function () {
     updateCurrency(currentCurrency);
     calculatePrice();
     pingButtonUSC1.click();
+    pingButtonTBD.click();
 });
