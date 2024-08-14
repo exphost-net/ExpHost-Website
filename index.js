@@ -387,5 +387,5 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initial setup
     updateCurrency(currentCurrency);
     calculatePrice();
-    pingButton.click();
+    pingButtonUSC1.click();
 });
