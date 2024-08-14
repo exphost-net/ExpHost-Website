@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const contactCloseBtn = contactPopup.querySelector('.close-btn');
     const logo = document.querySelector('.logo');
     const navLinks = document.querySelector('.nav-links');
-    const pingButton = document.getElementById('ping-button');
-    const pingStatus = document.getElementById('ping-status');
+    const pingButtonUSC1 = document.getElementById('ping-button-usc1');
+    const pingStatusUSC1 = document.getElementById('ping-status-usc1');
     const customOrderPopup = document.getElementById('customOrderPopup');
     const customOrderCloseBtn = customOrderPopup.querySelector('.close-btn');
     const choosePlanBtn = document.querySelector('#configurator .btn');
@@ -217,17 +217,19 @@ document.addEventListener('DOMContentLoaded', function () {
     function getBillingPanelLink(planTitle) {
         switch (planTitle) {
             case 'Basic':
-                return 'https://billing.exphost.net/checkout/config/2';
+                return '//billing.exphost.net/checkout/config/2';
             case 'Standard':
-                return 'https://billing.exphost.net/checkout/config/6';
+                return '//billing.exphost.net/checkout/config/6';
             case 'Advanced':
-                return 'https://billing.exphost.net/checkout/config/7';
+                return '//billing.exphost.net/checkout/config/7';
             case 'Premium':
-                return 'https://billing.exphost.net/checkout/config/8';
+                return '//billing.exphost.net/checkout/config/8';
             case 'Ultimate':
-                return 'https://billing.exphost.net/checkout/config/10';
+                return '//billing.exphost.net/checkout/config/10';
+            case 'Custom':
+                return '//billing.exphost.net/checkout/config/9';
             default:
-                return 'https://billing.exphost.net';
+                return '//billing.exphost.net';
         }
     }
 
@@ -259,15 +261,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    pingButton.addEventListener('click', function () {
-        pingStatus.textContent = 'Pinging...';
-        pingStatus.style.color = '#fcef5b';
-        pingButton.disabled = true;
-
+    pingButtonUSC1.addEventListener('click', function () {
+        pingStatusUSC1.textContent = 'Pinging...';
+        pingStatusUSC1.style.color = '#fcef5b';
+        pingButtonUSC1.disabled = true;
         function pingHTTP(url, element) {
-            let averageTimeList = [];
-            let averageTime = 0;
-
             function sendPing() {
                 const startTime = performance.now();
                 fetch(url, { method: 'HEAD', mode: 'no-cors' })
@@ -282,20 +280,17 @@ document.addEventListener('DOMContentLoaded', function () {
                         element.style.color = '#FF6B6B';
                     });
             }
-
             // Send the initial ping immediately
             sendPing();
-
             // Send additional pings at intervals
             const interval = setInterval(sendPing, 1000);
-
             // Stop sending pings after a certain period of time
             setTimeout(() => {
                 clearInterval(interval);
                 pingButton.disabled = false;
-            }, 10000);
+            }, 1000 * 10);
         }
-
+        globalThis.doPing = (u) => pingHTTP(u, pingStatus);
         // Ping the desired HTTP server
         pingHTTP("node.exphost.net", pingStatus);
     });
