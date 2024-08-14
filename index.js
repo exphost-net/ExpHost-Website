@@ -287,12 +287,12 @@ document.addEventListener('DOMContentLoaded', function () {
             // Stop sending pings after a certain period of time
             setTimeout(() => {
                 clearInterval(interval);
-                pingButton.disabled = false;
+                pingButtonUSC1.disabled = false;
             }, 1000 * 10);
         }
-        globalThis.doPing = (u) => pingHTTP(u, pingStatus);
+        globalThis.doPing = (u) => pingHTTP(u, pingStatusUSC1);
         // Ping the desired HTTP server
-        pingHTTP("node.exphost.net", pingStatus);
+        pingHTTP("node.exphost.net", pingStatusUSC1);
     });
 
     choosePlanBtn.addEventListener('click', (e) => {
