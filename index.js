@@ -1,6 +1,6 @@
 
 let globalOrderNumber = parseInt(localStorage.getItem('globalOrderNumber')) || 1000;
-   
+
 document.addEventListener('DOMContentLoaded', function () {
     // DOM elements
     const ramSlider = document.getElementById('ram-slider');
@@ -215,7 +215,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to get the appropriate billing panel link based on the plan
     function getBillingPanelLink(planTitle) {
-        switch(planTitle) {
+        switch (planTitle) {
             case 'Basic':
                 return 'https://billing.exphost.net/checkout/config/2';
             case 'Standard':
@@ -259,7 +259,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    pingButton.addEventListener('click', function() {
+    pingButton.addEventListener('click', function () {
         pingStatus.textContent = 'Pinging...';
         pingStatus.style.color = '#fcef5b';
         pingButton.disabled = true;
@@ -269,23 +269,18 @@ document.addEventListener('DOMContentLoaded', function () {
             let averageTime = 0;
 
             function sendPing() {
-            const startTime = performance.now();
-            fetch(url, { method: 'HEAD', mode: 'no-cors' })
-                .then(() => {
-                const endTime = performance.now();
-                const pingTime = endTime - startTime;
-                averageTimeList.push(pingTime);
-                if (averageTimeList.length > 5) {
-                    averageTimeList.shift();
-                }
-                averageTime = Math.round(averageTimeList.reduce((p, c) => p + c) / averageTimeList.length);
-                element.innerHTML = `${averageTime}ms`;
-                element.style.color = '#4CAF50';
-                })
-                .catch(() => {
-                element.innerHTML = "Failed to ping.";
-                element.style.color = '#FF6B6B';
-                });
+                const startTime = performance.now();
+                fetch(url, { method: 'HEAD', mode: 'no-cors' })
+                    .then(() => {
+                        const endTime = performance.now();
+                        const pingTime = endTime - startTime;
+                        element.innerHTML = `${pingTime}ms`;
+                        element.style.color = '#4CAF50';
+                    })
+                    .catch(() => {
+                        element.innerHTML = "Failed to ping.";
+                        element.style.color = '#FF6B6B';
+                    });
             }
 
             // Send the initial ping immediately
@@ -296,14 +291,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Stop sending pings after a certain period of time
             setTimeout(() => {
-            clearInterval(interval);
-            pingButton.disabled = false;
+                clearInterval(interval);
+                pingButton.disabled = false;
             }, 10000);
         }
 
         // Ping the desired HTTP server
         pingHTTP("node.exphost.net", pingStatus);
-        });
+    });
 
     choosePlanBtn.addEventListener('click', (e) => {
         e.preventDefault();
