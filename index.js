@@ -264,14 +264,14 @@ document.addEventListener('DOMContentLoaded', function () {
             navLinks.classList.remove('active');
         });
     });
-    
+
     function pingHTTP(url, element) {
         function sendPing() {
             const startTime = performance.now();
             fetch(url, { method: 'HEAD', mode: 'no-cors' })
                 .then(() => {
                     const endTime = performance.now();
-                    const pingTime = endTime - startTime;
+                    const pingTime = Math.round(endTime - startTime);
                     element.innerHTML = `${pingTime}ms`;
                     element.style.color = '#4CAF50';
                 })
