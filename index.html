@@ -18,14 +18,32 @@
                     <img src="/images/logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">
                     <span>Exp Host</span>
                 </div>
+                <button class="menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>                
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#pricing">Pricing</a></li>
                     <li><a href="legal.html">Legal</a></li>
                     <li><a href="//panel.exphost.net">Panel</a></li>
                     <li><a href="//billing.exphost.net">Billing</a></li>
-                    <li><button id="contact-button" class="btn">Contact</button>
-                    <li><button id="currency-toggle" class="btn">USD</button></li>
+                    <button id="contact-button" class="btn">Contact</button>                        <div id="currency-dropdown" class="dropdown">
+                            <button class="dropdown-toggle btn">$ USD</button>
+                            <ul class="dropdown-menu">
+                                <li data-currency="USD">$ USD</li>
+                                <li data-currency="GBP">£ GBP</li>
+                                <li data-currency="JPY">¥ JPY</li>
+                                <li data-currency="EUR">€ EUR</li>
+                                <li data-currency="CAD">$ CAD</li>
+                                <li data-currency="MXN">$ MXN</li>
+                                <li data-currency="NZD">$ NZD</li>
+                                <li data-currency="CHF">₣ CHF</li>
+                                <li data-currency="AUD">$ AUD</li>
+                            </ul>
+                        </div>
+                        
                 </ul>
             </nav>
         </div>
@@ -47,7 +65,7 @@
                 <div class="feature-card">
                     <i class="fas fa-server"></i>
                     <h3>High-Performance Servers</h3>
-                    <p>Powered by the latest AMD RYZEN processors</p>
+                    <p>Powered by powerful AMD RYZEN and INTEL processors depending on tier</p>
                 </div>
                 <div class="feature-card">
                     <i class="fas fa-shield-alt"></i>
@@ -174,9 +192,13 @@
     <section class="screenshots">
         <div class="container">
             <h2>Game Panel Screenshots</h2>
-            <div>
+            <div class="image-item">
                 <img src="/images/panel1.png" alt="Screenshot 1">
+            </div>
+            <div class="image-item">
                 <img src="/images/panel2.png" alt="Screenshot 2">
+            <div>
+            <div class="image-item">
                 <img src="/images/panel3.png" alt="Screenshot 3">
             </div>
         </div>
@@ -218,25 +240,49 @@
         </div>
     </section>
     
-    <section id="ping" class="ping">
+    <section id="locations" class="locations">
         <div class="container">
-            <h2>Ping</h2>
-            <div class="ping-container">
-                <div class="ping-item">
-                    <span>NA Central 1:</span>
-                    <span id="ping-status-usc1">Checking...</span>
-                    <button id="ping-button-usc1" class="btn">Retry?</button>
+            <h2>Our Locations</h2>
+            <div class="map-container">
+                <img src="/images/map.svg" alt="World Map" class="map">
+                
+
+                <div class="location-container" style="top: 39%; left: 15%;">
+                    <div class="location-point"></div>
+                    <div class="location-info">
+                        <h3>Salt Lake City</h3>
+                        <h4>[Utah]</h4>
+                        <p>Available Plans: <strong>Standard</strong></p>
+                        <a href="#pricing" class="btn shop-now">Shop Now</a>
+                    </div>
                 </div>
-            </div>
-            <div class="ping-container">
-                <div class="ping-item">
-                    <span>TBD:</span>
-                    <span id="ping-status-tbd">Checking...</span>
-                    <button id="ping-button-tbd" class="btn">Retry?</button>
+    
+
+                <div class="location-point" style="top: 35%; left: 52.2%;" data-location="Frankfurt, Germany">
+                    <div class="location-info out-of-stock">
+                        <h3>Frankfurt</h3>
+                        <p>-SoonTM</p>
+                    </div>
+                </div>
+    
+
+                <div class="location-point" style="top: 32%; left: 47%;" data-location="London, UK">
+                    <div class="location-info out-of-stock">
+                        <h3>London</h3>
+                        <p>-Panel</p>
+                        <p>-Backups</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+    
+    
+
+    <div class="fullscreen-overlay">
+        <img src="" alt="Fullscreen Image" class="fullscreen-image">
+        <div class="close-button">&times;</div>
+    </div>
 
     <footer>
         <div class="u-container-layout u-valign-top-lg u-valign-top-md u-valign-top-sm u-container-layout-2">
@@ -255,7 +301,7 @@
             <p>&copy; 2024 Exp Host. All rights reserved.</p>
         </div>
     </footer>
-    <!-- Add this inside the body tag, after your existing content -->
+
     <div id="orderPopup" class="popup">
         <div class="popup-content">
             <span class="close-btn">×</span>
@@ -310,6 +356,22 @@
     </div>
 
     <script src="/index.js?v=3"></script>
+    </script>
+    <style>
+        @media (max-width: 768px) {
+        .nav-links { display: none; }
+        .menu-icon { display: block !important; }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        const menuIcon = document.querySelector('.menu-icon');
+        const navLinks = document.querySelector('.nav-links');
+        menuIcon.addEventListener('click', function() {
+            navLinks.style.display = navLinks.style.display === 'block' ? 'none' : 'block';
+        });
+        });
+    </script>
 </body>
 
 </html>
