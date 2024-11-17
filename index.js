@@ -237,3 +237,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.querySelector('.carousel-track');
+    const prevButton = document.querySelector('.carousel-prev');
+    const nextButton = document.querySelector('.carousel-next');
+    const cards = document.querySelectorAll('.review-card');
+
+    let currentIndex = 0;
+
+    const updateCarousel = () => {
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    };
+
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < cards.length - 1) {
+            currentIndex++;
+            updateCarousel();
+        }
+    });
+
+    prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    });
+
+    window.addEventListener('resize', updateCarousel);
+});
+
