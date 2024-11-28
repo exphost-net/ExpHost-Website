@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let exchangeRates = {};
 
     // Fetch exchange rates including the new currencies
-    const fetchExchangeRates = async () => {
+    const fetchexchangeRates = async () => {
         try {
             const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
             const data = await response.json();
@@ -135,15 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
         popup.style.display = 'none';
     });
 
-    contactButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        contactPopup.style.display = 'flex';
-    });
-
-    contactCloseBtn.addEventListener('click', () => {
-        contactPopup.style.display = 'none';
-    });
-
     choosePlanBtn.addEventListener('click', (e) => {
         e.preventDefault();
         customOrderPopup.style.display = 'flex';
@@ -164,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     // Initial setup
-    fetchExchangeRates();
+    fetchexchangeRates();
     calculatePrice();
 });
 const imageItems = document.querySelectorAll('.image-item');
@@ -272,60 +263,8 @@ const updateAllPlanPrices = () => {
     loadPlans(activeTier);
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-    const tierButtons = document.querySelectorAll('.tier-button');
-    const pricingContainer = document.getElementById('pricing-container');
-    const plansData = {
-        basic: [
-            { name: "Base", priceUSD: 1.80, ram: "2GB", cpu: "150%", storage: "25GB", link: "//billing.exphost.net/checkout/config/13", available: true },
-            { name: "Spark", priceUSD: 3.60, ram: "4GB", cpu: "150%", storage: "25GB", link: "//billing.exphost.net/checkout/config/14", available: true },
-            { name: "Launch", priceUSD: 7.20, ram: "8GB", cpu: "150%", storage: "25GB", link: "//billing.exphost.net/checkout/config/15", available: true }
-        ],
-        standard: [
-            { name: "Basic", priceUSD: 2.50, ram: "2GB", cpu: "150%", storage: "25GB", link: "//billing.exphost.net/checkout/config/2", available: true },
-            { name: "Standard", priceUSD: 6.00, ram: "4GB", cpu: "150%", storage: "50GB", link: "//billing.exphost.net/checkout/config/6", available: true },
-            { name: "Advanced", priceUSD: 17.00, ram: "8GB", cpu: "250%", storage: "75GB", link: "//billing.exphost.net/checkout/config/7", available: true },
-            { name: "Premium", priceUSD: 28.00, ram: "12GB", cpu: "500%", storage: "150GB", link: "//billing.exphost.net/checkout/config/8", available: true },
-            { name: "Ultimate", priceUSD: 35.00, ram: "16GB", cpu: "500%", storage: "150GB", link: "//billing.exphost.net/checkout/config/10", available: true },
-        ],
-        pro: [
-            { name: "Boost", priceUSD: 4.00, ram: "2GB", cpu: "150%", storage: "25GB", link: "#", available: false },
-            { name: "Orbit", priceUSD: 9.00, ram: "4GB", cpu: "150%", storage: "50GB", link: "#", available: false },
-            { name: "Nova", priceUSD: 23.00, ram: "8GB", cpu: "250%", storage: "75GB", link: "#", available: false }
-        ]
-    };
 
-    function loadPlans(tier) {
-        
-        pricingContainer.innerHTML = ""; // Clear current plans
-        plansData[tier].forEach(plan => {
-            const cardHTML = `
-                <div class="pricing-card">
-                    <h3>${plan.name}</h3>
-                    <div class="price" data-usd-price="${plan.priceUSD.toFixed(2)}">$${plan.priceUSD.toFixed(2)}/mo</div>
-                    <ul>
-                        <li>${plan.ram} RAM</li>
-                        <li>${plan.cpu} CPU</li>
-                        <li>${plan.storage} Storage</li>
-                    </ul>
-                    ${plan.available ? `<a href="${plan.link}" class="btn">Order Now</a>` : `<button class="btn-out-of-stock" disabled>Out Of Stock</button>`}
-                </div>
-            `;
-            pricingContainer.innerHTML += cardHTML;
-        });
-    }
 
-    tierButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            tierButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            loadPlans(button.dataset.tier);
-        });
-    });
-
-    // Load standard tier by default
-    loadPlans('standard');
-});
 function toggleAnswer(id) {
     const answer = document.getElementById(id);
     const allAnswers = document.querySelectorAll('.faq-answer');
