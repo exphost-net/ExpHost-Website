@@ -1,7 +1,7 @@
 :root {
     --primary-color: #6C63FF;
     --secondary-color: #ce42f5;
-    --background-color: #0F0F1A;
+    --background-color: #0f0f1a;
     --text-color: #FFFFFF;
     --accent-color: #FF6B6B;
 }
@@ -41,7 +41,7 @@ body {
 }
 
 header {
-    background-color: rgba(15, 15, 26, 0.8);
+    background-color: #0f0f1acc;
     backdrop-filter: blur(10px);
     position: fixed;
     width: 100%;
@@ -500,6 +500,7 @@ footer .social-icons a:hover {
     cursor: pointer;
     font-weight: 600;
     transition: background-color 0.3s ease;
+    
 }
 
 #currency-toggle:hover {
@@ -553,9 +554,8 @@ footer .social-icons a:hover {
 }
 
 .faq-answer {
-    padding: 0 15px;
-    max-height: 300px;
-    padding: 15px;
+    max-height: 0px;
+    padding: 0px;
     overflow: hidden;
     transition: max-height 0.3s ease, 0.3s ease;
     font-size: clamp(0.9rem, 2.5vw, 1rem);
@@ -566,7 +566,7 @@ footer .social-icons a:hover {
     padding: 15px;
 }
 html {
-  scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 
 .menu-icon {
@@ -581,6 +581,7 @@ html {
     padding: 0;
     z-index: 1000;
 }
+
 .menu-icon span {
     display: block;
     width: 100%;
@@ -598,6 +599,9 @@ html {
     .nav-links {
         display: none;
         flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: auto;
         position: absolute;
         top: 60px;
         left: 0;
@@ -615,7 +619,7 @@ html {
     }
 
     .nav-links li {
-        margin: 10px 0;
+        margin: 10px auto;
     }
 
     .hamburger {
@@ -681,7 +685,7 @@ html {
     .logo img {
         width: 40px;
     }
-   
+
 }
 .ping {
     background-color: rgba(255, 255, 255, 0.05);
@@ -726,7 +730,7 @@ html {
     cursor: pointer;
     font-weight: 600;
     transition: var(--primary-color) 0.3s ease;
- 
+
 }
 #contact-button:hover {
     background-color: var(--primary-color);
@@ -770,7 +774,7 @@ html {
 #currency-dropdown {
     position: relative;
     display: inline-block;
-    margin-left: auto;
+    margin-left: 10px;
     margin-right: auto;
     max-width: fit-content;
 }
@@ -784,25 +788,29 @@ html {
     list-style: none;
     padding: 0;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: 0px;
     max-width: fit-content;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.295);
-    z-index: 1000;
+    z-index: 10;
     min-width: 100px;
     padding-bottom: 4px;
+    left: -40%;
 }
 
 
 #currency-dropdown .dropdown-menu li {
     display: block;
+    width: 5rem;
     padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--text-color);
     cursor: pointer;
     transition: background-color 0.3s;
     border-radius: 5px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 2px;
+    margin-right: 2px;
 
 }
 
@@ -816,7 +824,9 @@ html {
 
 
 #currency-dropdown:hover .dropdown-menu {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(2, 3fr);
+    margin-right: 8rem;
 }
 
 #currency-dropdown .dropdown-toggle {
@@ -1005,12 +1015,13 @@ html {
 }
 
 .location-point {
-    width: 20px;
-    height: 20px;
-    background-color: var(--primary-color);
+    width: 9px;
+    height: 9px;
+    background-color: #fff;
     border-radius: 50%;
     cursor: pointer;
     transition: transform 0.3s ease;
+    outline: 5px solid var(--primary-color);
 }
 
 .location-container:hover .location-point {
@@ -1141,4 +1152,65 @@ html {
 
 .trustpilot-btn:hover {
     background-color: var(--secondary-color);
+}
+@media screen and (max-width: 768px) {
+    #currency-dropdown {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #currency-dropdown .dropdown-menu {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: auto;
+    }
+}
+
+.tier-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.tier-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.tier-button.active {
+    background-color: var(--secondary-color);
+}
+
+.tier-button:hover {
+    background-color: #9642f5;
+}
+
+.btn-out-of-stock {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--text-color);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    background-color: #808080;
+    cursor: not-allowed;
 }

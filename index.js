@@ -267,3 +267,86 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', updateCarousel);
 });
 
+const updateAllPlanPrices = () => {
+    const activeTier = document.querySelector(".tier-button.active").dataset.tier;
+    loadPlans(activeTier);
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    const tierButtons = document.querySelectorAll('.tier-button');
+    const pricingContainer = document.getElementById('pricing-container');
+    const plansData = {
+        basic: [
+            { name: "Base", priceUSD: 1.80, ram: "2GB", cpu: "150%", storage: "25GB", link: "//billing.exphost.net/checkout/config/13", available: true },
+            { name: "Spark", priceUSD: 3.60, ram: "4GB", cpu: "150%", storage: "25GB", link: "//billing.exphost.net/checkout/config/14", available: true },
+            { name: "Launch", priceUSD: 7.20, ram: "8GB", cpu: "150%", storage: "25GB", link: "//billing.exphost.net/checkout/config/15", available: true }
+        ],
+        standard: [
+            { name: "Basic", priceUSD: 2.50, ram: "2GB", cpu: "150%", storage: "25GB", link: "//billing.exphost.net/checkout/config/2", available: true },
+            { name: "Standard", priceUSD: 6.00, ram: "4GB", cpu: "150%", storage: "50GB", link: "//billing.exphost.net/checkout/config/6", available: true },
+            { name: "Advanced", priceUSD: 17.00, ram: "8GB", cpu: "250%", storage: "75GB", link: "//billing.exphost.net/checkout/config/7", available: true },
+            { name: "Premium", priceUSD: 28.00, ram: "12GB", cpu: "500%", storage: "150GB", link: "//billing.exphost.net/checkout/config/8", available: true },
+            { name: "Ultimate", priceUSD: 35.00, ram: "16GB", cpu: "500%", storage: "150GB", link: "//billing.exphost.net/checkout/config/10", available: true },
+        ],
+        pro: [
+            { name: "Boost", priceUSD: 4.00, ram: "2GB", cpu: "150%", storage: "25GB", link: "#", available: false },
+            { name: "Orbit", priceUSD: 9.00, ram: "4GB", cpu: "150%", storage: "50GB", link: "#", available: false },
+            { name: "Nova", priceUSD: 23.00, ram: "8GB", cpu: "250%", storage: "75GB", link: "#", available: false }
+        ]
+    };
+
+    function loadPlans(tier) {
+        
+        pricingContainer.innerHTML = ""; // Clear current plans
+        plansData[tier].forEach(plan => {
+            const cardHTML = `
+                <div class="pricing-card">
+                    <h3>${plan.name}</h3>
+                    <div class="price" data-usd-price="${plan.priceUSD.toFixed(2)}">$${plan.priceUSD.toFixed(2)}/mo</div>
+                    <ul>
+                        <li>${plan.ram} RAM</li>
+                        <li>${plan.cpu} CPU</li>
+                        <li>${plan.storage} Storage</li>
+                    </ul>
+                    ${plan.available ? `<a href="${plan.link}" class="btn">Order Now</a>` : `<button class="btn-out-of-stock" disabled>Out Of Stock</button>`}
+                </div>
+            `;
+            pricingContainer.innerHTML += cardHTML;
+        });
+    }
+
+    tierButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tierButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            loadPlans(button.dataset.tier);
+        });
+    });
+
+    // Load standard tier by default
+    loadPlans('standard');
+});
+function toggleAnswer(id) {
+    const answer = document.getElementById(id);
+    const allAnswers = document.querySelectorAll('.faq-answer');
+
+    allAnswers.forEach(item => {
+        if (item !== answer && item.classList.contains('active')) {
+            item.classList.remove('active');
+        }
+    });
+
+    answer.classList.toggle('active');
+}
+const faqItems = document.querySelectorAll('.faq-item');
+faqItems.forEach(item => {
+    const question = item.querySelector('h3');
+    question.addEventListener('click', () => {
+        item.querySelector('.faq-answer').classList.toggle('active');
+        faqItems.forEach(otherItem => {
+            if (otherItem !== item) {
+                otherItem.querySelector('.faq-answer').classList.remove('active');
+            }
+        });
+    });
+});

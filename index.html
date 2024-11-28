@@ -7,1154 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="//fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #6C63FF;
-            --secondary-color: #ce42f5;
-            --background-color: #0F0F1A;
-            --text-color: #FFFFFF;
-            --accent-color: #FF6B6B;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        ::-webkit-scrollbar {
-            width: 12px;
-            background-color: #1c1c1c;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background-color: var(--primary-color);
-            border-radius: 10px;
-            border: 2px solid #1c1c1c;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background-color: var(--secondary-color);
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--background-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background-color: rgba(15, 15, 26, 0.8);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            padding: 10px 0;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo img {
-            width: 50px;
-            height: auto;
-        }
-
-        .logo span {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            
-        }
-
-        .nav-links li {
-            margin-left: 30px;
-            margin-top: 4px;
-        }
-
-        .nav-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-            
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .hero {
-            height: 800px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: url('/images/image.png') no-repeat center top;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease 0.2s;
-            animation-fill-mode: both;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            text-decoration: none;
-            border-radius: 5px;
-            margin-left: 10px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .btn:hover {
-            background-color: #c231eb;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px #c231eb;
-        }
-
-        .features {
-            padding: 100px 0;
-        }
-
-        .features h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .feature-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.1);
-        }
-
-        .feature-card i {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .pricing {
-            padding: 100px 0;
-            padding-top: 50px;
-            border-radius: 10px;
-            background-color: rgba(255, 255, 255, 0.02);
-            }
-
-        .pricing h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-        }
-
-        .pricing-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .pricing-card {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 40px;
-            text-align: center;
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.1);
-        }
-
-        .pricing-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .pricing-card .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .pricing-card ul {
-            list-style: none;
-            margin-bottom: 30px;
-            flex-grow: 1;
-        }
-
-        .pricing-card ul li {
-            margin-bottom: 10px;
-        }
-
-        .pricing-card .btn {
-            margin-top: auto;
-        }
-
-        .custom-card {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .custom-card h3 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .custom-card p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
-
-        .custom-card .btn {
-            margin: 10px 0;
-        }
-
-        @media screen and (max-width: 1024px) {
-            .pricing-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .pricing-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        #configurator {
-            background-color: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            padding: 40px;
-            margin-top: 50px;
-            margin-left: 50px;
-            margin-right: 50px;
-            text-align: center;
-        }
-
-        #configurator h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-        }
-
-        .slider-container {
-            margin-bottom: 30px;
-            
-        }
-
-        .slider {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 10px;
-            border-radius: 5px;
-            background: #2c2c2c;
-            outline: none;
-            opacity: 0.7;
-            transition: opacity 0.2s;
-        }
-
-        .slider:hover {
-            opacity: 1;
-        }
-
-        .slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            cursor: pointer;
-        }
-
-        .slider::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            cursor: pointer;
-        }
-
-        #total-price {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-        }
-
-        .cpu-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .cpu-button {
-            width: 150px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            border: none;
-            border-radius: 10px;
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .cpu-button:hover, .cpu-button.active {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-
-        .screenshots {
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .screenshots img {
-            width: 100%;
-            max-width: 550px;
-            margin: 0 10px;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-        }
-
-        .screenshots img:hover {
-            transform: scale(1.05);
-        }
-
-        footer {
-            padding-top: 50px;
-            background-color: rgba(15, 15, 26, 0.8);
-            text-align: center;
-        }
-
-        footer p {
-            margin: 10px 0;
-        }
-
-        footer .social-icons {
-            margin-top: 60px;
-        }
-
-        footer .social-icons a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-
-        footer .social-icons a:hover {
-            color: var(--primary-color);
-        }
-
-        .social-links {
-            margin-bottom: 20px;
-        }
-
-        .social-links a {
-            color: var(--text-color);
-            font-size: 1.5rem;
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .popup {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .popup-content {
-            background-color: var(--background-color);
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-            text-align: center;
-            position: relative;
-        }
-
-        .popup-content h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-        }
-
-        .popup-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        .popup-buttons {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .popup-btn {
-            padding: 10px;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            font-weight: 600;
-        }
-
-        .popup-btn:hover {
-            background-color: #5753d9;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--text-color);
-        }
-        #currency-toggle {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-        }
-
-        #currency-toggle:hover {
-            background-color: #c231eb;
-        }
-        .faq {
-            background-color: rgba(255, 255, 255, 0);
-            padding: 60px 20px;
-        }
-
-        .faq h2 {
-            text-align: center;
-            font-size: clamp(1.8rem, 5vw, 2.5rem);
-            margin-bottom: 30px;
-            color: var(--text-color);
-        }
-
-        .faq-grid {
-            display: grid;
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-            width: 100%;
-            grid-template-columns: 1fr;
-        }
-
-        .faq-item {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .faq-item:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .faq-item h3 {
-            padding: 15px;
-            margin: 0;
-            cursor: pointer;
-            font-size: clamp(1rem, 3vw, 1.2rem);
-            color: var(--primary-color);
-            background-color: rgba(255, 255, 255, 0.05);
-            transition: background-color 0.3s ease;
-        }
-
-        .faq-item h3:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .faq-answer {
-            max-height: 300px;
-            padding: 15px;
-            overflow: hidden;
-            transition: max-height 0.3s ease, 0.3s ease;
-            font-size: clamp(0.9rem, 2.5vw, 1rem);
-        }
-
-        .faq-answer.active {
-            max-height: 300px;
-            padding: 15px;
-        }
-        html {
-        scroll-behavior: smooth;
-        }
-
-        .menu-icon {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 30px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1000;
-        }
-        .menu-icon span {
-            display: block;
-            width: 100%;
-            height: 4px;
-            margin: 2px;
-            background-color: var(--text-color);
-            border-radius: 5px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        @media screen and (max-width: 768px) {
-            .menu-icon {
-                display: flex;
-            }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                margin-left: auto;
-                margin-right: auto;
-                max-width: auto;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                background-color: rgba(15, 15, 26, 0.95);
-                padding: 20px 0;
-            }
-            #configurator {
-                margin-left: 0;
-                margin-right: 0;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                margin: 10px auto;
-            }
-
-            .hamburger {
-                display: block;
-                cursor: pointer;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .feature-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .pricing-container {
-                flex-direction: column;
-            }
-
-            .pricing-card {
-                width: 100%;
-                margin-bottom: 20px;
-            }
-
-            .screenshots img {
-                max-width: 100%;
-                margin: 10px 0;
-            }
-        }
-
-                .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger div {
-            width: 25px;
-            height: 3px;
-            background-color: var(--text-color);
-            margin: 3px 0;
-            transition: 0.4s;
-        }
-
-        @media screen and (max-width: 768px) {
-            header {
-                padding: 10px 0;
-            }
-
-            nav {
-                justify-content: space-between;
-                padding: 0 15px;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .logo img {
-                width: 40px;
-            }
-        
-        }
-        .ping {
-            background-color: rgba(255, 255, 255, 0.05);
-            padding: 60px 0;
-            text-align: center;
-        }
-
-        .ping h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-        }
-
-        .ping-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .ping-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            font-size: 1.2rem;
-        }
-
-        #ping-status {
-            font-weight: bold;
-        }
-
-        #ping-button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            border: 2px solid var(--secondary-color)
-        }
-
-        #contact-button {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--primary-color) 0.3s ease;
-        
-        }
-        #contact-button:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px var(--primary-color);
-        }
-
-        #contactPopup .popup-content {
-            max-width: 300px;
-        }
-
-        #contactPopup h2 {
-            margin-bottom: 20px;
-        }
-        #userDetailsForm input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid var(--primary-color);
-            border-radius: 5px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--text-color);
-        }
-
-        #userDetailsForm button {
-            width: 100%;
-            padding: 10px;
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        #userDetailsForm button:hover {
-            background-color: var(--secondary-color);
-        }
-
-
-        #currency-dropdown {
-            position: relative;
-            display: inline-block;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: fit-content;
-        }
-
-
-        #currency-dropdown .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: var(--background-color);
-            border-radius: 5px;
-            list-style: none;
-            padding: 0;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: fit-content;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.295);
-            z-index: 1000;
-            min-width: 100px;
-            padding-bottom: 4px;
-        }
-
-
-        #currency-dropdown .dropdown-menu li {
-            display: block;
-            padding: 10px;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--text-color);
-            cursor: pointer;
-            transition: background-color 0.3s;
-            border-radius: 5px;
-            margin-left: auto;
-            margin-right: auto;
-
-        }
-
-
-        #currency-dropdown .dropdown-menu li:hover {
-            background-color: var(--primary-color);
-            color: white;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-
-        #currency-dropdown:hover .dropdown-menu {
-            display: block;
-        }
-
-        #currency-dropdown .dropdown-toggle {
-            background-color: var(--secondary-color);
-            color: var(--text-color);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            margin-left: 10px;
-        }
-        .fullscreen-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .fullscreen-image {
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .close-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            color: #fff;
-            font-size: 30px;
-            cursor: pointer;
-        }
-
-        .locations {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .locations h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: var(--primary-color);
-        }
-
-        .map-container {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .map {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .location-point {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #d6d4ff;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .location-point:hover {
-            transform: scale(1.2);
-            background-color: #3c32ff;
-        }
-
-        .location-point a {
-            display: block;
-            width: 100%;
-            height: 100%;
-        }
-        .tooltip {
-            position: absolute;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            pointer-events: none;
-            z-index: 3000;
-            white-space: nowrap;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        .locations {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .locations h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: var(--primary-color);
-        }
-
-        .map-container {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-            max-width: 800px;
-        }
-
-        .map {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        .location-point {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #ccc;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .location-point:hover {
-            transform: scale(1.2);
-            background-color: #96a5ff;
-        }
-
-        .location-info {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translate(-50%, 10px);
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            width: 150px;
-            display: none;
-            z-index: 1000;
-        }
-
-        .location-point:hover .location-info {
-            display: block;
-        }
-
-        .shop-now {
-            display: flex;
-            margin-top: 10px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 5px 10px;
-            background-color: var(--secondary-color);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.9rem;
-        }
-
-        .shop-now:hover {
-            background-color: var(--primary-color);
-        }
-
-        .location-info.out-of-stock {
-            background: rgba(128, 128, 128, 0.8); /* Gray background for out-of-stock */
-            color: #ccc;
-        }
-
-        .location-info.out-of-stock p {
-            margin: 0;
-            font-weight: bold;
-        }
-
-        .location-container {
-            position: absolute;
-            /* These positions should match each location */
-        }
-
-        .location-point {
-            width: 20px;
-            height: 20px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .location-container:hover .location-point {
-            transform: scale(1.2);
-        }
-
-        .location-info {
-            position: absolute;
-            top: 100%; /* Below the location point */
-            left: 50%;
-            transform: translate(-50%, 10px);
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            text-align: center;
-            width: 150px;
-            display: none; /* Hidden by default */
-            z-index: 1000;
-        }
-
-        .location-container:hover .location-info {
-            display: block;
-        }
-
-        .shop-now {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 5px 10px;
-            background-color: var(--secondary-color);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 0.9rem;
-        }
-
-        .shop-now:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .location-info.out-of-stock {
-            background: rgba(128, 128, 128, 0.8); 
-            color: #ccc; 
-        }
-
-        .location-info.out-of-stock p {
-            margin: 0;
-            font-weight: bold;
-        }
-
-
-        .reviews-section {
-            padding: 60px 20px;
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .reviews-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            color: var(--primary-color);
-        }
-
-        .carousel {
-            position: relative;
-            overflow: hidden;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .review-card {
-            flex: 0 0 100%;
-            padding: 20px;
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.158);
-            color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .review-card p {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .review-card h4 {
-            font-size: 1rem;
-            font-weight: bold;
-        }
-
-        .carousel-controls {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .carousel-controls button {
-            background-color: var(--primary-color);
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .carousel-controls button:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .trustpilot-btn {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 10px 20px;
-            background-color: var(--secondary-color);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .trustpilot-btn:hover {
-            background-color: var(--secondary-color);
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
@@ -1165,37 +18,35 @@
                     <img src="/images/logo.png" alt="Exp Host Logo" style="width: 50px; height: auto;">
                     <span>Exp Host</span>
                 </div>
-                <button class="menu-icon">
+                <div class="menu-icon">
                     <span></span>
                     <span></span>
                     <span></span>
-                </button>                
-                <ul class="nav-links">
+                </div>                
+                <ul class="nav-links"> <!-- Use <ul> instead of nested <nav> -->
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#pricing">Pricing</a></li>
                     <li><a href="legal.html">Legal</a></li>
                     <li><a href="//panel.exphost.net">Panel</a></li>
                     <li><a href="//billing.exphost.net">Billing</a></li>
-                    <div id="currency-dropdown" class="dropdown">
-                            <button class="dropdown-toggle btn">$ USD</button>
-                            <ul class="dropdown-menu">
-                                <li data-currency="USD">$ USD</li>
-                                <li data-currency="GBP">£ GBP</li>
-                                <li data-currency="JPY">¥ JPY</li>
-                                <li data-currency="EUR">€ EUR</li>
-                                <li data-currency="CAD">$ CAD</li>
-                                <li data-currency="MXN">$ MXN</li>
-                                <li data-currency="NZD">$ NZD</li>
-                                <li data-currency="CHF">₣ CHF</li>
-                                <li data-currency="AUD">$ AUD</li>
-                            </ul>
-                        </div>
-                    <button id="contact-button" class="btn">Contact</button> 
-                        
+                    <li class="dropdown" id="currency-dropdown">
+                        <button class="dropdown-toggle btn">$ USD</button>
+                        <ul class="dropdown-menu">
+                            <li data-currency="USD">$ USD</li>
+                            <li data-currency="GBP">£ GBP</li>
+                            <li data-currency="JPY">¥ JPY</li>
+                            <li data-currency="EUR">€ EUR</li>
+                            <li data-currency="CAD">$ CAD</li>
+                            <li data-currency="MXN">$ MXN</li>
+                            <li data-currency="NZD">$ NZD</li>
+                            <li data-currency="AUD">$ AUD</li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>
     </header>
+    
 
     <section id="home" class="hero">
         <div class="hero-content">
@@ -1228,83 +79,125 @@
                 <div class="feature-card">
                     <i class="fas fa-tachometer-alt"></i>
                     <h3>Premium Specs</h3>
-                    <p>Ryzen 7 5700G</p>
-                    </p>DDR4 RAM - $1.25 per GB</p>
-                    </p>50GB Storage FREE</p>
-                    </p>FREE DDoS Protection</p>
+                    <p>Basic: Intel Core i7-7700K</p>
+                    <p>Standard: Ryzen 7 5700G</p>
+                    <p>Pro: To be Announced</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="pricing" class="pricing">
-        <h2>Choose your Minecraft Hosting Plan!</h2>
-        <div class="pricing-container">
+    <section id="locations" class="locations">
+        <div class="container">
+            <h2>Our Locations</h2>
+            <div class="map-container">
+                <img src="/images/map.svg" alt="World Map" class="map">
+                
 
-            <div class="pricing-card">
-                <h3>Basic</h3>
-                <div class="price" data-usd-price="2.50">$2.50/mo</div>
-                <ul>
-                    <li>2GB RAM</li>
-                    <li>150% CPU</li>
-                    <li>25GB Storage</li>
-                    <li>Unmetered Bandwidth</li>
-                </ul>
-                <a href="#" class="btn customize-btn" data-title="Basic" data-price="$2.50/mo" data-ram="2"
-                    data-cpu="150" data-storage="25">Choose Plan</a>
-            </div>
+                <div class="location-container" style="top: 42%; left: 15%;">
+                    <div class="location-point"></div>
+                    <div class="location-info">
+                        <h3>Salt Lake City</h3>
+                        <h4>[Utah]</h4>
+                        <p>Available Plans: <strong>Standard</strong></p>
+                        <a href="#pricing" class="btn shop-now">Shop Now</a>
+                    </div>
+                </div>
+    
 
-            <div class="pricing-card">
-                <h3>Standard</h3>
-                <div class="price" data-usd-price="6.00">$6.00/mo</div>
-                <ul>
-                    <li>4GB RAM</li>
-                    <li>150% CPU</li>
-                    <li>50GB Storage</li>
-                    <li>Unmetered Bandwidth</li>
-                </ul>
-                <a href="#" class="btn customize-btn" data-title="Standard" data-price="$6.00/mo" data-ram="4"
-                    data-cpu="150" data-storage="50">Choose Plan</a>
-            </div>
+                <div class="location-container" style="top: 37%; left: 50.5%;" data-location="Frankfurt, Germany">
+                    <div class="location-point"></div>
+                    <div class="location-info">
+                        <h3>Gravelines</h3>
+                        <h4>[France]</h4>
+                        <p>Available Plans: <strong>Basic</strong></p>
+                        <a href="#pricing" class="btn shop-now">Shop Now</a>
+                    </div>
+                </div>
+    
 
-            <div class="pricing-card">
-                <h3>Advanced</h3>
-                <div class="price" data-usd-price="17.00">$17.00/mo</div>
-                <ul>
-                    <li>8GB RAM</li>
-                    <li>250% CPU</li>
-                    <li>75GB Storage</li>
-                    <li>Unmetered Bandwidth</li>
-                </ul>
-                <a href="#" class="btn customize-btn" data-title="Advanced" data-price="$17.00/mo" data-ram="8"
-                    data-cpu="250" data-storage="75">Choose Plan</a>
+                <div class="location-point" style="top: 34%; left: 48%;" data-location="London, UK">
+                    <div class="location-info out-of-stock">
+                        <h3>London</h3>
+                        <p>-Panel</p>
+                        <p>-Backups</p>
+                    </div>
+                </div>
             </div>
+        </div>
+    </div>
+    <a href="https://status.exphost.net" target="_blank" class="btn trustpilot-btn">Check the Status</a>
+</div>
+    </section>
 
-            <div class="pricing-card">
-                <h3>Premium</h3>
-                <div class="price" data-usd-price="28.00">$28.00/mo</div>
-                <ul>
-                    <li>12GB RAM</li>
-                    <li>500% CPU</li>
-                    <li>150GB Storage</li>
-                    <li>Unmetered Bandwidth</li>
-                </ul>
-                <a href="#" class="btn customize-btn" data-title="Premium" data-price="$28.00/mo" data-ram="12"
-                    data-cpu="500" data-storage="100">Choose Plan</a>
-            </div>
+<section id="pricing" class="pricing">
+    <h2>Choose your Minecraft Hosting Plan!</h2>
 
-            <div class="pricing-card">
-                <h3>Ultimate</h3>
-                <div class="price" data-usd-price="35.00">$35.00/mo</div>
-                <ul>
-                    <li>16GB RAM</li>
-                    <li>500% CPU</li>
-                    <li>150GB Storage</li>
-                    <li>Unmetered Bandwidth</li>
-                </ul>
-                <a href="#" class="btn customize-btn" data-title="Ultimate" data-price="$35.00/mo" data-ram="16"
-                    data-cpu="500" data-storage="150">Choose Plan</a>
-            </div>
+    <div class="tier-buttons">
+        <button class="tier-button" data-tier="basic">Basic</button>
+        <button class="tier-button active" data-tier="standard">Standard</button>
+    </div>
+    <div class="pricing-container" id="pricing-container">
+
+        <div class="pricing-card">
+            <h3>Basic</h3>
+            <div class="price" data-usd-price="2.50">$2.50/mo</div>
+            <ul>
+                <li>2GB RAM</li>
+                <li>150% CPU</li>
+                <li>25GB Storage</li>
+                <li>Unmetered Bandwidth</li>
+            </ul>
+            <a href="//billing.exphost.net/checkout/config/2" class="btn customize-btn">Choose Plan</a>
+        </div>
+
+        <div class="pricing-card">
+            <h3>Standard</h3>
+            <div class="price" data-usd-price="6.00">$6.00/mo</div>
+            <ul>
+                <li>4GB RAM</li>
+                <li>150% CPU</li>
+                <li>50GB Storage</li>
+                <li>Unmetered Bandwidth</li>
+            </ul>
+            <a href="//billing.exphost.net/checkout/config/6" class="btn customize-btn">Choose Plan</a>
+        </div>
+
+        <div class="pricing-card">
+            <h3>Advanced</h3>
+            <div class="price" data-usd-price="17.00">$17.00/mo</div>
+            <ul>
+                <li>8GB RAM</li>
+                <li>250% CPU</li>
+                <li>75GB Storage</li>
+                <li>Unmetered Bandwidth</li>
+            </ul>
+            <a href="//billing.exphost.net/checkout/config/7" class="btn customize-btn">Choose Plan</a>
+        </div>
+
+        <div class="pricing-card">
+            <h3>Premium</h3>
+            <div class="price" data-usd-price="28.00">$28.00/mo</div>
+            <ul>
+                <li>12GB RAM</li>
+                <li>500% CPU</li>
+                <li>150GB Storage</li>
+                <li>Unmetered Bandwidth</li>
+            </ul>
+            <a href="//billing.exphost.net/checkout/config/8" class="btn customize-btn">Choose Plan</a>
+        </div>
+
+        <div class="pricing-card">
+            <h3>Ultimate</h3>
+            <div class="price" data-usd-price="35.00">$35.00/mo</div>
+            <ul>
+                <li>16GB RAM</li>
+                <li>500% CPU</li>
+                <li>150GB Storage</li>
+                <li>Unmetered Bandwidth</li>
+            </ul>
+            <a href="//billing.exphost.net/checkout/config/10" class="btn customize-btn">Choose Plan</a>
+        </div>
 
             <div class="pricing-card custom-card">
                 <h3>Not the power you're looking for?</h3>
@@ -1316,6 +209,7 @@
 
         <div id="configurator">
             <h3>Custom Plan</h3>
+            <h4>(Standard Only)</h4>
             <div class="slider-container">
                 <label for="ram-slider" class="custom-label">RAM: <span id="ram-value">1</span>GB</label>
                 <input type="range" id="ram-slider" class="slider" min="1" max="16" step="1" value="1">
@@ -1333,7 +227,7 @@
                 <button class="cpu-button" data-cpu=3>500%</button>
             </div>
             <div id="total-price">$1.25/month</div>
-            <a href="#" class="btn">Choose Plan</a>
+            <a href="//billing.exphost.net/checkout/config/9" class="btn">Choose Plan</a>
         </div>
     </section>
 
@@ -1420,43 +314,6 @@
         </div>
     </section>
     
-    <section id="locations" class="locations">
-        <div class="container">
-            <h2>Our Locations</h2>
-            <div class="map-container">
-                <img src="/images/map.svg" alt="World Map" class="map">
-                
-
-                <div class="location-container" style="top: 39%; left: 15%;">
-                    <div class="location-point"></div>
-                    <div class="location-info">
-                        <h3>Salt Lake City</h3>
-                        <h4>[Utah]</h4>
-                        <p>Available Plans: <strong>Standard</strong></p>
-                        <a href="#pricing" class="btn shop-now">Shop Now</a>
-                    </div>
-                </div>
-    
-
-                <div class="location-point" style="top: 35%; left: 52.2%;" data-location="Frankfurt, Germany">
-                    <div class="location-info out-of-stock">
-                        <h3>Frankfurt</h3>
-                        <p>-SoonTM</p>
-                    </div>
-                </div>
-    
-
-                <div class="location-point" style="top: 32%; left: 47%;" data-location="London, UK">
-                    <div class="location-info out-of-stock">
-                        <h3>London</h3>
-                        <p>-Panel</p>
-                        <p>-Backups</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
     
 
     <div class="fullscreen-overlay">
@@ -1536,278 +393,5 @@
         </div>
     </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-    // DOM elements
-    const ramSlider = document.getElementById('ram-slider');
-    const storageSlider = document.getElementById('storage-slider');
-    const ramValue = document.getElementById('ram-value');
-    const storageValue = document.getElementById('storage-value');
-    const cpuButtons = document.querySelectorAll('.cpu-button');
-    const totalPrice = document.getElementById('total-price');
-    const dropdownItems = document.querySelectorAll('#currency-dropdown .dropdown-menu li');
-    const dropdownToggle = document.querySelector('#currency-dropdown .dropdown-toggle');
-    const pricingCards = document.querySelectorAll('.pricing-card .price');
-    const popup = document.getElementById('orderPopup');
-    const closeBtn = document.querySelector('#orderPopup .close-btn');
-    const popupTitle = document.getElementById('popupTitle');
-    const popupSubtitle = document.getElementById('popupSubtitle');
-    const configureButton = document.getElementById('configureButton');
-    const contactButton = document.getElementById('contact-button');
-    const contactPopup = document.getElementById('contactPopup');
-    const contactCloseBtn = contactPopup.querySelector('.close-btn');
-    const customOrderPopup = document.getElementById('customOrderPopup');
-    const customOrderCloseBtn = customOrderPopup.querySelector('.close-btn');
-    const choosePlanBtn = document.querySelector('#configurator .btn');
-    const discordTicketBtn = document.getElementById('discordTicketBtn');
-    const userDetailsPopup = document.getElementById('userDetailsPopup');
-    const userDetailsCloseBtn = userDetailsPopup.querySelector('.close-btn');
-
-    // Variables
-    let selectedCPU = 1;
-    let currentCurrency = 'USD';
-    let exchangeRates = {};
-
-    // Fetch exchange rates including the new currencies
-    const fetchExchangeRates = async () => {
-        try {
-            const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
-            const data = await response.json();
-            exchangeRates = {
-                USD: 1,
-                GBP: data.rates.GBP,
-                JPY: data.rates.JPY,
-                EUR: data.rates.EUR,
-                CAD: data.rates.CAD,
-                MXN: data.rates.MXN,
-                NZD: data.rates.NZD,
-                CHF: data.rates.CHF,
-                AUD: data.rates.AUD
-            };
-        } catch (error) {
-            console.error('Error fetching exchange rates:', error);
-            // Fallback rates
-            exchangeRates = {
-                USD: 1,
-                GBP: 0.80,
-                JPY: 110,
-                EUR: 0.85,
-                CAD: 1.25,
-                MXN: 20.00,
-                NZD: 1.40,
-                CHF: 0.92,
-                AUD: 1.30
-            };
-        }
-    };
-
-    // Update currency and prices
-    const updateCurrency = (currency) => {
-        currentCurrency = currency;
-        const selectedText = Array.from(dropdownItems).find(item => item.getAttribute('data-currency') === currency).textContent;
-        dropdownToggle.textContent = selectedText;
-
-        pricingCards.forEach(card => {
-            const usdPrice = parseFloat(card.getAttribute('data-usd-price'));
-            const newPrice = usdPrice * (exchangeRates[currency] || 1);
-            card.textContent = new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: currency
-            }).format(newPrice) + '/mo';
-        });
-
-        calculatePrice();
-    };
-
-    // Calculate total price
-    const calculatePrice = () => {
-        const ram = parseInt(ramSlider.value);
-        const storage = parseInt(storageSlider.value);
-        const cpu = selectedCPU;
-
-        let cpuCharge = 0;
-        if (cpu === 2) cpuCharge = 5;
-        if (cpu === 3) cpuCharge = 10;
-
-        let price = ram * 1.25 + (storage - 25) / 25 + cpuCharge;
-        price *= exchangeRates[currentCurrency] || 1;
-
-        totalPrice.textContent = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: currentCurrency,
-            minimumFractionDigits: 2
-        }).format(price) + '/month';
-    };
-
-    // Event Listeners
-    dropdownItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const selectedCurrency = item.getAttribute('data-currency');
-            updateCurrency(selectedCurrency);
-        });
-    });
-
-    ramSlider.addEventListener('input', () => {
-        ramValue.textContent = ramSlider.value;
-        calculatePrice();
-    });
-
-    storageSlider.addEventListener('input', () => {
-        storageValue.textContent = storageSlider.value;
-        calculatePrice();
-    });
-
-    cpuButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            cpuButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            selectedCPU = parseInt(button.getAttribute('data-cpu'));
-            calculatePrice();
-        });
-    });
-
-    closeBtn.addEventListener('click', () => {
-        popup.style.display = 'none';
-    });
-
-    configureButton.addEventListener('click', () => {
-        popup.style.display = 'none';
-    });
-
-    contactButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        contactPopup.style.display = 'flex';
-    });
-
-    contactCloseBtn.addEventListener('click', () => {
-        contactPopup.style.display = 'none';
-    });
-
-    choosePlanBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        customOrderPopup.style.display = 'flex';
-    });
-
-    customOrderCloseBtn.addEventListener('click', () => {
-        customOrderPopup.style.display = 'none';
-    });
-
-    discordTicketBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        customOrderPopup.style.display = 'none';
-        userDetailsPopup.style.display = 'flex';
-    });
-
-    userDetailsCloseBtn.addEventListener('click', () => {
-        userDetailsPopup.style.display = 'none';
-    });
-
-    // Initial setup
-    fetchExchangeRates();
-    calculatePrice();
-});
-const imageItems = document.querySelectorAll('.image-item');
-const fullscreenOverlay = document.querySelector('.fullscreen-overlay');
-const fullscreenImage = document.querySelector('.fullscreen-image');
-const closeButton = document.querySelector('.close-button');
-
-imageItems.forEach(item => {
-    item.addEventListener('click', () => {
-        const imgSrc = item.querySelector('img').src;
-        fullscreenImage.src = imgSrc;
-        fullscreenOverlay.style.display = 'flex';
-    });
-});
-
-closeButton.addEventListener('click', () => {
-    fullscreenOverlay.style.display = 'none';
-});
-
-fullscreenOverlay.addEventListener('click', (e) => {
-    if (e.target === fullscreenOverlay) {
-        fullscreenOverlay.style.display = 'none';
-    }
-});
-document.addEventListener('click', (e) => {
-    if (window.innerWidth <= 768 && !e.target.closest('nav') && !e.target.closest('.nav-links')) {
-        navLinks.classList.remove('active');
-        menuIcon.classList.remove('active');
-    }
-});
-document.addEventListener('DOMContentLoaded', function () {
-    const menuIcon = document.querySelector('.menu-icon');
-    const navLinks = document.querySelector('.nav-links');
-
-    menuIcon.addEventListener('click', function () {
-        navLinks.classList.toggle('active');
-    });
-});
-
-const navItems = document.querySelectorAll('.nav-links a');
-navItems.forEach(item => {
-    item.addEventListener('click', () => {
-        if (window.innerWidth <= 768) {
-            toggleMenu();
-        }
-    });
-});
-const menuIcon = document.querySelector('.menu-icon');
-const navLinks = document.querySelector('.nav-links');
-
-function toggleMenu() {
-    navLinks.classList.toggle('active');
-    menuIcon.classList.toggle('active');
-}
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const locationPoints = document.querySelectorAll('.location-point');
-
-    locationPoints.forEach(point => {
-        point.addEventListener('focus', () => {
-            const info = point.querySelector('.location-info');
-            if (info) info.style.display = 'block';
-        });
-
-        point.addEventListener('blur', () => {
-            const info = point.querySelector('.location-info');
-            if (info) info.style.display = 'none';
-        });
-    });
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const track = document.querySelector('.carousel-track');
-    const prevButton = document.querySelector('.carousel-prev');
-    const nextButton = document.querySelector('.carousel-next');
-    const cards = document.querySelectorAll('.review-card');
-
-    let currentIndex = 0;
-
-    const updateCarousel = () => {
-        const cardWidth = cards[0].getBoundingClientRect().width;
-        track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-    };
-
-    nextButton.addEventListener('click', () => {
-        if (currentIndex < cards.length - 1) {
-            currentIndex++;
-            updateCarousel();
-        }
-    });
-
-    prevButton.addEventListener('click', () => {
-        if (currentIndex > 0) {
-            currentIndex--;
-            updateCarousel();
-        }
-    });
-
-    window.addEventListener('resize', updateCarousel);
-});
-
-
-    </script>
-
-
+    <script src="index.js"></script>
 </html>
