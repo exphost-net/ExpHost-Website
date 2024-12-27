@@ -62,7 +62,6 @@ nav {
 .logo {
     display: flex;
     align-items: center;
-    text-decoration: none;
     gap: 10px;
 }
 
