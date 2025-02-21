@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #6C63FF;
+    --primary-color: #6c63ff;
     --secondary-color: #ce42f5;
     --background-color: #0f0f1a;
     --text-color: #FFFFFF;
@@ -244,7 +244,10 @@ nav {
 }
 
 /* General Styles */
-.pricing-card-minecraft, .pricing-card-beammp, .pricing-card-discord {
+.pricing-card-minecraft, 
+.pricing-card-beammp, 
+.pricing-card-discord {
+    position: relative;
     border-radius: 10px;
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -255,33 +258,59 @@ nav {
     display: flex;
     flex-direction: column;
     background-repeat: no-repeat;
-    background-position: center center; /* Ensure the image is centered */
+    background-position: center center;
+    overflow: hidden; /* Prevents blur overflow */
 }
 
-.pricing-card-minecraft {
+.pricing-card-minecraft::before,
+.pricing-card-beammp::before,
+.pricing-card-discord::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: inherit;
+    background-size: inherit;
+    filter: blur(5px);
+    /*Adjustblurintensity*/z-index: -1;
+    -webkit-filter: blur(5px);
+}
+
+/* Apply specific background images */
+.pricing-card-minecraft::before {
     background-image: url('/images/minecraft2.png');
-    background-size: 250%;
+    background-size: 225%;
 }
 
-.pricing-card-beammp {
+.pricing-card-beammp::before {
     background-image: url('/images/beamng.png');
-    background-size: 220%;
+    background-size: 225%;
 }
 
-.pricing-card-discord {
+.pricing-card-discord::before {
     background-image: url('/images/discord.png');
     background-size: 250%;
-    background-position: calc(100% + 50px) center; /* Adjusting position specifically for discord image */
+    background-position: calc(100% + 50px) center;
 }
+
 
 .pricing-card-minecraft:hover, .pricing-card-beammp:hover, .pricing-card-discord:hover {
     transform: translateY(-10px);
     box-shadow: 0 15px 30px rgba(108, 99, 255, 0.1);
+    -webkit-transform: translateY(-10px);
+    -moz-transform: translateY(-10px);
+    -ms-transform: translateY(-10px);
+    -o-transform: translateY(-10px);
 }
 
 .pricing-card-minecraft h3, .pricing-card-beammp h3, .pricing-card-discord h3 {
     font-size: 1.8rem;
     margin-bottom: 20px;
+    filter: blur(0px);
+    -webkit-filter: blur(0px);
 }
 
 .pricing-card-minecraft .price, .pricing-card-beammp .price, .pricing-card-discord .price {
