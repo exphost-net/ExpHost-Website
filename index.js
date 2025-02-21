@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const totalPrice = document.getElementById('total-price');
     const dropdownItems = document.querySelectorAll('#currency-dropdown .dropdown-menu li');
     const dropdownToggle = document.querySelector('#currency-dropdown .dropdown-toggle');
-    const pricingCards = document.querySelectorAll('.pricing-card .price');
+    const pricingCards = document.querySelectorAll('.pricing-card .price, .pricing-card-minecraft .price, .pricing-card-beammp .price, .pricing-card-discord .price');
     const popup = document.getElementById('orderPopup');
     const closeBtn = document.querySelector('#orderPopup .close-btn');
     const popupTitle = document.getElementById('popupTitle');
@@ -67,8 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
         currentCurrency = currency;
         const selectedText = Array.from(dropdownItems).find(item => item.getAttribute('data-currency') === currency).textContent;
         dropdownToggle.textContent = selectedText;
-
-        pricingCards.forEach(card => {
+    
+        document.querySelectorAll('.pricing-card .price, .pricing-card-minecraft .price').forEach(card => {
             const usdPrice = parseFloat(card.getAttribute('data-usd-price'));
             const newPrice = usdPrice * (exchangeRates[currency] || 1);
             card.textContent = new Intl.NumberFormat('en-US', {
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 currency: currency
             }).format(newPrice) + '/mo';
         });
-
+    
         calculatePrice();
     };
 

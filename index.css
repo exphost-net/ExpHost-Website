@@ -243,6 +243,230 @@ nav {
     margin-top: auto;
 }
 
+/* General Styles */
+.pricing-card-minecraft, .pricing-card-beammp, .pricing-card-discord {
+    border-radius: 10px;
+    min-height: 452px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-position: center center; /* Ensure the image is centered */
+}
+
+.pricing-card-minecraft {
+    background-image: url('/images/minecraft2.png');
+    background-size: 250%;
+}
+
+.pricing-card-beammp {
+    background-image: url('/images/beamng.png');
+    background-size: 220%;
+}
+
+.pricing-card-discord {
+    background-image: url('/images/discord.png');
+    background-size: 250%;
+    background-position: calc(100% + 50px) center; /* Adjusting position specifically for discord image */
+}
+
+.pricing-card-minecraft:hover, .pricing-card-beammp:hover, .pricing-card-discord:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(108, 99, 255, 0.1);
+}
+
+.pricing-card-minecraft h3, .pricing-card-beammp h3, .pricing-card-discord h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.pricing-card-minecraft .price, .pricing-card-beammp .price, .pricing-card-discord .price {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.pricing-card-minecraft ul, .pricing-card-beammp ul, .pricing-card-discord ul {
+    list-style: none;
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+.pricing-card-minecraft ul li, .pricing-card-beammp ul li, .pricing-card-discord ul li {
+    margin-bottom: 10px;
+}
+
+.pricing-card-minecraft .btn, .pricing-card-beammp .btn, .pricing-card-discord .btn {
+    margin-top: auto;
+}
+
+/* Mobile & Tablet Responsive Styles */
+@media (max-width: 768px) {
+    .pricing-card-minecraft, .pricing-card-beammp, .pricing-card-discord {
+        padding: 30px;
+        min-height: 400px; /* Slightly reduce the height on smaller screens */
+    }
+
+    .pricing-card-minecraft {
+        background-size: 300%;
+    }
+
+    .pricing-card-beammp {
+        background-size: 250%;
+    }
+
+    .pricing-card-discord {
+        background-size: 300%;
+        background-position: center center; /* Fix position on mobile */
+    }
+}
+
+/* Smaller devices (Phones) */
+@media (max-width: 480px) {
+    .pricing-card-minecraft, .pricing-card-beammp, .pricing-card-discord {
+        padding: 20px;
+        min-height: 350px; /* Further reduce the height for phones */
+    }
+
+    .pricing-card-minecraft {
+        background-size: 350%;
+    }
+
+    .pricing-card-beammp {
+        background-size: 300%;
+    }
+
+    .pricing-card-discord {
+        background-size: 350%;
+        background-position: center center; /* Keep consistent position */
+    }
+
+    .pricing-card-minecraft h3, .pricing-card-beammp h3, .pricing-card-discord h3 {
+        font-size: 1.6rem; /* Optionally adjust font size for small screens */
+    }
+
+    .pricing-card-minecraft .price, .pricing-card-beammp .price, .pricing-card-discord .price {
+        font-size: 2.2rem; /* Slightly adjust price size */
+    }
+}
+
+
+/* Comparison Table Styling */
+#comparison {
+    text-align: center;
+    background-color: var(--background-color);
+    padding: 50px 15px;
+}
+
+/* Table Wrapper - Allows Scrolling on Mobile, Keeps Centered on Desktop */
+.comparison-table {
+    overflow-x: auto;
+    display: block; /* Prevents flex from shifting it */
+    max-width: 100%;
+    padding: 0;
+    margin: 0 auto; /* Keeps it centered on desktop */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
+}
+
+/* Table Styles */
+table {
+    width: 85%;
+    max-width: 1000px; /* Prevents excessive stretching on desktop */
+    border-collapse: separate;
+    border-spacing: 5px;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 0px 15px rgba(108, 99, 255, 0.2);
+    min-width: 700px; /* Prevents shrinking too much */
+    margin: 0 auto; /* Ensures centering on larger screens */
+}
+
+/* Table Header and Cell Styles */
+th, td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #1c1c2e;
+    border-radius: 10px;
+    font-size: 1rem;
+    white-space: nowrap;
+}
+
+/* Header Row */
+th {
+    background-color: var(--primary-color);
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+/* ExpHost Column Highlights */
+td.highlight {
+    background-color: var(--secondary-color);
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 10px;
+}
+
+/* Adjusting Logo Sizes */
+img {
+    width: 45px;
+    height: auto;
+}
+
+/* 🚀 Responsive Adjustments for Mobile */
+@media screen and (max-width: 768px) {
+    .comparison-table {
+        overflow-x: auto;
+        padding: 0 10px; /* Prevents cut-off */
+    }
+
+    /* Prevents table from shrinking too much */
+    table {
+        min-width: 600px;
+        width: 100%;
+    }
+
+    /* Reduce font sizes for better fit */
+    th, td {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    /* Reduce image sizes */
+    img {
+        width: 35px;
+    }
+}
+
+/* 📱 Extra Small Screens: Ensure Full Scrollability */
+@media screen and (max-width: 480px) {
+    .comparison-table {
+        overflow-x: auto;
+        padding: 0;
+    }
+
+    /* Prevents cut-off, ensures full scroll */
+    table {
+        min-width: 550px;
+        width: 100%;
+    }
+
+    /* Reduce padding & font sizes */
+    th, td {
+        font-size: 0.8rem;
+        padding: 6px;
+    }
+
+    /* Smaller logos */
+    img {
+        width: 30px;
+    }
+}
+
 .custom-card {
     display: flex;
     flex-direction: column;
