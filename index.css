@@ -207,6 +207,7 @@ nav {
     border-radius: 10px;
     padding: 40px;
     text-align: center;
+    align-items: center;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -220,6 +221,36 @@ nav {
 .pricing-card h3 {
     font-size: 1.8rem;
     margin-bottom: 20px;
+}
+
+.pricing-card-minecraft img  {
+    display: block;
+    margin: 0 auto;
+    min-width: 30%;
+    min-height: auto;
+    max-width: 30%;
+    max-height: auto;
+    filter: drop-shadow(0px 5px 10px rgba(0, 255, 0, 0.849));
+}
+
+.pricing-card-beammp img  {
+    display: block;
+    margin: 0 auto;
+    min-width: 40%;
+    min-height: auto;
+    max-width: 40%;
+    max-height: auto;
+    filter: drop-shadow(0px 5px 10px rgb(55, 0, 255));
+}
+
+.pricing-card-discord img  {
+    display: block;
+    margin: 0 auto;
+    min-width: 30%;
+    min-height: auto;
+    max-width: 30%;
+    max-height: auto;
+    filter: drop-shadow(0px 5px 10px #5865f2);
 }
 
 .pricing-card .price {
@@ -406,7 +437,7 @@ nav {
 /* Table Styles */
 table {
     width: 85%;
-    max-width: 1000px; /* Prevents excessive stretching on desktop */
+    max-width: 85%; /* Prevents excessive stretching on desktop */
     border-collapse: separate;
     border-spacing: 5px;
     background-color: rgba(255, 255, 255, 0.05);
@@ -422,7 +453,7 @@ table {
 
 /* Table Header and Cell Styles */
 th, td {
-    padding: 12px;
+    padding: 8px;
     text-align: center;
     border: 1px solid #1c1c2e;
     border-radius: 10px;
@@ -624,20 +655,48 @@ img {
 
 .screenshots {
     padding: 50px 0;
-    text-align: center;
 }
 
-.screenshots img {
+.screenshots .container {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.screenshot-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 900px;
     width: 100%;
-    max-width: 550px;
-    margin: 0 10px;
+}
+
+.screenshot-item:nth-child(even) {
+    flex-direction: row-reverse; /* Alternate image and text */
+}
+
+.screenshot-text {
+    flex: 1;
+    font-size: 18px;
+}
+
+.screenshot-img {
+    flex: 1;
+    max-width: 450px;
+}
+
+.screenshot-img img {
+    width: 100%;
     border-radius: 10px;
     transition: transform 0.3s ease;
 }
 
-.screenshots img:hover {
+.screenshot-img img:hover {
     transform: scale(1.05);
 }
+
 
 footer {
     padding-top: 50px;
