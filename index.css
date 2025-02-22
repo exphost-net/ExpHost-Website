@@ -390,6 +390,7 @@ nav {
     text-align: center;
     background-color: var(--background-color);
     padding: 50px 15px;
+    
 }
 
 /* Table Wrapper - Allows Scrolling on Mobile, Keeps Centered on Desktop */
@@ -415,6 +416,8 @@ table {
     box-shadow: 0px 0px 15px rgba(108, 99, 255, 0.2);
     min-width: 700px; /* Prevents shrinking too much */
     margin: 0 auto; /* Ensures centering on larger screens */
+    margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
 /* Table Header and Cell Styles */
