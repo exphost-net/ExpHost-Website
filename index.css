@@ -1,5 +1,5 @@
 :root {
-    --primary-color: #6c63ff;
+    --primary-color: #6893ec;
     --secondary-color: #ce42f5;
     --background-color: #0f0f1a;
     --text-color: #FFFFFF;
@@ -112,6 +112,7 @@ nav {
     font-size: 3.5rem;
     margin-bottom: 20px;
     animation: fadeInUp 1s ease;
+
 }
 
 .hero-content p {
