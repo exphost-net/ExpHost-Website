@@ -317,7 +317,7 @@ nav {
 }
 
 .pricing-card-beammp::before {
-    background-image: url('/images/beamng.png');
+    background-image: url('/images/BeamNG.png');
     background-size: 225%;
 }
 
