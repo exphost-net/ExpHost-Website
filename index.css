@@ -97,7 +97,7 @@
     width: 50px;
     height: auto;
     transition: transform var(--transition-speed) ease;
-    filter: drop-shadow(0 0 8px rgba(104, 147, 236, 0.4));
+    filter: drop-shadow(0 0 8px rgba(104, 183, 236, 0.61));
   }
   .logo:hover img {
     transform: scale(1.05);
@@ -193,6 +193,7 @@
     background: var(--dark-gradient);
     opacity: 0.6;
     z-index: 0;
+    
   }
   .hero-content {
     position: relative;
@@ -206,6 +207,7 @@
     box-shadow: var(--glass-shadow);
     max-width: 700px;
     margin: 0 20px;
+    
   }
   .hero-content h1 {
     font-size: 3.5rem;
@@ -216,6 +218,12 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    
+  }
+
+  .hero-content img {
+    filter: drop-shadow(0 0 5rem rgba(104, 183, 236, 0.61));
+    
   }
   .hero-content p {
     font-size: 1.2rem;
@@ -1844,3 +1852,95 @@ footer p {
     }
 }
 
+/* Glass UI Screenshots Section */
+.screenshots {
+    padding: 60px 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .screenshots .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .screenshots h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+  }
+  
+  .screenshot-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 40px;
+    background-color: var(--glass-background);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 15px;
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .screenshot-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Alternate row direction for every other item (optional) */
+  .screenshot-item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  
+  .screenshot-text {
+    flex: 1;
+    color: var(--text-color);
+  }
+  
+  .screenshot-text h3 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+  }
+  
+  .screenshot-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .screenshot-img img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  .screenshot-img img:hover {
+    transform: scale(1.03);
+  }
+  
+  /* Responsive adjustments for tablets & mobile */
+  @media (max-width: 768px) {
+    .screenshot-item {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+    .screenshot-item:nth-child(even) {
+      flex-direction: column;
+    }
+    .screenshot-img img {
+      max-width: 100%;
+    }
+  }
+  
