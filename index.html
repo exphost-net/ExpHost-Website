@@ -14,10 +14,10 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">
+                <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">
                     <img src="/images/ExpHost 3.0 Dark Clear.png" alt="ExpHost Logo" style="width: 50px; height: auto;">
                     <span>ExpHost</span>
-                </div>
+                </a>
                 <div class="menu-icon">
                     <span></span>
                     <span></span>
@@ -29,19 +29,6 @@
                     <li><a href="legal.html">Legal</a></li>
                     <li><a href="//panel.exphost.net">Panel</a></li>
                     <li><a href="//billing.exphost.net">Billing</a></li>
-                    <li class="dropdown" id="currency-dropdown">
-                        <button class="dropdown-toggle btn">$ USD</button>
-                        <ul class="dropdown-menu">
-                            <li data-currency="USD">$ USD</li>
-                            <li data-currency="GBP">£ GBP</li>
-                            <li data-currency="JPY">¥ JPY</li>
-                            <li data-currency="EUR">€ EUR</li>
-                            <li data-currency="CAD">$ CAD</li>
-                            <li data-currency="MXN">$ MXN</li>
-                            <li data-currency="NZD">$ NZD</li>
-                            <li data-currency="AUD">$ AUD</li>
-                        </ul>
-                    </li>
                 </ul>
             </nav>
         </div>
@@ -92,7 +79,6 @@
 <section id="pricing" class="pricing">
     <h2>Choose your Server Hosting Plan!</h2>
 
-    <h2></h2>
     <div class="pricing-container" id="basic-pricing">
         <!-- Base Plan -->
         <div class="pricing-card-minecraft">
@@ -103,7 +89,7 @@
             <ul>
 
             </ul>
-            <a href="//billing.exphost.net/" class="btn customize-btn">Choose Plan</a>
+            <a href="//billing.exphost.net/mc" class="btn customize-btn">Choose Plan</a>
         </div>
     
         <!-- Spark Plan -->
@@ -130,131 +116,6 @@
             <a href="//billing.exphost.net/BotHosting" class="btn customize-btn">Choose Plan</a>
         </div>
     </div>
-    <!--<h2>Standard</h2>
-    <div class="pricing-container" id="pricing-container">
-
-        <div class="pricing-card">
-            <h3>Basic</h3>
-            <div class="price" data-usd-price="2.50">$2.50/mo</div>
-            <ul>
-                <li>2GB RAM</li>
-                <li>150% CPU</li>
-                <li>25GB Storage</li>
-                <li>Unmetered Bandwidth</li>
-            </ul>
-            <a href="//billing.exphost.net/checkout/config/2" class="btn customize-btn">Choose Plan</a>
-        </div>
-
-        <div class="pricing-card">
-            <h3>Standard</h3>
-            <div class="price" data-usd-price="6.00">$6.00/mo</div>
-            <ul>
-                <li>4GB RAM</li>
-                <li>150% CPU</li>
-                <li>50GB Storage</li>
-                <li>Unmetered Bandwidth</li>
-            </ul>
-            <a href="//billing.exphost.net/checkout/config/6" class="btn customize-btn">Choose Plan</a>
-        </div>
-
-        <div class="pricing-card">
-            <h3>Advanced</h3>
-            <div class="price" data-usd-price="17.00">$17.00/mo</div>
-            <ul>
-                <li>8GB RAM</li>
-                <li>250% CPU</li>
-                <li>75GB Storage</li>
-                <li>Unmetered Bandwidth</li>
-            </ul>
-            <a href="//billing.exphost.net/checkout/config/7" class="btn customize-btn">Choose Plan</a>
-        </div>
-
-        <div class="pricing-card">
-            <h3>Premium</h3>
-            <div class="price" data-usd-price="28.00">$28.00/mo</div>
-            <ul>
-                <li>12GB RAM</li>
-                <li>500% CPU</li>
-                <li>150GB Storage</li>
-                <li>Unmetered Bandwidth</li>
-            </ul>
-            <a href="//billing.exphost.net/checkout/config/8" class="btn customize-btn">Choose Plan</a>
-        </div>
-
-        <div class="pricing-card">
-            <h3>Ultimate</h3>
-            <div class="price" data-usd-price="35.00">$35.00/mo</div>
-            <ul>
-                <li>16GB RAM</li>
-                <li>500% CPU</li>
-                <li>150GB Storage</li>
-                <li>Unmetered Bandwidth</li>
-            </ul>
-            <a href="//billing.exphost.net/checkout/config/10" class="btn customize-btn">Choose Plan</a>
-        </div>
-        </div>
-        <h2>Pro</h2>
-        <div class="pricing-container" id="pricing-container">
-
-            <div class="pricing-card">
-                <h3>Boost</h3>
-                <div class="price" data-usd-price="13.00">$13.00/mo</div>
-                <ul>
-                    <li>6GB RAM</li>
-                    <li>150% CPU</li>
-                    <li>50GB Storage</li>
-                    <li>Unmetered Bandwidth</li>
-                </ul>
-                <a href="//billing.exphost.net/checkout/config/19" class="btn customize-btn">Choose Plan</a>
-            </div>
-    
-            <div class="pricing-card">
-                <h3>Orbit</h3>
-                <div class="price" data-usd-price="23.00">$23.00/mo</div>
-                <ul>
-                    <li>8GB RAM</li>
-                    <li>250% CPU</li>
-                    <li>75GB Storage</li>
-                    <li>Unmetered Bandwidth</li>
-                </ul>
-                <a href="//billing.exphost.net/checkout/config/20" class="btn customize-btn">Choose Plan</a>
-            </div>
-    
-            <div class="pricing-card">
-                <h3>Nova</h3>
-                <div class="price" data-usd-price="45.00">$45.00/mo</div>
-                <ul>
-                    <li>16GB RAM</li>
-                    <li>500% CPU</li>
-                    <li>100GB Storage</li>
-                    <li>Unmetered Bandwidth</li>
-                </ul>
-                <a href="//billing.exphost.net/checkout/config/21" class="btn customize-btn">Choose Plan</a>
-            </div>
-
-            </div>
-
-        <div id="configurator">
-            <h3>Custom Plan</h3>
-            <h4>(Standard Only)</h4>
-            <div class="slider-container">
-                <label for="ram-slider" class="custom-label">RAM: <span id="ram-value">1</span>GB</label>
-                <input type="range" id="ram-slider" class="slider" min="1" max="16" step="1" value="1">
-            </div>
-            <div class="slider-container">
-                <label for="storage-slider" class="custom-label">Storage: <span id="storage-value">25</span>GB</label>
-                <input type="range" id="storage-slider" class="slider" min="25" max="150" step="25" value="25">
-
-
-            </div>
-            <label for="storage-slider" class="custom-label">CPU Percentage</label>
-            <div class="cpu-buttons">
-                <button class="cpu-button active" data-cpu=1>150%</button>
-                <button class="cpu-button" data-cpu=2>250%</button>
-                <button class="cpu-button" data-cpu=3>500%</button>
-            </div>
-            <div id="total-price">$1.25/month</div>
-            <a href="//billing.exphost.net/checkout/config/9" class="btn">Choose Plan</a>-->
         </div>
     </section>
 
@@ -488,7 +349,6 @@
             <div class="screenshot-item">
                 <div class="screenshot-text">
                     <h3>Intuitive Dashboard</h3>
-                    <p>Experience a sleek, modern interface designed for effortless navigation and real-time insights into your server’s performance. The clear layout puts all the tools you need right at your fingertips.</p>
                 </div>
                 <div class="screenshot-img">
                     <img src="/images/panel1.png" alt="Screenshot 1">
@@ -498,7 +358,6 @@
             <div class="screenshot-item">
                 <div class="screenshot-text">
                     <h3>Advanced Security & Access Control</h3>
-                    <p>Keep your servers safe with robust security features that protect against unauthorized access. Our custom login system and built-in safeguards ensure your data and settings remain secure at all times.</p>
                 </div>
                 <div class="screenshot-img">
                     <img src="/images/panel2.png" alt="Screenshot 2">
@@ -508,7 +367,6 @@
             <div class="screenshot-item">
                 <div class="screenshot-text">
                     <h3>Seamless Server Management & Support</h3>
-                    <p>Manage, configure, and monitor your game servers with ease. Enjoy powerful management tools combined with a responsive support team ready to help you every step of the way.</p>
                 </div>
                 <div class="screenshot-img">
                     <img src="/images/panel3.png" alt="Screenshot 3">
