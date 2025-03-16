@@ -12,22 +12,34 @@
     <link rel="stylesheet" href="index.css">
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": "ExpHost",
-      "url": "https://exphost.net/",
-      "logo": "https://exphost.net/images/ExpHostLogo.png",
-      "description": "ExpHost offers affordable game server hosting from $0.90/month with premium Ryzen 9 CPUs and DDoS protection.",
-      "offers": {
-        "@type": "Offer",
-        "priceCurrency": "USD",
-        "price": "0.90",
-        "category": "Minecraft Server Hosting",
-        "availability": "https://schema.org/InStock",
-        "url": "https://billing.exphost.net/mc"
-      }
-    }
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "ExpHost",
+            "url": "https://exphost.net",
+            "logo": "https://exphost.net/logo.png",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "10939 182-184 High Street North",
+              "addressLocality": "East Ham",
+              "addressRegion": "London",
+              "postalCode": "E6 2JA",
+              "addressCountry": "England"
+            },
+            "description": "ExpHost provides high-performance Minecraft server hosting with Ryzen 9 CPUs, DDoS protection, and affordable pricing.",
+            "foundingDate": "2023",
+            "service": [
+              {
+                "@type": "Service",
+                "name": "Minecraft Server Hosting",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "ExpHost"
+                }
+              }
+            ]
+          }
+          
     </script>
 </head>
 
