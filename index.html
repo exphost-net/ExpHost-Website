@@ -118,6 +118,71 @@
         </div>
     </section>
 
+    <section class="partners-section">
+        <h2>Our Partners</h2>
+      
+        <!-- Outer wrapper to hide overflow -->
+        <div class="marquee">
+          <!-- First set of logos -->
+          <div class="marquee__group">
+            <a href="https://x.com/JackCas_" target="_blank">
+              <img src="/images/Site-logo.webp" alt="Jack Cas NOVUS">
+            </a>
+            <a href="https://x.com/SkirmishSolar" target="_blank">
+              <img src="/images/pBsTMU3L_400x400.jpg" alt="Solar Skirmish">
+            </a>
+            <a href="https://x.com/playclubmine" target="_blank">
+              <img src="/images/O5vyo8k.png" alt="ClubMine / Solaris">
+            </a>
+            <a href="https://x.com/blissfulchamps" target="_blank">
+                <img src="/images/Site-community-image.webp" alt="Blissful">
+              </a>
+            <a href="https://discord.gg/KBKxXDryS9" target="_blank">
+                <img src="/images/trashy2.png" alt="TrashyBins">
+              </a>
+            <a href="https://destinygames.org" target="_blank">
+                <img src="/images/DG Logo.png" alt="Destiny Games">
+              </a>
+            <a href="https://tropiclash.net" target="_blank">
+                <img src="/images/Tropiclash Logo.png" alt="Tropiclash">
+              </a>
+            <a href="https://minimcc.fandom.com/wiki/MiniMCC_Wiki" target="_blank">
+                <img src="/images/211085d4ee0ef6d50c3b447f3f6173ae.webp" alt="MiniMCC">
+              </a>
+          </div>
+          <!-- Exact duplicate of the first set -->
+          <div class="marquee__group">
+            <a href="https://x.com/JackCas_" target="_blank">
+                <img src="/images/Site-logo.webp" alt="Jack Cas NOVUS">
+              </a>
+              <a href="https://x.com/SkirmishSolar" target="_blank">
+                <img src="/images/pBsTMU3L_400x400.jpg" alt="Solar Skirmish">
+              </a>
+              <a href="https://x.com/playclubmine" target="_blank">
+                <img src="/images/O5vyo8k.png" alt="ClubMine / Solaris">
+              </a>
+              <a href="https://x.com/blissfulchamps" target="_blank">
+                  <img src="/images/Site-community-image.webp" alt="Blissful">
+                </a>
+              <a href="https://discord.gg/KBKxXDryS9" target="_blank">
+                  <img src="/images/trashy2.png" alt="TrashyBins">
+                </a>
+              <a href="https://destinygames.org" target="_blank">
+                  <img src="/images/DG Logo.png" alt="Destiny Games">
+                </a>
+              <a href="https://tropiclash.net" target="_blank">
+                  <img src="/images/Tropiclash Logo.png" alt="Tropiclash">
+                </a>
+              <a href="https://minimcc.fandom.com/wiki/MiniMCC_Wiki" target="_blank">
+                  <img src="/images/211085d4ee0ef6d50c3b447f3f6173ae.webp" alt="MiniMCC">
+                </a>
+          </div>
+        </div>
+      
+        <a href="//discord.gg/yYnUq4sxfx" class="btn">Apply to be a Partner</a>
+      </section>
+      
+
 
 
 <section id="pricing" class="pricing">
@@ -529,4 +594,13 @@
     </footer>
 
     <script src="index.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const carousel = document.querySelector(".partners-carousel .logos");
+            const logos = carousel.innerHTML;
+            
+            // Duplicate logos to create a seamless loop
+            carousel.innerHTML += logos;
+        });
+    </script>
 </html>

@@ -1944,4 +1944,61 @@ footer p {
       max-width: 100%;
     }
   }
+
+  
+  .partners-section {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 50px 0;
+    /* Glass styling if you want */
+    background: var(--glass-background);
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 15px;
+    margin-bottom: 3rem;
+  }
+  
+  .marquee {
+    display: flex;
+    width: max-content; /* Prevents unwanted shrinking */
+    animation: marquee 15s linear infinite; 
+  }
+  
+  .marquee__group {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 6rem; /* Increases spacing between logos */
+    justify-content: center;
+    align-items: center;
+    padding-right: 6rem; /* Extra space to prevent overlap */
+  }
+  
+  .marquee__group img {
+    height: 6rem;
+    width: auto;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    border-radius: 15px;
+    opacity: 75%;
+    filter: grayscale(90%);
+    transition: transform 0.3s ease;
+  }
+  
+  .marquee__group img:hover {
+    transform: scale(1.1);
+    opacity: 100%;
+    filter: grayscale(0%);
+  }
+  
+  /* Adjust animation so it moves exactly one group width */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%); /* Moves by half to loop properly */
+    }
+  }
   
