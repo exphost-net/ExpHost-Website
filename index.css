@@ -1998,7 +1998,7 @@ footer p {
       transform: translateX(0);
     }
     to {
-      transform: translateX(-50%); /* Moves by half to loop properly */
-    }
+      transform: translateX(-25%); /* Moves by half to loop properly */
+}
   }
   
